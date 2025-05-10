@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:get/instance_manager.dart';
-import 'package:humic_internify/src/features/viewmodels/bottombar_controller.dart';
+import 'package:humic_internify/src/core/dependencies_binding.dart';
 import 'package:humic_internify/src/features/views/home/home_app.dart';
 
 void main() {
-  Get.put(BottombarController());
+  initDependencies();
   runApp(const MyApp());
 }
 
@@ -14,9 +13,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomeApp(),
+      home: const HomeApp(),
+      theme: ThemeData(fontFamily: 'Poppins'),
     );
   }
 }

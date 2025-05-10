@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:humic_internify/src/features/models/bottombar_model.dart';
 import 'package:humic_internify/src/features/viewmodels/bottombar_controller.dart';
+import 'package:humic_internify/styles/custom_color.dart';
 
 class BottomNavbar extends StatelessWidget {
   const BottomNavbar({super.key});
@@ -28,51 +29,84 @@ class BottomNavbar extends StatelessWidget {
             boxShadow: [
               BoxShadow(
                 color: Colors.black12,
-                blurRadius: 40,
+                blurRadius: 20,
                 offset: Offset(0, -4),
               ),
             ],
           ),
-          child: Obx(
-            () => Stack(
-              children: [
-                Row(
-                  children: List.generate(
-                    bottomBar.length,
-                    (index) => GestureDetector(
-                      onTap: () {
-                        bottombarController.changeIndex(index);
-                      },
-                      child: Container(
-                        width: itemWidth,
-                        height: double.infinity,
-                        color: Colors.white.withAlpha(0),
-                        child: Icon(bottomBar[index].icon),
-                      ),
-                    ),
-                  ),
-                ),
-                AnimatedAlign(
-                  alignment: Alignment(
-                    -1.0 +
-                        (2.0 * bottombarController.currentIndex.value) /
-                            (bottomBar.length - 1),
-                    -1.0,
-                  ),
-                  duration: const Duration(milliseconds: 200),
+          child: Column(
+            children: [
+              Expanded(
+                child: Obx(
+                  () => Stack(
+                    children: [
+                      Row(
+                        children: List.generate(
+                          bottomBar.length,
+                          (index) => GestureDetector(
+                            onTap: () {
+                              bottombarController.changeIndex(index);
+                            },
+                            child: Container(
+                              alignment: Alignment.center,
+                              width: itemWidth,
+                              height: double.infinity,
+                              color: Colors.white.withAlpha(0),
 
-                  child: SizedBox(
-                    height: 3,
-                    width: itemWidth,
-                    child: Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 20),
-                      alignment: Alignment.center,
-                      color: Colors.blue,
-                    ),
+                              ///Icon & Label
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(bottomBar[index].icon),
+                                  const SizedBox(height: 3),
+                                  Text(
+                                    bottomBar[index].label,
+                                    style: const TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w500,
+                                      letterSpacing: 0,
+                                      color: blackHumic1,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      AnimatedAlign(
+                        alignment: Alignment(
+                          -1.0 +
+                              (2.0 * bottombarController.currentIndex.value) /
+                                  (bottomBar.length - 1),
+                          -1.0,
+                        ),
+                        duration: const Duration(milliseconds: 200),
+
+                        child: SizedBox(
+                          height: 3,
+                          width: itemWidth,
+                          child: Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 25),
+                            alignment: Alignment.center,
+                            color: redHumic,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              ],
-            ),
+              ),
+              Container(
+                width: 135,
+                margin: const EdgeInsets.only(bottom: 5),
+                height: 5,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: blackHumic1,
+                ),
+              ),
+            ],
           ),
         ),
       ],
