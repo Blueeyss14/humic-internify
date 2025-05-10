@@ -6,7 +6,7 @@ import 'package:humic_internify/src/features/views/components/bottom_navbar.dart
 import 'package:humic_internify/src/features/views/pages/about_us.dart';
 import 'package:humic_internify/src/features/views/pages/home_page.dart';
 import 'package:humic_internify/src/features/views/pages/internship_page.dart';
-import 'package:humic_internify/styles/custom_color.dart';
+import 'package:humic_internify/src/styles/custom_color.dart';
 
 class HomeApp extends StatelessWidget {
   const HomeApp({super.key});

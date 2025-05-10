@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:humic_internify/src/features/models/bottombar_model.dart';
 import 'package:humic_internify/src/features/viewmodels/bottombar_controller.dart';
-import 'package:humic_internify/styles/custom_color.dart';
+import 'package:humic_internify/src/styles/custom_color.dart';
 
 class BottomNavbar extends StatelessWidget {
   const BottomNavbar({super.key});
