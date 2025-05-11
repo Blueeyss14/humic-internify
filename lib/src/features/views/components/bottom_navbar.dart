@@ -75,13 +75,14 @@ class BottomNavbar extends StatelessWidget {
                   ),
                 ),
                 AnimatedAlign(
+                  curve: Curves.easeOutBack,
                   alignment: Alignment(
                     -1.0 +
                         (2.0 * bottombarController.currentIndex.value) /
                             (bottomBar.length - 1),
                     -1.0,
                   ),
-                  duration: const Duration(milliseconds: 200),
+                  duration: const Duration(milliseconds: 500),
 
                   child: SizedBox(
                     height: 3,
