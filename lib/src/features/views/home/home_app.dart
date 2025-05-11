@@ -13,15 +13,16 @@ class HomeApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final page = Get.find<BottombarController>();
-    List<Widget> pages = const [HomePage(), InternshipPage(), AboutUs()];
+    // final page = Get.find<BottombarController>();
+    // List<Widget> pages = const [HomePage(), InternshipPage(), AboutUs()];
 
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: humicBackground,
       body: Stack(
         children: [
-          Obx(() => pages[page.currentIndex.value]),
-          const BottomNavbar(),
+          // Obx(() => pages[page.currentIndex.value]),
+          HomePage(),
+          BottomNavbar(),
         ],
       ),
     );

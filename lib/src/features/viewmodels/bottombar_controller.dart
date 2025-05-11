@@ -15,7 +15,7 @@ class BottombarController extends GetxController {
     'assets/icons/cv_filled.png',
     'assets/icons/about_us_filled.png',
   ];
-  final List<String> labels = ['Beranda', 'CV', 'Tentang Kami'];
+  final List<String> labels = ['Beranda', 'Lowongan', 'Tentang Kami'];
 
   @override
   void onInit() {
