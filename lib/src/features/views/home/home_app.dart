@@ -17,6 +17,7 @@ class HomeApp extends StatelessWidget {
     // List<Widget> pages = const [HomePage(), InternshipPage(), AboutUs()];
 
     return const Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: humicBackground,
       body: Stack(
         children: [
