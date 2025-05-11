@@ -5,6 +5,14 @@ class InternshipPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Text("Internship Page"));
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        ClipRRect(
+          borderRadius: BorderRadius.circular(30),
+          child: Image.asset("assets/images/pexels-pixabay-53594.jpg"),
+        ),
+      ],
+    );
   }
 }

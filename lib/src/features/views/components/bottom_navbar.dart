@@ -10,7 +10,7 @@ class BottomNavbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bottombarController = Get.find<BottombarController>();
-    List<BottombarModel> bottomBar = BottombarModel.bottombarData();
+    final bottomBar = Get.find<BottombarController>().icon;
 
     double padding = 30;
     double screenWidth = MediaQuery.of(context).size.width;
@@ -34,79 +34,68 @@ class BottomNavbar extends StatelessWidget {
               ),
             ],
           ),
-          child: Column(
-            children: [
-              Expanded(
-                child: Obx(
-                  () => Stack(
-                    children: [
-                      Row(
-                        children: List.generate(
-                          bottomBar.length,
-                          (index) => GestureDetector(
-                            onTap: () {
-                              bottombarController.changeIndex(index);
-                            },
-                            child: Container(
-                              alignment: Alignment.center,
-                              width: itemWidth,
-                              height: double.infinity,
-                              color: Colors.white.withAlpha(0),
+          child: Obx(
+            () => Stack(
+              children: [
+                Row(
+                  children: List.generate(
+                    bottomBar.length,
+                    (index) => GestureDetector(
+                      onTap: () {
+                        bottombarController.changeIndex(index);
+                      },
+                      child: Container(
+                        alignment: Alignment.center,
+                        width: itemWidth,
+                        height: double.infinity,
+                        color: Colors.white.withAlpha(0),
 
-                              ///Icon & Label
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(bottomBar[index].icon),
-                                  const SizedBox(height: 3),
-                                  Text(
-                                    bottomBar[index].label,
-                                    style: const TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w500,
-                                      letterSpacing: 0,
-                                      color: blackHumic1,
-                                    ),
-                                  ),
-                                ],
+                        ///Icon & Label
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              bottomBar[index].icon,
+                              height: 25,
+                              width: 25,
+                            ),
+                            const SizedBox(height: 3),
+                            Text(
+                              bottomBar[index].label,
+                              style: const TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                                letterSpacing: 0,
+                                color: blackHumic1,
                               ),
                             ),
-                          ),
+                          ],
                         ),
                       ),
-                      AnimatedAlign(
-                        alignment: Alignment(
-                          -1.0 +
-                              (2.0 * bottombarController.currentIndex.value) /
-                                  (bottomBar.length - 1),
-                          -1.0,
-                        ),
-                        duration: const Duration(milliseconds: 200),
-
-                        child: SizedBox(
-                          height: 3,
-                          width: itemWidth,
-                          child: Container(
-                            margin: const EdgeInsets.symmetric(horizontal: 25),
-                            alignment: Alignment.center,
-                            color: redHumic,
-                          ),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ),
-              ),
-              Container(
-                width: 135,
-                margin: const EdgeInsets.only(bottom: 5),
-                height: 5,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: blackHumic1,
+                AnimatedAlign(
+                  alignment: Alignment(
+                    -1.0 +
+                        (2.0 * bottombarController.currentIndex.value) /
+                            (bottomBar.length - 1),
+                    -1.0,
+                  ),
+                  duration: const Duration(milliseconds: 200),
+
+                  child: SizedBox(
+                    height: 3,
+                    width: itemWidth,
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 25),
+                      alignment: Alignment.center,
+                      color: blackHumic1,
+                    ),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ],
