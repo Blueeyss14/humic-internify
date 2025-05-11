@@ -32,7 +32,7 @@ class SearchBarCustom extends StatelessWidget {
             alignment: Alignment.center,
             children: [
               AnimatedSwitcher(
-                duration: const Duration(milliseconds: 500),
+                duration: const Duration(milliseconds: 300),
                 child: Column(
                   key: ValueKey<int>(bottomBar.currentIndex.value),
                   children: [
