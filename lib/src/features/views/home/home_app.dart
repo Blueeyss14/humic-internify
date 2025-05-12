@@ -1,5 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/get_instance.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:humic_internify/src/features/viewmodels/bottombar_controller.dart';
 import 'package:humic_internify/src/features/views/components/bottom_navbar.dart';
+import 'package:humic_internify/src/features/views/pages/about_us.dart';
+import 'package:humic_internify/src/features/views/pages/home_page.dart';
+import 'package:humic_internify/src/features/views/pages/internship_page.dart';
 import 'package:humic_internify/src/shared/search_bar_custom.dart';
 import 'package:humic_internify/src/styles/custom_color.dart';
 
@@ -8,17 +15,35 @@ class HomeApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final page = Get.find<BottombarController>();
-    // List<Widget> pages = const [HomePage(), InternshipPage(), AboutUs()];
+    final page = Get.find<BottombarController>();
+    List<Widget> pages = const [HomePage(), InternshipPage()];
 
-    return const Scaffold(
+    return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: humicBackground,
       body: Stack(
         children: [
-          // Obx(() => pages[page.currentIndex.value]),
-          SearchBarCustom(),
-          BottomNavbar(),
+          Column(
+            children: [
+              const SearchBarCustom(),
+
+              Obx(
+                () => Expanded(
+                  child: AnimatedSwitcher(
+                    duration: const Duration(milliseconds: 300),
+                    child:
+                        page.currentIndex.value < pages.length
+                            ? SizedBox(
+                              key: ValueKey<int>(page.currentIndex.value),
+                              child: pages[page.currentIndex.value],
+                            )
+                            : const SizedBox(),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          const BottomNavbar(),
         ],
       ),
     );

@@ -39,9 +39,8 @@ class SearchBarCustom extends StatelessWidget {
             ),
           ),
           Container(
-            padding: const EdgeInsets.only(bottom: 30),
             alignment: Alignment.bottomCenter,
-            height: MediaQuery.of(context).size.height / 3 + 50,
+            height: MediaQuery.of(context).size.height / 3,
             width: double.infinity,
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal: 40),
@@ -89,17 +88,19 @@ class SearchBarCustom extends StatelessWidget {
                       onTap: () {
                         Get.to(const TestPage());
                       },
-                      child: AnimatedOpacity(
-                        opacity: bottomBar.currentIndex.value == 1 ? 1 : 0,
+                      child: AnimatedSwitcher(
                         duration: const Duration(milliseconds: 200),
-                        child: IgnorePointer(
-                          ignoring: bottomBar.currentIndex.value != 1,
-                          child: Container(
-                            color: Colors.blue,
-                            height: 30,
-                            width: 30,
-                          ),
-                        ),
+                        child:
+                            bottomBar.currentIndex.value == 1
+                                ? Container(
+                                  key: ValueKey<int>(
+                                    bottomBar.currentIndex.value,
+                                  ),
+                                  color: Colors.red,
+                                  height: 30,
+                                  width: 30,
+                                )
+                                : const SizedBox.shrink(),
                       ),
                     ),
                   ),
