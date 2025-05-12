@@ -25,9 +25,10 @@ class SearchBarCustom extends StatelessWidget {
       MediaQuery.of(context).size.height / 2,
     ];
 
-    final animationPadding = bottomBar.currentIndex.value == 2 ? 30.0 : 0.0;
-    return Obx(
-      () => Stack(
+    return Obx(() {
+      final animationPadding = bottomBar.currentIndex.value == 2 ? 30.0 : 0.0;
+
+      return Stack(
         children: [
           AnimatedPadding(
             duration: const Duration(milliseconds: 300),
@@ -136,7 +137,7 @@ class SearchBarCustom extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
+      );
+    });
   }
 }
