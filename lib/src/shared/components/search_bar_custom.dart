@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/route_manager.dart';
@@ -39,9 +40,10 @@ class SearchBarCustom extends StatelessWidget {
           ),
           Container(
             alignment: Alignment.bottomCenter,
-            height: MediaQuery.of(context).size.height / 3,
+            height: MediaQuery.of(context).size.height / 3 + 25,
             width: double.infinity,
             child: Container(
+              // color: Colors.amber,
               margin: const EdgeInsets.symmetric(horizontal: 40),
               alignment: Alignment.center,
               width: MediaQuery.of(context).size.height,
@@ -55,23 +57,30 @@ class SearchBarCustom extends StatelessWidget {
                       key: ValueKey<int>(bottomBar.currentIndex.value),
                       children: [
                         if (bottomBar.currentIndex.value < text.length)
-                          Text(
+                          AutoSizeText(
                             text[bottomBar.currentIndex.value],
                             textAlign: TextAlign.center,
                             style: const TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
+                              fontSize: 13,
                             ),
+                            maxFontSize: 13,
+                            maxLines: 1,
+                            minFontSize: 3,
                           ),
                         const SizedBox(height: 5),
                         if (bottomBar.currentIndex.value < text2.length)
-                          Text(
+                          AutoSizeText(
                             text2[bottomBar.currentIndex.value],
                             textAlign: TextAlign.center,
                             style: const TextStyle(
                               color: Colors.white,
                               fontSize: 8,
                             ),
+                            maxFontSize: 8,
+                            maxLines: bottomBar.currentIndex.value == 1 ? 2 : 1,
+                            minFontSize: 3,
                           ),
                       ],
                     ),

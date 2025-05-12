@@ -18,83 +18,87 @@ class BottomNavbar extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        Container(
-          height: 88,
-          padding: EdgeInsets.symmetric(horizontal: padding),
-          width: screenWidth,
-          decoration: const BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.vertical(top: Radius.circular(35)),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black12,
-                blurRadius: 20,
-                offset: Offset(0, -4),
-              ),
-            ],
-          ),
-          child: Obx(
-            () => Stack(
-              children: [
-                Row(
-                  children: List.generate(
-                    bottomBar.length,
-                    (index) => GestureDetector(
-                      onTap: () {
-                        bottombarController.changeIndex(index);
-                      },
-                      child: Container(
-                        alignment: Alignment.center,
-                        width: itemWidth,
-                        height: double.infinity,
-                        color: Colors.white.withAlpha(0),
+        IntrinsicHeight(
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: padding),
+            width: screenWidth,
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.vertical(top: Radius.circular(35)),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black12,
+                  blurRadius: 20,
+                  offset: Offset(0, -4),
+                ),
+              ],
+            ),
+            child: Obx(
+              () => Stack(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 15),
+                    child: Row(
+                      children: List.generate(
+                        bottomBar.length,
+                        (index) => GestureDetector(
+                          onTap: () {
+                            bottombarController.changeIndex(index);
+                          },
+                          child: Container(
+                            alignment: Alignment.center,
+                            width: itemWidth,
+                            height: double.infinity,
+                            color: Colors.white.withAlpha(0),
 
-                        ///Icon & Label
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              bottomBar[index].icon,
-                              height: 25,
-                              width: 25,
+                            ///Icon & Label
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  bottomBar[index].icon,
+                                  height: 20,
+                                  width: 20,
+                                ),
+                                const SizedBox(height: 3),
+                                Text(
+                                  bottomBar[index].label,
+                                  style: const TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w500,
+                                    letterSpacing: 0,
+                                    color: blackHumic1,
+                                  ),
+                                ),
+                              ],
                             ),
-                            const SizedBox(height: 3),
-                            Text(
-                              bottomBar[index].label,
-                              style: const TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w500,
-                                letterSpacing: 0,
-                                color: blackHumic1,
-                              ),
-                            ),
-                          ],
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-                AnimatedAlign(
-                  curve: Curves.easeOutBack,
-                  alignment: Alignment(
-                    -1.0 +
-                        (2.0 * bottombarController.currentIndex.value) /
-                            (bottomBar.length - 1),
-                    -1.0,
-                  ),
-                  duration: const Duration(milliseconds: 500),
+                  AnimatedAlign(
+                    curve: Curves.easeOutBack,
+                    alignment: Alignment(
+                      -1.0 +
+                          (2.0 * bottombarController.currentIndex.value) /
+                              (bottomBar.length - 1),
+                      -1.0,
+                    ),
+                    duration: const Duration(milliseconds: 500),
 
-                  child: SizedBox(
-                    height: 3,
-                    width: itemWidth,
-                    child: Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 25),
-                      alignment: Alignment.center,
-                      color: blackHumic1,
+                    child: SizedBox(
+                      height: 3,
+                      width: itemWidth,
+                      child: Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 25),
+                        alignment: Alignment.center,
+                        color: blackHumic1,
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
