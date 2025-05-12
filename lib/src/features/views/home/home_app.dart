@@ -21,33 +21,35 @@ class HomeApp extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: humicBackground,
-      body: Stack(
-        alignment: Alignment.topCenter,
-        children: [
-          Column(
-            children: [
-              const SearchBarCustom(),
+      body: Obx(
+        () => Stack(
+          alignment: Alignment.topCenter,
+          children: [
+            Column(
+              children: [
+                const SearchBarCustom(),
 
-              Obx(
-                () => Expanded(
-                  child: AnimatedSwitcher(
-                    duration: const Duration(milliseconds: 300),
-                    child:
-                        page.currentIndex.value < pages.length
-                            ? Container(
-                              alignment: Alignment.topCenter,
-                              key: ValueKey<int>(page.currentIndex.value),
-                              child: pages[page.currentIndex.value],
-                            )
-                            : const SizedBox(),
+                Obx(
+                  () => Expanded(
+                    child: AnimatedSwitcher(
+                      duration: const Duration(milliseconds: 300),
+                      child:
+                          page.currentIndex.value < pages.length
+                              ? Container(
+                                alignment: Alignment.topCenter,
+                                key: ValueKey<int>(page.currentIndex.value),
+                                child: pages[page.currentIndex.value],
+                              )
+                              : const SizedBox(),
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
-          const BottomNavbar(),
-          const HumicAppbar(),
-        ],
+              ],
+            ),
+            const BottomNavbar(),
+            const HumicAppbar(),
+          ],
+        ),
       ),
     );
   }

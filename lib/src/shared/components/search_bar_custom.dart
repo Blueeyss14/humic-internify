@@ -18,20 +18,37 @@ class SearchBarCustom extends StatelessWidget {
       "Berikut merupakan daftar internship yang sedang dibuka. Harap untuk memperhatikan syarat dan ketentuan untuk setiap posisi yang tersedia.",
     ];
     final bottomBar = Get.find<BottombarController>();
+
+    List mediaQuery = [
+      MediaQuery.of(context).size.height / 3,
+      MediaQuery.of(context).size.height / 3 + 50,
+      MediaQuery.of(context).size.height / 2,
+    ];
     return Obx(
       () => Stack(
         children: [
-          AnimatedContainer(
-            alignment: Alignment.center,
-            curve: Curves.easeOutBack,
-            duration: const Duration(milliseconds: 500),
-            // color: Colors.blue,
-            width: double.infinity,
-            height:
-                bottomBar.currentIndex.value == 1
-                    ? MediaQuery.of(context).size.height / 3 + 50
-                    : MediaQuery.of(context).size.height / 3,
-            child: SizedBox.expand(
+          AnimatedPadding(
+            duration: const Duration(milliseconds: 300),
+            padding:
+                bottomBar.currentIndex.value == 2
+                    ? const EdgeInsets.all(20)
+                    : const EdgeInsets.all(0),
+            child: AnimatedContainer(
+              clipBehavior: Clip.antiAlias,
+              decoration: BoxDecoration(
+                borderRadius:
+                    bottomBar.currentIndex.value == 2
+                        ? BorderRadius.circular(20)
+                        : null,
+              ),
+              curve:
+                  bottomBar.currentIndex.value == 2
+                      ? Curves.ease
+                      : Curves.easeOutBack,
+              duration: const Duration(milliseconds: 500),
+              // color: Colors.blue,
+              width: double.infinity,
+              height: mediaQuery[bottomBar.currentIndex.value],
               child: Image.asset(
                 "assets/images/appbar_image.png",
                 fit: BoxFit.cover,
@@ -40,7 +57,7 @@ class SearchBarCustom extends StatelessWidget {
           ),
           Container(
             alignment: Alignment.bottomCenter,
-            height: MediaQuery.of(context).size.height / 3 + 25,
+            height: MediaQuery.of(context).size.height / 3,
             width: double.infinity,
             child: Container(
               // color: Colors.amber,

@@ -36,42 +36,41 @@ class BottomNavbar extends StatelessWidget {
             child: Obx(
               () => Stack(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 15),
-                    child: Row(
-                      children: List.generate(
-                        bottomBar.length,
-                        (index) => GestureDetector(
-                          onTap: () {
-                            bottombarController.changeIndex(index);
-                          },
-                          child: Container(
-                            alignment: Alignment.center,
-                            width: itemWidth,
-                            height: double.infinity,
-                            color: Colors.white.withAlpha(0),
+                  Row(
+                    children: List.generate(
+                      bottomBar.length,
+                      (index) => GestureDetector(
+                        onTap: () {
+                          bottombarController.changeIndex(index);
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(vertical: 15),
 
-                            ///Icon & Label
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Image.asset(
-                                  bottomBar[index].icon,
-                                  height: 20,
-                                  width: 20,
+                          alignment: Alignment.center,
+                          width: itemWidth,
+                          height: double.infinity,
+                          color: Colors.white.withAlpha(0),
+
+                          ///Icon & Label
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.asset(
+                                bottomBar[index].icon,
+                                height: 20,
+                                width: 20,
+                              ),
+                              const SizedBox(height: 3),
+                              Text(
+                                bottomBar[index].label,
+                                style: const TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500,
+                                  letterSpacing: 0,
+                                  color: blackHumic1,
                                 ),
-                                const SizedBox(height: 3),
-                                Text(
-                                  bottomBar[index].label,
-                                  style: const TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w500,
-                                    letterSpacing: 0,
-                                    color: blackHumic1,
-                                  ),
-                                ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
