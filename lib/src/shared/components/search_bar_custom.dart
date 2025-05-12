@@ -3,7 +3,7 @@ import 'package:get/get_instance/get_instance.dart';
 import 'package:get/route_manager.dart';
 import 'package:get/state_manager.dart';
 import 'package:humic_internify/src/features/viewmodels/bottombar_controller.dart';
-import 'package:humic_internify/src/shared/textfield_custom.dart';
+import 'package:humic_internify/src/shared/components/textfield_custom.dart';
 import 'package:humic_internify/test_page.dart';
 
 class SearchBarCustom extends StatelessWidget {

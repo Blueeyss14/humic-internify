@@ -6,8 +6,8 @@ import 'package:humic_internify/src/features/viewmodels/bottombar_controller.dar
 import 'package:humic_internify/src/features/views/components/bottom_navbar.dart';
 import 'package:humic_internify/src/features/views/pages/home_page.dart';
 import 'package:humic_internify/src/features/views/pages/internship_page.dart';
-import 'package:humic_internify/src/shared/humic_appbar.dart';
-import 'package:humic_internify/src/shared/search_bar_custom.dart';
+import 'package:humic_internify/src/shared/components/humic_appbar.dart';
+import 'package:humic_internify/src/shared/components/search_bar_custom.dart';
 import 'package:humic_internify/src/styles/custom_color.dart';
 
 class HomeApp extends StatelessWidget {
@@ -22,6 +22,7 @@ class HomeApp extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       backgroundColor: humicBackground,
       body: Stack(
+        alignment: Alignment.topCenter,
         children: [
           Column(
             children: [
@@ -33,7 +34,8 @@ class HomeApp extends StatelessWidget {
                     duration: const Duration(milliseconds: 300),
                     child:
                         page.currentIndex.value < pages.length
-                            ? SizedBox(
+                            ? Container(
+                              alignment: Alignment.topCenter,
                               key: ValueKey<int>(page.currentIndex.value),
                               child: pages[page.currentIndex.value],
                             )

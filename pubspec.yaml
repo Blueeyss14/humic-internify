@@ -38,6 +38,7 @@ dependencies:
   iconsax_flutter: ^1.0.0
   font_awesome_flutter: ^10.8.0
   hero_animation: ^1.1.4
+  auto_size_text: ^3.0.0
 
 dev_dependencies:
   flutter_test:
