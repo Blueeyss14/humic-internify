@@ -13,7 +13,44 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Image.asset("assets/images/life-at-humic.png"),
+            Stack(
+              children: [
+                Image.asset("assets/images/life-at-humic.png"),
+                Positioned.fill(
+                  child: Container(
+                    margin: const EdgeInsets.only(right: 110),
+                    alignment: Alignment.centerLeft,
+                    child: const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          AutoSizeText(
+                            "Life at Humic Engineering",
+                            style: TextStyle(
+                              fontSize: 10,
+                              fontWeight: FontWeight.w700,
+                            ),
+                            maxLines: 1,
+                            maxFontSize: 12,
+                            minFontSize: 3,
+                          ),
+                          SizedBox(height: 10),
+                          AutoSizeText(
+                            "Raih pengalaman internship yang bernilai dengan berkontribusi langsung dalam pengembangan solusi teknologi kami. Kembangkan kompetensi Anda melalui keterlibatan nyata dalam proyek IT serta bimbingan langsung dari para expert di bidang Software engineering dan IoT.",
+                            style: TextStyle(fontSize: 7, height: 1.7),
+                            maxLines: 5,
+                            maxFontSize: 7,
+                            minFontSize: 3,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
             const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
