@@ -4,9 +4,9 @@ import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:humic_internify/src/features/viewmodels/bottombar_controller.dart';
 import 'package:humic_internify/src/features/views/components/bottom_navbar.dart';
-import 'package:humic_internify/src/features/views/pages/about_us.dart';
 import 'package:humic_internify/src/features/views/pages/home_page.dart';
 import 'package:humic_internify/src/features/views/pages/internship_page.dart';
+import 'package:humic_internify/src/shared/humic_appbar.dart';
 import 'package:humic_internify/src/shared/search_bar_custom.dart';
 import 'package:humic_internify/src/styles/custom_color.dart';
 
@@ -44,6 +44,7 @@ class HomeApp extends StatelessWidget {
             ],
           ),
           const BottomNavbar(),
+          const HumicAppbar(),
         ],
       ),
     );
