@@ -24,6 +24,8 @@ class SearchBarCustom extends StatelessWidget {
       MediaQuery.of(context).size.height / 3 + 50,
       MediaQuery.of(context).size.height / 2,
     ];
+
+    final animationPadding = bottomBar.currentIndex.value == 2 ? 30.0 : 0.0;
     return Obx(
       () => Stack(
         children: [
@@ -31,8 +33,12 @@ class SearchBarCustom extends StatelessWidget {
             duration: const Duration(milliseconds: 300),
             padding:
                 bottomBar.currentIndex.value == 2
-                    ? const EdgeInsets.all(20)
-                    : const EdgeInsets.all(0),
+                    ? EdgeInsets.only(
+                      top: animationPadding + 20,
+                      left: animationPadding,
+                      right: animationPadding,
+                    )
+                    : EdgeInsets.zero,
             child: AnimatedContainer(
               clipBehavior: Clip.antiAlias,
               decoration: BoxDecoration(
@@ -41,12 +47,8 @@ class SearchBarCustom extends StatelessWidget {
                         ? BorderRadius.circular(20)
                         : null,
               ),
-              curve:
-                  bottomBar.currentIndex.value == 2
-                      ? Curves.ease
-                      : Curves.easeOutBack,
-              duration: const Duration(milliseconds: 500),
-              // color: Colors.blue,
+              curve: Curves.easeOutBack,
+              duration: const Duration(milliseconds: 800),
               width: double.infinity,
               height: mediaQuery[bottomBar.currentIndex.value],
               child: Image.asset(

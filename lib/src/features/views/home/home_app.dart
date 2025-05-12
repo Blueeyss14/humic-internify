@@ -36,9 +36,25 @@ class HomeApp extends StatelessWidget {
               slivers: [
                 SliverList(
                   delegate: SliverChildListDelegate([
-                    const SearchBarCustom(),
-                    if (page.currentIndex.value == 2)
-                      Container(color: Colors.green, height: 100, width: 300),
+                    AnimatedContainer(
+                      height:
+                          page.currentIndex.value == 2
+                              ? MediaQuery.of(context).size.height / 8
+                              : 0,
+                      duration: const Duration(milliseconds: 300),
+                    ),
+
+                    Column(
+                      children: [
+                        const SearchBarCustom(),
+                        if (page.currentIndex.value == 2)
+                          Container(
+                            color: Colors.green,
+                            height: 100,
+                            width: 300,
+                          ),
+                      ],
+                    ),
                   ]),
                 ),
                 if (page.currentIndex.value != 2)
