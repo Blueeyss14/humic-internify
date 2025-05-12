@@ -114,6 +114,7 @@ class HomePage extends StatelessWidget {
               "Jelajahi posisi yang kamu inginkan",
               style: TextStyle(fontSize: 17, fontWeight: FontWeight.w700),
             ),
+            Container(height: 300, width: 30, color: Colors.green),
           ],
         ),
       ),

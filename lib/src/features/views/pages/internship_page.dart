@@ -12,6 +12,7 @@ class InternshipPage extends StatelessWidget {
           borderRadius: BorderRadius.circular(30),
           child: Image.asset("assets/images/pexels-pixabay-53594.jpg"),
         ),
+        Container(color: Colors.amber, height: 6000, width: 20),
       ],
     );
   }

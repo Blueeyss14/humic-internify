@@ -16,7 +16,10 @@ class HomeApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final page = Get.find<BottombarController>();
-    List<Widget> pages = const [HomePage(), InternshipPage()];
+    List<Widget> pages = const [
+      HomePage(),
+      SingleChildScrollView(child: InternshipPage()),
+    ];
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -25,12 +28,35 @@ class HomeApp extends StatelessWidget {
         () => Stack(
           alignment: Alignment.topCenter,
           children: [
-            Column(
-              children: [
-                const SearchBarCustom(),
-
-                Obx(
-                  () => Expanded(
+            CustomScrollView(
+              physics:
+                  page.currentIndex.value == 2
+                      ? const AlwaysScrollableScrollPhysics()
+                      : const NeverScrollableScrollPhysics(),
+              slivers: [
+                SliverList(
+                  delegate: SliverChildListDelegate([
+                    const SearchBarCustom(),
+                    if (page.currentIndex.value == 2)
+                      Container(color: Colors.green, height: 100, width: 300),
+                  ]),
+                ),
+                if (page.currentIndex.value != 2)
+                  SliverFillRemaining(
+                    child: AnimatedSwitcher(
+                      duration: const Duration(milliseconds: 300),
+                      child:
+                          page.currentIndex.value < pages.length
+                              ? Container(
+                                alignment: Alignment.topCenter,
+                                key: ValueKey<int>(page.currentIndex.value),
+                                child: pages[page.currentIndex.value],
+                              )
+                              : const SizedBox(),
+                    ),
+                  )
+                else
+                  SliverToBoxAdapter(
                     child: AnimatedSwitcher(
                       duration: const Duration(milliseconds: 300),
                       child:
@@ -43,7 +69,6 @@ class HomeApp extends StatelessWidget {
                               : const SizedBox(),
                     ),
                   ),
-                ),
               ],
             ),
             const BottomNavbar(),
