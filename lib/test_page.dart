@@ -1,36 +1,61 @@
 import 'package:flutter/material.dart';
-import 'package:humic_internify/src/features/splash/splash_screen.dart';
 
-class TestPage extends StatefulWidget {
+class TestPage extends StatelessWidget {
   const TestPage({super.key});
 
   @override
-  State<TestPage> createState() => _TestPageState();
-}
-
-class _TestPageState extends State<TestPage> {
-  @override
-  void initState() {
-    super.initState();
-    Future.delayed(const Duration(seconds: 5)).then((_) {
-      print("test");
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color(0xFF263742),
-      body: Center(
-        child: GestureDetector(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const SplashScreen()),
-            );
-          },
-          child: Image.asset("assets/logo/splash_screen.png"),
+    final int itemCount = 7;
+    final int maxPerRow = 2;
+
+    List<Widget> rows = [];
+    for (int i = 0; i < itemCount; i += maxPerRow) {
+      int remaining = itemCount - i;
+      int countInThisRow = remaining >= maxPerRow ? maxPerRow : remaining;
+
+      rows.add(
+        Row(
+          children: List.generate(maxPerRow, (index) {
+            if (index < countInThisRow) {
+              return Expanded(
+                child: Container(
+                  height: 100,
+                  color:
+                      Colors.primaries[(i + index) % Colors.primaries.length],
+                  margin: EdgeInsets.only(
+                    right: index < maxPerRow - 1 ? 8 : 0,
+                    bottom: 8,
+                  ),
+                  child: Center(
+                    child: Text(
+                      'Container ${i + index + 1}',
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+              );
+            } else {
+              return Expanded(
+                child: SizedBox(
+                  height: 100,
+                  child: Container(
+                    margin: EdgeInsets.only(
+                      right: index < maxPerRow - 1 ? 8 : 0,
+                      bottom: 8,
+                    ),
+                  ),
+                ),
+              );
+            }
+          }),
         ),
+      );
+    }
+
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(children: rows),
       ),
     );
   }

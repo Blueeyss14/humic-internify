@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
+import 'package:get/get_rx/src/rx_workers/rx_workers.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:humic_internify/src/features/viewmodels/bottombar_controller.dart';
 import 'package:humic_internify/src/features/views/components/bottom_navbar.dart';
@@ -20,6 +21,13 @@ class HomeApp extends StatelessWidget {
       HomePage(),
       SingleChildScrollView(child: InternshipPage()),
     ];
+    ScrollController scrollController = ScrollController();
+
+    ever(page.currentIndex, (_) {
+      if (page.currentIndex.value != 2) {
+        scrollController.jumpTo(0);
+      }
+    });
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -29,6 +37,7 @@ class HomeApp extends StatelessWidget {
           alignment: Alignment.topCenter,
           children: [
             CustomScrollView(
+              controller: scrollController,
               physics:
                   page.currentIndex.value == 2
                       ? const AlwaysScrollableScrollPhysics()
@@ -50,7 +59,7 @@ class HomeApp extends StatelessWidget {
                         if (page.currentIndex.value == 2)
                           Container(
                             color: Colors.green,
-                            height: 100,
+                            height: 700,
                             width: 300,
                           ),
                       ],
