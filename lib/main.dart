@@ -1,10 +1,8 @@
-import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:humic_internify/src/core/dependencies_binding.dart';
-import 'package:humic_internify/test_page.dart';
-import 'package:page_transition/page_transition.dart';
+import 'package:humic_internify/src/features/splash/splash_screen.dart';
 
 void main() {
   initDependencies();
@@ -21,7 +19,7 @@ class MyApp extends StatelessWidget {
       locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,
       debugShowCheckedModeBanner: false,
-      home: const TestPage(),
+      home: const SplashScreen(),
 
       // AnimatedSplashScreen(
       //   splash: Image.asset("assets/logo/splash_screen.png"),
