@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:humic_internify/src/core/dependencies_binding.dart';
 import 'package:humic_internify/src/features/splash/splash_screen.dart';
+import 'package:humic_internify/src/routes/routes_name.dart';
+import 'package:humic_internify/src/routes/routes_page.dart';
 
 void main() {
   initDependencies();
@@ -20,15 +22,9 @@ class MyApp extends StatelessWidget {
       builder: DevicePreview.appBuilder,
       debugShowCheckedModeBanner: false,
       home: const SplashScreen(),
+      initialRoute: RoutesName.splash,
+      getPages: RoutesPage.pages,
 
-      // AnimatedSplashScreen(
-      //   splash: Image.asset("assets/logo/splash_screen.png"),
-      //   nextScreen: const TestPage(),
-      //   splashTransition: SplashTransition.scaleTransition,
-      //   pageTransitionType: PageTransitionType.rightToLeft,
-      //   backgroundColor: Colors.white,
-      //   duration: 2000,
-      // ),
       theme: ThemeData(fontFamily: 'Poppins'),
     );
   }

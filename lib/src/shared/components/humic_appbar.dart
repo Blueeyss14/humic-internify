@@ -25,7 +25,14 @@ class HumicAppbar extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Image.asset("assets/images/logo.png", width: 90, height: 36),
+                Hero(
+                  tag: 'humic',
+                  child: Image.asset(
+                    "assets/images/logo.png",
+                    width: 90,
+                    height: 36,
+                  ),
+                ),
                 Container(
                   padding: const EdgeInsets.symmetric(
                     vertical: 2,
