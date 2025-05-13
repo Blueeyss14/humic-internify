@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:humic_internify/src/features/views/home/home_app.dart';
-import 'dart:async';
+// import 'package:humic_internify/src/features/views/home/home_app.dart';
+// import 'dart:async';
 
+/*
 class TestPage extends StatefulWidget {
   const TestPage({super.key});
 
@@ -48,6 +49,17 @@ class TestPageState extends State<TestPage> {
           color: _currentColor,
         ),
       ),
+    );
+  }
+}
+*/
+class TestPage extends StatelessWidget {
+  const TestPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(child: Image.asset("assets/logo/splash_screen.png")),
     );
   }
 }
