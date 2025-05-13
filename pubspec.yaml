@@ -51,10 +51,15 @@ dev_dependencies:
 
 
 flutter_native_splash:
-  color: "#FF0000"
-  image: assets/logo/splash_screen.png 
+  color: "#FFFFFF"  # Background putih
   android: true
   ios: true
+  web: false
+  android_12:
+    color: "#FFFFFF"  # Background putih untuk Android 12
+  fullscreen: true
+  android_gravity: center
+  ios_content_mode: center
 
 
   # The "flutter_lints" package below contains a set of recommended lints to
