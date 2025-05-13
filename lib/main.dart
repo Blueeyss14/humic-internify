@@ -21,14 +21,16 @@ class MyApp extends StatelessWidget {
       locale: DevicePreview.locale(context),
       builder: DevicePreview.appBuilder,
       debugShowCheckedModeBanner: false,
-      home: AnimatedSplashScreen(
-        splash: Image.asset("assets/logo/splash_screen.png"),
-        nextScreen: const TestPage(),
-        splashTransition: SplashTransition.scaleTransition,
-        pageTransitionType: PageTransitionType.rightToLeft,
-        backgroundColor: Colors.white,
-        duration: 2000,
-      ),
+      home: const TestPage(),
+
+      // AnimatedSplashScreen(
+      //   splash: Image.asset("assets/logo/splash_screen.png"),
+      //   nextScreen: const TestPage(),
+      //   splashTransition: SplashTransition.scaleTransition,
+      //   pageTransitionType: PageTransitionType.rightToLeft,
+      //   backgroundColor: Colors.white,
+      //   duration: 2000,
+      // ),
       theme: ThemeData(fontFamily: 'Poppins'),
     );
   }

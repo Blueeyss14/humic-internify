@@ -51,12 +51,15 @@ dev_dependencies:
 
 
 flutter_native_splash:
-  color: "#FFFFFF"  # Background putih
+  color: "#263742"
+  image: assets/logo/no_splash.png
   android: true
   ios: true
   web: false
   android_12:
-    color: "#FFFFFF"  # Background putih untuk Android 12
+    color: "#263742"
+    image: assets/logo/no_splash.png
+    icon_background_color: "#263742"
   fullscreen: true
   android_gravity: center
   ios_content_mode: center
