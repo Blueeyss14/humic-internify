@@ -20,14 +20,14 @@ class SplashScreenController extends GetxController {
       opacity3.value = 0;
     });
 
-    Future.delayed(const Duration(seconds: 2, milliseconds: 500), () {
+    Future.delayed(const Duration(seconds: 2), () {
       angle.value = 0;
       size.value = 30;
       opacity.value = 1;
       opacity2.value = 1;
     });
 
-    Future.delayed(const Duration(seconds: 3, milliseconds: 500), () {
+    Future.delayed(const Duration(seconds: 3), () {
       opacity3.value = 1;
     });
 

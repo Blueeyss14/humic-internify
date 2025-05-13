@@ -42,14 +42,24 @@ class SplashScreen extends StatelessWidget {
                               AnimatedOpacity(
                                 opacity: splashController.opacity.value,
                                 duration: const Duration(milliseconds: 500),
-                                child: const Text(
-                                  "by",
-                                  style: TextStyle(
-                                    fontSize: 7,
-                                    fontWeight: FontWeight.w900,
-                                    color: Colors.white,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                    top: 4,
+                                    right: 2,
+                                  ),
+                                  child: Image.asset(
+                                    "assets/logo/by_humic.png",
+                                    width: 9,
                                   ),
                                 ),
+                                // child: const Text(
+                                //   "by",
+                                //   style: TextStyle(
+                                //     fontSize: 6,
+                                //     fontWeight: FontWeight.w900,
+                                //     color: Colors.white,
+                                //   ),
+                                // ),
                               ),
 
                               ///LOGO
