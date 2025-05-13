@@ -30,7 +30,7 @@ class SplashScreen extends StatelessWidget {
                   children: [
                     const SizedBox(width: 180, height: 55),
                     Container(
-                      padding: const EdgeInsets.only(right: 15),
+                      padding: const EdgeInsets.only(right: 13),
                       alignment: Alignment.centerRight,
                       width: width,
                       child: Row(
@@ -45,21 +45,13 @@ class SplashScreen extends StatelessWidget {
                                 child: Padding(
                                   padding: const EdgeInsets.only(
                                     top: 4,
-                                    right: 2,
+                                    right: 1,
                                   ),
                                   child: Image.asset(
                                     "assets/logo/by_humic.png",
-                                    width: 9,
+                                    width: 8,
                                   ),
                                 ),
-                                // child: const Text(
-                                //   "by",
-                                //   style: TextStyle(
-                                //     fontSize: 6,
-                                //     fontWeight: FontWeight.w900,
-                                //     color: Colors.white,
-                                //   ),
-                                // ),
                               ),
 
                               ///LOGO
@@ -80,6 +72,7 @@ class SplashScreen extends StatelessWidget {
                               ),
                             ],
                           ),
+                          const SizedBox(width: 1),
 
                           ///HUMIC ENGINEERING
                           AnimatedOpacity(
@@ -104,7 +97,7 @@ class SplashScreen extends StatelessWidget {
                   opacity: splashController.opacity3.value,
                   duration: const Duration(milliseconds: 2000),
                   child: Container(
-                    margin: const EdgeInsets.only(bottom: 60),
+                    margin: const EdgeInsets.only(bottom: 60, left: 5),
                     height: 55,
                     width: width,
                     child: Image.asset("assets/logo/humic_splash3.png"),
