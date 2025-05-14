@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_rx/src/rx_workers/rx_workers.dart';
@@ -29,76 +30,84 @@ class HomeApp extends StatelessWidget {
       }
     });
 
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      backgroundColor: humicBackground,
-      body: Obx(
-        () => Stack(
-          alignment: Alignment.topCenter,
-          children: [
-            CustomScrollView(
-              controller: scrollController,
-              physics:
-                  page.currentIndex.value == 2
-                      ? const AlwaysScrollableScrollPhysics()
-                      : const NeverScrollableScrollPhysics(),
-              slivers: [
-                SliverList(
-                  delegate: SliverChildListDelegate([
-                    AnimatedContainer(
-                      height:
-                          page.currentIndex.value == 2
-                              ? MediaQuery.of(context).size.height / 8
-                              : 0,
-                      duration: const Duration(milliseconds: 300),
-                    ),
+    return PopScope(
+      canPop: true,
+      onPopInvokedWithResult: (didPop, result) {
+        if (!didPop) {
+          SystemNavigator.pop();
+        }
+      },
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        backgroundColor: humicBackground,
+        body: Obx(
+          () => Stack(
+            alignment: Alignment.topCenter,
+            children: [
+              CustomScrollView(
+                controller: scrollController,
+                physics:
+                    page.currentIndex.value == 2
+                        ? const AlwaysScrollableScrollPhysics()
+                        : const NeverScrollableScrollPhysics(),
+                slivers: [
+                  SliverList(
+                    delegate: SliverChildListDelegate([
+                      AnimatedContainer(
+                        height:
+                            page.currentIndex.value == 2
+                                ? MediaQuery.of(context).size.height / 8
+                                : 0,
+                        duration: const Duration(milliseconds: 300),
+                      ),
 
-                    Column(
-                      children: [
-                        const SearchBarCustom(),
-                        if (page.currentIndex.value == 2)
-                          Container(
-                            color: Colors.green,
-                            height: 700,
-                            width: 300,
-                          ),
-                      ],
-                    ),
-                  ]),
-                ),
-                if (page.currentIndex.value != 2)
-                  SliverFillRemaining(
-                    child: AnimatedSwitcher(
-                      duration: const Duration(milliseconds: 300),
-                      child:
-                          page.currentIndex.value < pages.length
-                              ? Container(
-                                alignment: Alignment.topCenter,
-                                key: ValueKey<int>(page.currentIndex.value),
-                                child: pages[page.currentIndex.value],
-                              )
-                              : const SizedBox(),
-                    ),
-                  )
-                else
-                  SliverToBoxAdapter(
-                    child: AnimatedSwitcher(
-                      duration: const Duration(milliseconds: 300),
-                      child:
-                          page.currentIndex.value < pages.length
-                              ? Container(
-                                alignment: Alignment.topCenter,
-                                key: ValueKey<int>(page.currentIndex.value),
-                                child: pages[page.currentIndex.value],
-                              )
-                              : const SizedBox(),
-                    ),
+                      Column(
+                        children: [
+                          const SearchBarCustom(),
+                          if (page.currentIndex.value == 2)
+                            Container(
+                              color: Colors.green,
+                              height: 700,
+                              width: 300,
+                            ),
+                        ],
+                      ),
+                    ]),
                   ),
-              ],
-            ),
-            const BottomNavbar(),
-            const HumicAppbar(),
-          ],
+                  if (page.currentIndex.value != 2)
+                    SliverFillRemaining(
+                      child: AnimatedSwitcher(
+                        duration: const Duration(milliseconds: 300),
+                        child:
+                            page.currentIndex.value < pages.length
+                                ? Container(
+                                  alignment: Alignment.topCenter,
+                                  key: ValueKey<int>(page.currentIndex.value),
+                                  child: pages[page.currentIndex.value],
+                                )
+                                : const SizedBox(),
+                      ),
+                    )
+                  else
+                    SliverToBoxAdapter(
+                      child: AnimatedSwitcher(
+                        duration: const Duration(milliseconds: 300),
+                        child:
+                            page.currentIndex.value < pages.length
+                                ? Container(
+                                  alignment: Alignment.topCenter,
+                                  key: ValueKey<int>(page.currentIndex.value),
+                                  child: pages[page.currentIndex.value],
+                                )
+                                : const SizedBox(),
+                      ),
+                    ),
+                ],
+              ),
+              const BottomNavbar(),
+              const HumicAppbar(),
+            ],
+          ),
         ),
       ),
     );

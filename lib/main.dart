@@ -13,14 +13,6 @@ void main() async {
   runApp(DevicePreview(enabled: false, builder: (context) => const MyApp()));
 }
 
-// Future<void> checkPermissions() async {
-//   var status = await Permission.storage.request();
-
-//   if (!status.isGranted) {
-//     print("Permission to access storage is denied");
-//   }
-// }
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
