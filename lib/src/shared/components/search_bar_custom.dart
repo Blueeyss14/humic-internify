@@ -22,7 +22,7 @@ class SearchBarCustom extends StatelessWidget {
     List mediaQuery = [
       MediaQuery.of(context).size.height / 3,
       MediaQuery.of(context).size.height / 3 + 50,
-      MediaQuery.of(context).size.height / 2,
+      450.0,
     ];
 
     return Obx(() {

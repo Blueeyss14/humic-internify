@@ -19,6 +19,7 @@ class SplashScreen extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: Hero(
+          transitionOnUserGestures: true,
           tag: 'humic',
           child: Obx(
             () => Stack(

@@ -6,10 +6,20 @@ import 'package:humic_internify/src/features/splash/splash_screen.dart';
 import 'package:humic_internify/src/routes/routes_name.dart';
 import 'package:humic_internify/src/routes/routes_page.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   initDependencies();
+  // await GetStorage.init();
   runApp(DevicePreview(enabled: false, builder: (context) => const MyApp()));
 }
+
+// Future<void> checkPermissions() async {
+//   var status = await Permission.storage.request();
+
+//   if (!status.isGranted) {
+//     print("Permission to access storage is denied");
+//   }
+// }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -22,9 +32,9 @@ class MyApp extends StatelessWidget {
       builder: DevicePreview.appBuilder,
       debugShowCheckedModeBanner: false,
       home: const SplashScreen(),
+
       initialRoute: RoutesName.splash,
       getPages: RoutesPage.pages,
-
       theme: ThemeData(fontFamily: 'Poppins'),
     );
   }
