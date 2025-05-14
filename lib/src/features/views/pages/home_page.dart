@@ -129,6 +129,7 @@ class HomePage extends StatelessWidget {
                       // int containerIndex = group[index];
                       return Expanded(
                         child: Container(
+                          clipBehavior: Clip.antiAlias,
                           margin: const EdgeInsets.symmetric(
                             horizontal: 25,
                             vertical: 15,
@@ -138,28 +139,27 @@ class HomePage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(15),
                           ),
                           child: Stack(
+                            fit: StackFit.expand,
                             children: [
                               Image.asset(
                                 posisitionController.data[group[index]].image,
+                                fit: BoxFit.cover,
                               ),
-                              Align(
+                              Container(
+                                margin: const EdgeInsets.only(right: 50),
+                                padding: const EdgeInsets.all(10),
                                 alignment: Alignment.bottomLeft,
-                                child: ConstrainedBox(
-                                  constraints: const BoxConstraints(
-                                    maxWidth: 70,
+                                child: AutoSizeText(
+                                  posisitionController
+                                      .data[group[index]]
+                                      .jobTitle,
+                                  style: const TextStyle(
+                                    fontSize: 10,
+                                    color: Colors.white,
                                   ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Text(
-                                      posisitionController
-                                          .data[group[index]]
-                                          .jobTitle,
-                                      style: const TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 10,
-                                      ),
-                                    ),
-                                  ),
+                                  maxFontSize: 10,
+                                  minFontSize: 3,
+                                  maxLines: 2,
                                 ),
                               ),
                             ],
