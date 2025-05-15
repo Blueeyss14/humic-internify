@@ -1,8 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:humic_internify/src/features/viewmodels/feedback_viewmodel.dart';
 import 'package:humic_internify/src/features/viewmodels/posisition_viewmodel.dart';
+import 'package:humic_internify/src/features/views/pages/feedback_page.dart';
 import 'package:humic_internify/src/styles/custom_color.dart';
 
 class HomePage extends StatelessWidget {
@@ -11,7 +11,6 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final posisitionController = Get.find<PosisitionViewmodel>();
-    final feedbackController = Get.find<FeedbackViewmodel>();
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(20),
@@ -174,83 +173,7 @@ class HomePage extends StatelessWidget {
                   }),
                 ),
               const SizedBox(height: 20),
-
-              const Text(
-                "Frequently Asked Questions",
-                style: TextStyle(fontSize: 17, fontWeight: FontWeight.w700),
-              ),
-
-              const AutoSizeText(
-                "Berikut adalah informasi mengenai pertanyaan umum seputar program magang di Humic, termasuk tata cara pendaftaran dan persyaratan yang perlu dipenuhi. Masih ada yang perlu ditanyakan? Silahkan DM kami",
-                style: TextStyle(fontSize: 8, fontWeight: FontWeight.w700),
-                maxLines: 3,
-                maxFontSize: 8,
-                minFontSize: 3,
-                textAlign: TextAlign.center,
-              ),
-
-              ///FEEDBACK
-              for (int i = 0; i < feedbackController.feedback.length; i++)
-                GestureDetector(
-                  onTap: () => feedbackController.selectFeedback(i),
-                  child: AnimatedContainer(
-                    margin: const EdgeInsets.symmetric(vertical: 10),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 15,
-                    ),
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: pinkHumic,
-                    ),
-                    duration: const Duration(milliseconds: 500),
-                    child: Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsets.only(right: 3),
-                                child: Text(
-                                  feedbackController.feedback[i].feedback,
-                                  style: const TextStyle(
-                                    color: redHumic,
-                                    fontWeight: FontWeight.w800,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            if (feedbackController.selectedIndex.value == i)
-                              const Icon(Icons.close, color: redHumic, size: 20)
-                            else
-                              const Icon(Icons.add, color: redHumic, size: 20),
-                          ],
-                        ),
-                        AnimatedSwitcher(
-                          duration: const Duration(milliseconds: 500),
-                          child:
-                              feedbackController.selectedIndex.value == i
-                                  ? Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      vertical: 10,
-                                    ),
-                                    child: Text(
-                                      feedbackController.feedback[i].reply,
-                                      style: const TextStyle(
-                                        color: redHumic,
-                                        fontSize: 12,
-                                      ),
-                                    ),
-                                  )
-                                  : const SizedBox.shrink(),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-
+              const FeedbackPage(),
               const SizedBox(height: 80),
             ],
           ),

@@ -19,15 +19,20 @@ class SearchBarCustom extends StatelessWidget {
     ];
     final bottomBar = Get.find<BottombarController>();
 
+    int previousIndex = bottomBar.currentIndex.value;
+
     List mediaQuery = [
       MediaQuery.of(context).size.height / 3,
       MediaQuery.of(context).size.height / 3 + 50,
       450.0,
     ];
-
     return Obx(() {
       final animationPadding = bottomBar.currentIndex.value == 2 ? 30.0 : 0.0;
 
+      ///handle search fade out animation
+      int currentIndex = bottomBar.currentIndex.value;
+      bool triggerAnimation = previousIndex == 1 && currentIndex == 2;
+      previousIndex = currentIndex;
       return Stack(
         children: [
           AnimatedPadding(
@@ -106,9 +111,22 @@ class SearchBarCustom extends StatelessWidget {
                     ),
                   ),
 
-                  const Align(
+                  Align(
                     alignment: Alignment.center,
-                    child: TextfieldCustom(),
+                    child: AnimatedSwitcher(
+                      duration: const Duration(milliseconds: 300),
+                      child:
+                          currentIndex != 2
+                              ? Padding(
+                                key:
+                                    triggerAnimation
+                                        ? ValueKey<int>(currentIndex)
+                                        : const ValueKey<String>('static'),
+                                padding: const EdgeInsets.only(top: 10),
+                                child: const TextfieldCustom(),
+                              )
+                              : const SizedBox.shrink(),
+                    ),
                   ),
                   Align(
                     alignment: Alignment.bottomCenter,

@@ -44,7 +44,7 @@ class BottomNavbar extends StatelessWidget {
                           bottombarController.changeIndex(index);
                         },
                         child: Container(
-                          padding: const EdgeInsets.symmetric(vertical: 15),
+                          padding: const EdgeInsets.symmetric(vertical: 18),
 
                           alignment: Alignment.center,
                           width: itemWidth,

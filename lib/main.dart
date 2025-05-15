@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
 
       initialRoute: RoutesName.splash,
       getPages: RoutesPage.pages,
-      theme: ThemeData(fontFamily: 'Poppins'),
+      theme: ThemeData(fontFamily: 'Plus-Jakarta-Sans'),
     );
   }
 }

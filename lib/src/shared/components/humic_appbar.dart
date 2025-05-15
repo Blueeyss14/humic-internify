@@ -35,15 +35,21 @@ class HumicAppbar extends StatelessWidget {
                     height: 36,
                   ),
                 ),
-                Container(
+                AnimatedContainer(
                   padding: const EdgeInsets.symmetric(
                     vertical: 2,
                     horizontal: 5,
                   ),
                   decoration: BoxDecoration(
-                    border: Border.all(color: whiteHumic),
+                    border: Border.all(
+                      color:
+                          bottomBar.currentIndex.value == 2
+                              ? blackHumic1
+                              : whiteHumic,
+                    ),
                     borderRadius: BorderRadius.circular(5),
                   ),
+                  duration: const Duration(milliseconds: 300),
                   child: Row(
                     children: [
                       Image.asset("assets/images/indonesia.png", width: 18),
@@ -51,7 +57,10 @@ class HumicAppbar extends StatelessWidget {
                       Image.asset(
                         "assets/icons/down-arrow.png",
                         width: 8,
-                        color: whiteHumic,
+                        color:
+                            bottomBar.currentIndex.value == 2
+                                ? blackHumic1
+                                : whiteHumic,
                       ),
                     ],
                   ),
