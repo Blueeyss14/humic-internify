@@ -13,7 +13,7 @@ class FeedbackModel {
 
 class FeedbackViewmodel extends GetxController {
   var feedback = <FeedbackModel>[].obs;
-  var isCLicked = false.obs;
+  var selectedIndex = (-1).obs;
 
   @override
   void onInit() {
@@ -26,7 +26,7 @@ class FeedbackViewmodel extends GetxController {
       {
         "feedback": "Bagaimana cara magang disini?",
         "reply":
-            "Untuk magang di sini, kamu bisa klik tombol Lowongan. Setelah itu, pilih lowongan magang yang kamu inginkan. Agar lebih spesifik, kamu juga bisa memfilter lowongan sesuai minat kamu dengan menekan tombol Filter, lalu pilih kategori magang yang sesuai.",
+            "Untuk magang di sini, kamu bisa klik tombol \"Lowongan\". Setelah itu, pilih lowongan magang yang kamu inginkan. Agar lebih spesifik, kamu juga bisa memfilter lowongan sesuai minat kamu dengan menekan tombol \"Filter\", lalu pilih kategori magang yang sesuai.",
       },
 
       {
@@ -52,7 +52,11 @@ class FeedbackViewmodel extends GetxController {
     feedback.value = datas.map((e) => FeedbackModel.toJson(e)).toList();
   }
 
-  void clickFeedback() {
-    isCLicked.value = !isCLicked.value;
+  void selectFeedback(int index) {
+    if (selectedIndex.value == index) {
+      selectedIndex.value = -1;
+    } else {
+      selectedIndex.value = index;
+    }
   }
 }

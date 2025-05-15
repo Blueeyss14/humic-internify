@@ -192,7 +192,7 @@ class HomePage extends StatelessWidget {
               ///FEEDBACK
               for (int i = 0; i < feedbackController.feedback.length; i++)
                 GestureDetector(
-                  onTap: () => feedbackController.clickFeedback(),
+                  onTap: () => feedbackController.selectFeedback(i),
                   child: AnimatedContainer(
                     margin: const EdgeInsets.symmetric(vertical: 10),
                     padding: const EdgeInsets.symmetric(
@@ -211,27 +211,37 @@ class HomePage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Expanded(
-                              child: Text(
-                                feedbackController.feedback[i].feedback,
-                                style: const TextStyle(
-                                  color: redHumic,
-                                  fontWeight: FontWeight.w800,
+                              child: Padding(
+                                padding: const EdgeInsets.only(right: 3),
+                                child: Text(
+                                  feedbackController.feedback[i].feedback,
+                                  style: const TextStyle(
+                                    color: redHumic,
+                                    fontWeight: FontWeight.w800,
+                                  ),
                                 ),
                               ),
                             ),
-                            const Icon(Icons.add, color: redHumic),
+                            if (feedbackController.selectedIndex.value == i)
+                              const Icon(Icons.close, color: redHumic, size: 20)
+                            else
+                              const Icon(Icons.add, color: redHumic, size: 20),
                           ],
                         ),
                         AnimatedSwitcher(
                           duration: const Duration(milliseconds: 500),
                           child:
-                              feedbackController.isCLicked.value
+                              feedbackController.selectedIndex.value == i
                                   ? Padding(
                                     padding: const EdgeInsets.symmetric(
                                       vertical: 10,
                                     ),
                                     child: Text(
                                       feedbackController.feedback[i].reply,
+                                      style: const TextStyle(
+                                        color: redHumic,
+                                        fontSize: 12,
+                                      ),
                                     ),
                                   )
                                   : const SizedBox.shrink(),
