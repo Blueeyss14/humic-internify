@@ -5,6 +5,7 @@ import 'package:get/route_manager.dart';
 import 'package:get/state_manager.dart';
 import 'package:humic_internify/src/features/viewmodels/bottombar_controller.dart';
 import 'package:humic_internify/src/shared/components/textfield_custom.dart';
+import 'package:humic_internify/src/styles/custom_color.dart';
 import 'package:humic_internify/test_page.dart';
 
 class SearchBarCustom extends StatelessWidget {
@@ -26,6 +27,8 @@ class SearchBarCustom extends StatelessWidget {
       MediaQuery.of(context).size.height / 3 + 50,
       450.0,
     ];
+
+    List categoryBar = ["Software Engineer", "Design", "Data/AI", "Multimedia"];
     return Obx(() {
       final animationPadding = bottomBar.currentIndex.value == 2 ? 30.0 : 0.0;
 
@@ -138,13 +141,44 @@ class SearchBarCustom extends StatelessWidget {
                         duration: const Duration(milliseconds: 200),
                         child:
                             bottomBar.currentIndex.value == 1
-                                ? Container(
-                                  key: ValueKey<int>(
-                                    bottomBar.currentIndex.value,
+                                ? SingleChildScrollView(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    key: ValueKey<int>(
+                                      bottomBar.currentIndex.value,
+                                    ),
+                                    children: List.generate(
+                                      categoryBar.length,
+                                      (index) => Container(
+                                        alignment: Alignment.center,
+                                        margin: const EdgeInsets.symmetric(
+                                          horizontal: 10,
+                                        ),
+                                        padding: const EdgeInsets.all(10),
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(
+                                            10,
+                                          ),
+                                          border: Border.all(
+                                            width: 2,
+                                            color: pinkBorderHumic,
+                                          ),
+                                          color: pinkHumic,
+                                        ),
+                                        // height: 50,
+                                        child: AutoSizeText(
+                                          categoryBar[index],
+                                          style: const TextStyle(
+                                            fontSize: 2,
+                                            fontWeight: FontWeight.w700,
+                                            color: redHumic,
+                                          ),
+                                          maxLines: 1,
+                                          // minFontSize: 0,
+                                        ),
+                                      ),
+                                    ),
                                   ),
-                                  color: Colors.red,
-                                  height: 30,
-                                  width: 30,
                                 )
                                 : const SizedBox.shrink(),
                       ),
