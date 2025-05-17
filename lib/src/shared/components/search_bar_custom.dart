@@ -131,57 +131,60 @@ class SearchBarCustom extends StatelessWidget {
                               : const SizedBox.shrink(),
                     ),
                   ),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: GestureDetector(
-                      onTap: () {
-                        Get.to(const TestPage());
-                      },
-                      child: AnimatedSwitcher(
-                        duration: const Duration(milliseconds: 200),
-                        child:
-                            bottomBar.currentIndex.value == 1
-                                ? SingleChildScrollView(
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
+                  GestureDetector(
+                    onTap: () {
+                      Get.to(const TestPage());
+                    },
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        AnimatedSwitcher(
+                          duration: const Duration(milliseconds: 300),
+                          child:
+                              bottomBar.currentIndex.value == 1
+                                  ? SingleChildScrollView(
                                     key: ValueKey<int>(
                                       bottomBar.currentIndex.value,
                                     ),
-                                    children: List.generate(
-                                      categoryBar.length,
-                                      (index) => Container(
-                                        alignment: Alignment.center,
-                                        margin: const EdgeInsets.symmetric(
-                                          horizontal: 10,
-                                        ),
-                                        padding: const EdgeInsets.all(10),
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(
-                                            10,
+
+                                    scrollDirection: Axis.horizontal,
+                                    child: Row(
+                                      children: List.generate(
+                                        categoryBar.length,
+                                        (index) => Container(
+                                          alignment: Alignment.center,
+                                          margin: const EdgeInsets.symmetric(
+                                            horizontal: 10,
                                           ),
-                                          border: Border.all(
-                                            width: 2,
-                                            color: pinkBorderHumic,
+                                          padding: const EdgeInsets.all(10),
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(
+                                              10,
+                                            ),
+                                            border: Border.all(
+                                              width: 2,
+                                              color: pinkBorderHumic,
+                                            ),
+                                            color: pinkHumic,
                                           ),
-                                          color: pinkHumic,
-                                        ),
-                                        // height: 50,
-                                        child: AutoSizeText(
-                                          categoryBar[index],
-                                          style: const TextStyle(
-                                            fontSize: 2,
-                                            fontWeight: FontWeight.w700,
-                                            color: redHumic,
+                                          // height: 50,
+                                          child: AutoSizeText(
+                                            categoryBar[index],
+                                            style: const TextStyle(
+                                              fontSize: 2,
+                                              fontWeight: FontWeight.w700,
+                                              color: redHumic,
+                                            ),
+                                            maxLines: 1,
+                                            // minFontSize: 0,
                                           ),
-                                          maxLines: 1,
-                                          // minFontSize: 0,
                                         ),
                                       ),
                                     ),
-                                  ),
-                                )
-                                : const SizedBox.shrink(),
-                      ),
+                                  )
+                                  : const SizedBox.shrink(),
+                        ),
+                      ],
                     ),
                   ),
                 ],
