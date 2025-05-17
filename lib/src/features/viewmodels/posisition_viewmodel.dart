@@ -6,6 +6,9 @@ class PosisitionViewmodel extends GetxController {
 
   var itemCount = 0.obs;
   final int maxPerRow = 2;
+  var indexPage = 0.obs;
+
+  var filteredData = <PositionModel>[].obs;
 
   List<List<int>> get groupedItems {
     List<List<int>> groups = [];
@@ -99,6 +102,29 @@ class PosisitionViewmodel extends GetxController {
       },
     ];
     data.value = datas.map((d) => PositionModel.toJson(d)).toList();
+    filteredData.value = data;
+    itemCount.value = data.length;
+  }
+
+  ///index page
+  void selectPage(int index) {
+    indexPage.value = index;
+  }
+
+  ///filter item
+  void clickToFilterItem(String category) {
+    filteredData.value =
+        data
+            .where(
+              (item) => item.category.toLowerCase() == category.toLowerCase(),
+            )
+            .toList();
+
+    itemCount.value = filteredData.length;
+  }
+
+  void resetFilter() {
+    filteredData.value = data;
     itemCount.value = data.length;
   }
 }
