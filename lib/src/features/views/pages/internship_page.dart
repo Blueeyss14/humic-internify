@@ -20,10 +20,13 @@ class InternshipPage extends StatelessWidget {
         children: [
           const SizedBox(height: 30),
           for (int i = 0; i < positionController.filteredData.length; i++)
+            //clicked
             GestureDetector(
               onTap: () {
-                positionController.selectPage(i);
-                Get.toNamed(RoutesName.detailMagang);
+                if (positionController.filteredData[i].status) {
+                  positionController.selectPage(i);
+                  Get.toNamed(RoutesName.detailMagang);
+                }
               },
               child: Container(
                 padding: const EdgeInsets.all(20),
