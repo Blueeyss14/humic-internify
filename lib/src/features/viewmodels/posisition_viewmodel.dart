@@ -36,6 +36,21 @@ class PosisitionViewmodel extends GetxController {
         "paidStatus": "Paid",
         "category": "Software Engineer",
         "status": true,
+        "description":
+            "Bertanggung jawab membantu tim desain dalam merancang antarmuka pengguna (UI) yang intuitif dan pengalaman pengguna (UX) yang optimal untuk aplikasi web maupun mobile, melalui wireframe, prototipe, dan desain visual.",
+        "qualification": {
+          "Mahasiswa Universitas Telkom (Semua Jurusan)",
+          "Kreatif dalam mendesain antarmuka dan pengalaman pengguna",
+          "Menguasai pembuatan prototipe menggunakan Figma dan Adobe Photoshop",
+          "Memiliki kemampuan ilustasi dan desain grafis",
+          "Memahami user research, wireframing, dan usability testing",
+        },
+        "benefit": {
+          "Sertifikasi Magang",
+          "Professional Networking",
+          "Self Improvement",
+          "Uang magang jika masuk ke dalam project",
+        },
       },
       {
         "jobTitle": "Frontend Developer",
@@ -45,6 +60,22 @@ class PosisitionViewmodel extends GetxController {
         "paidStatus": "Paid",
         "category": "Software Engineer",
         "status": true,
+
+        "description":
+            "Bertanggung jawab membantu tim desain dalam merancang antarmuka pengguna (UI) yang intuitif dan pengalaman pengguna (UX) yang optimal untuk aplikasi web maupun mobile, melalui wireframe, prototipe, dan desain visual.",
+        "qualification": {
+          "Mahasiswa Universitas Telkom (Semua Jurusan)",
+          "Kreatif dalam mendesain antarmuka dan pengalaman pengguna",
+          "Menguasai pembuatan prototipe menggunakan Figma dan Adobe Photoshop",
+          "Memiliki kemampuan ilustasi dan desain grafis",
+          "Memahami user research, wireframing, dan usability testing",
+        },
+        "benefit": {
+          "Sertifikasi Magang",
+          "Professional Networking",
+          "Self Improvement",
+          "Uang magang jika masuk ke dalam project",
+        },
       },
       {
         "jobTitle": "UI/UX Designer",
@@ -54,6 +85,21 @@ class PosisitionViewmodel extends GetxController {
         "paidStatus": "Paid",
         "category": "Design",
         "status": false,
+        "description":
+            "Bertanggung jawab membantu tim desain dalam merancang antarmuka pengguna (UI) yang intuitif dan pengalaman pengguna (UX) yang optimal untuk aplikasi web maupun mobile, melalui wireframe, prototipe, dan desain visual.",
+        "qualification": {
+          "Mahasiswa Universitas Telkom (Semua Jurusan)",
+          "Kreatif dalam mendesain antarmuka dan pengalaman pengguna",
+          "Menguasai pembuatan prototipe menggunakan Figma dan Adobe Photoshop",
+          "Memiliki kemampuan ilustasi dan desain grafis",
+          "Memahami user research, wireframing, dan usability testing",
+        },
+        "benefit": {
+          "Sertifikasi Magang",
+          "Professional Networking",
+          "Self Improvement",
+          "Uang magang jika masuk ke dalam project",
+        },
       },
       {
         "jobTitle": "AI Developer",
@@ -63,6 +109,21 @@ class PosisitionViewmodel extends GetxController {
         "paidStatus": "Paid",
         "category": "Data/AI",
         "status": true,
+        "description":
+            "Bertanggung jawab membantu tim desain dalam merancang antarmuka pengguna (UI) yang intuitif dan pengalaman pengguna (UX) yang optimal untuk aplikasi web maupun mobile, melalui wireframe, prototipe, dan desain visual.",
+        "qualification": {
+          "Mahasiswa Universitas Telkom (Semua Jurusan)",
+          "Kreatif dalam mendesain antarmuka dan pengalaman pengguna",
+          "Menguasai pembuatan prototipe menggunakan Figma dan Adobe Photoshop",
+          "Memiliki kemampuan ilustasi dan desain grafis",
+          "Memahami user research, wireframing, dan usability testing",
+        },
+        "benefit": {
+          "Sertifikasi Magang",
+          "Professional Networking",
+          "Self Improvement",
+          "Uang magang jika masuk ke dalam project",
+        },
       },
       {
         "jobTitle": "Content Writer",
@@ -72,6 +133,21 @@ class PosisitionViewmodel extends GetxController {
         "paidStatus": "Paid",
         "category": "Design",
         "status": false,
+        "description":
+            "Bertanggung jawab membantu tim desain dalam merancang antarmuka pengguna (UI) yang intuitif dan pengalaman pengguna (UX) yang optimal untuk aplikasi web maupun mobile, melalui wireframe, prototipe, dan desain visual.",
+        "qualification": {
+          "Mahasiswa Universitas Telkom (Semua Jurusan)",
+          "Kreatif dalam mendesain antarmuka dan pengalaman pengguna",
+          "Menguasai pembuatan prototipe menggunakan Figma dan Adobe Photoshop",
+          "Memiliki kemampuan ilustasi dan desain grafis",
+          "Memahami user research, wireframing, dan usability testing",
+        },
+        "benefit": {
+          "Sertifikasi Magang",
+          "Professional Networking",
+          "Self Improvement",
+          "Uang magang jika masuk ke dalam project",
+        },
       },
       {
         "jobTitle": "Data Scientist",
@@ -81,6 +157,21 @@ class PosisitionViewmodel extends GetxController {
         "paidStatus": "Paid",
         "category": "Data/AI",
         "status": true,
+        "description":
+            "Bertanggung jawab membantu tim desain dalam merancang antarmuka pengguna (UI) yang intuitif dan pengalaman pengguna (UX) yang optimal untuk aplikasi web maupun mobile, melalui wireframe, prototipe, dan desain visual.",
+        "qualification": {
+          "Mahasiswa Universitas Telkom (Semua Jurusan)",
+          "Kreatif dalam mendesain antarmuka dan pengalaman pengguna",
+          "Menguasai pembuatan prototipe menggunakan Figma dan Adobe Photoshop",
+          "Memiliki kemampuan ilustasi dan desain grafis",
+          "Memahami user research, wireframing, dan usability testing",
+        },
+        "benefit": {
+          "Sertifikasi Magang",
+          "Professional Networking",
+          "Self Improvement",
+          "Uang magang jika masuk ke dalam project",
+        },
       },
       {
         "jobTitle": "Multimedia Designer",
@@ -90,6 +181,21 @@ class PosisitionViewmodel extends GetxController {
         "paidStatus": "Paid",
         "category": "Multimedia",
         "status": false,
+        "description":
+            "Bertanggung jawab membantu tim desain dalam merancang antarmuka pengguna (UI) yang intuitif dan pengalaman pengguna (UX) yang optimal untuk aplikasi web maupun mobile, melalui wireframe, prototipe, dan desain visual.",
+        "qualification": {
+          "Mahasiswa Universitas Telkom (Semua Jurusan)",
+          "Kreatif dalam mendesain antarmuka dan pengalaman pengguna",
+          "Menguasai pembuatan prototipe menggunakan Figma dan Adobe Photoshop",
+          "Memiliki kemampuan ilustasi dan desain grafis",
+          "Memahami user research, wireframing, dan usability testing",
+        },
+        "benefit": {
+          "Sertifikasi Magang",
+          "Professional Networking",
+          "Self Improvement",
+          "Uang magang jika masuk ke dalam project",
+        },
       },
       {
         "jobTitle": "Mobile Developer",
@@ -99,6 +205,21 @@ class PosisitionViewmodel extends GetxController {
         "paidStatus": "Paid",
         "category": "Software Engineer",
         "status": false,
+        "description":
+            "Bertanggung jawab membantu tim desain dalam merancang antarmuka pengguna (UI) yang intuitif dan pengalaman pengguna (UX) yang optimal untuk aplikasi web maupun mobile, melalui wireframe, prototipe, dan desain visual.",
+        "qualification": {
+          "Mahasiswa Universitas Telkom (Semua Jurusan)",
+          "Kreatif dalam mendesain antarmuka dan pengalaman pengguna",
+          "Menguasai pembuatan prototipe menggunakan Figma dan Adobe Photoshop",
+          "Memiliki kemampuan ilustasi dan desain grafis",
+          "Memahami user research, wireframing, dan usability testing",
+        },
+        "benefit": {
+          "Sertifikasi Magang",
+          "Professional Networking",
+          "Self Improvement",
+          "Uang magang jika masuk ke dalam project",
+        },
       },
     ];
 

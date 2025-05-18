@@ -6,6 +6,9 @@ class PositionModel {
   String type;
   String paidStatus;
   String category;
+  String description;
+  List<String> qualification;
+  List<String> benefit;
 
   PositionModel(
     this.jobTitle,
@@ -15,6 +18,9 @@ class PositionModel {
     this.type,
     this.paidStatus,
     this.category,
+    this.description,
+    this.qualification,
+    this.benefit,
   );
 
   factory PositionModel.toJson(Map<String, dynamic> json) {
@@ -26,6 +32,9 @@ class PositionModel {
       json['type'] ?? '',
       json['paidStatus'] ?? '',
       json['category'] ?? '',
+      json['description'] ?? '',
+      List<String>.from(json['qualification'] ?? []),
+      List<String>.from(json['benefit'] ?? []),
     );
   }
 }

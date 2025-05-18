@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:humic_internify/src/features/viewmodels/posisition_viewmodel.dart';
+import 'package:humic_internify/src/shared/components/humic_circle.dart';
 import 'package:humic_internify/src/styles/custom_color.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
@@ -54,65 +55,165 @@ class DetailMagang extends StatelessWidget {
             ),
             Flexible(
               child: Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 30,
-                  vertical: 30,
-                ),
+                padding: const EdgeInsets.symmetric(horizontal: 30),
                 alignment: Alignment.topLeft,
                 child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        currPosition.jobTitle,
-                        style: const TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w900,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 30),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          currPosition.jobTitle,
+                          style: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w900,
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 10),
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: List.generate(icons.length, (index) {
-                            List<String> currPos = [
-                              "${currPosition.location}, ${currPosition.type}",
-                              currPosition.category,
-                              currPosition.paidStatus,
-                            ];
-                            return Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Icon(icons[index], color: greyHumic, size: 17),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 5,
+                        const SizedBox(height: 10),
+                        SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: List.generate(icons.length, (index) {
+                              List<String> currPos = [
+                                "${currPosition.location}, ${currPosition.type}",
+                                currPosition.category,
+                                currPosition.paidStatus,
+                              ];
+                              return Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Icon(
+                                    icons[index],
+                                    color: greyHumic,
+                                    size: 17,
                                   ),
-                                  child: Text(
-                                    currPos[index],
-                                    style: const TextStyle(
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.bold,
-                                      color: greyHumic,
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 5,
+                                    ),
+                                    child: Text(
+                                      currPos[index],
+                                      style: const TextStyle(
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.bold,
+                                        color: greyHumic,
+                                      ),
                                     ),
                                   ),
-                                ),
-                                const SizedBox(width: 5),
-                              ],
-                            );
-                          }),
+                                  const SizedBox(width: 5),
+                                ],
+                              );
+                            }),
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 50),
-                      const Text(
-                        "Deskripsi Pekerjaan:",
-                        style: TextStyle(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w600,
+                        const SizedBox(height: 40),
+                        const Text(
+                          "Deskripsi Pekerjaan:",
+                          style: TextStyle(
+                            fontSize: 13,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
-                      ),
-                    ],
+                        const SizedBox(height: 10),
+
+                        Text(
+                          currPosition.description,
+                          style: const TextStyle(height: 2, fontSize: 12),
+                          textAlign: TextAlign.justify,
+                        ),
+                        const SizedBox(height: 30),
+
+                        const Text(
+                          "Kualifikasi:",
+                          style: TextStyle(
+                            fontSize: 13,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+
+                        ...List.generate(
+                          currPosition.qualification.length,
+                          (index) => Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 5),
+                            child: Container(
+                              alignment: Alignment.topCenter,
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  ///Humic Circle
+                                  const HumicCircle(
+                                    margin: EdgeInsets.only(top: 8),
+                                    size: 5,
+                                    color: greyHumic,
+                                  ),
+
+                                  const SizedBox(width: 5),
+                                  Expanded(
+                                    child: Text(
+                                      currPosition.qualification[index],
+                                      style: const TextStyle(
+                                        height: 2,
+                                        fontSize: 12,
+                                      ),
+                                      textAlign: TextAlign.justify,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 40),
+
+                        const Text(
+                          "Benefit:",
+                          style: TextStyle(
+                            fontSize: 13,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+
+                        ...List.generate(
+                          currPosition.benefit.length,
+                          (index) => Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 5),
+                            child: Container(
+                              alignment: Alignment.topCenter,
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  ///Humic Circle
+                                  const HumicCircle(
+                                    margin: EdgeInsets.only(top: 8),
+                                    size: 5,
+                                    color: greyHumic,
+                                  ),
+                                  const SizedBox(width: 5),
+                                  Expanded(
+                                    child: Text(
+                                      currPosition.benefit[index],
+                                      style: const TextStyle(
+                                        height: 2,
+                                        fontSize: 12,
+                                      ),
+                                      textAlign: TextAlign.justify,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+
+                        const SizedBox(height: 500),
+                      ],
+                    ),
                   ),
                 ),
               ),
