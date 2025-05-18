@@ -23,7 +23,7 @@ class RoutesPage {
       name: RoutesName.detailMagang,
       page: () => const DetailMagang(),
       transition: Transition.leftToRight,
-      transitionDuration: const Duration(milliseconds: 200),
+      transitionDuration: const Duration(milliseconds: 100),
     ),
   ];
 }

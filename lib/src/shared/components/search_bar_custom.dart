@@ -4,6 +4,7 @@ import 'package:get/get_instance/get_instance.dart';
 import 'package:get/route_manager.dart';
 import 'package:get/state_manager.dart';
 import 'package:humic_internify/src/features/viewmodels/bottombar_controller.dart';
+import 'package:humic_internify/src/features/viewmodels/posisition_viewmodel.dart';
 import 'package:humic_internify/src/shared/components/textfield_custom.dart';
 import 'package:humic_internify/src/styles/custom_color.dart';
 import 'package:humic_internify/test_page.dart';
@@ -19,6 +20,7 @@ class SearchBarCustom extends StatelessWidget {
       "Berikut merupakan daftar internship yang sedang dibuka. Harap untuk memperhatikan syarat dan ketentuan untuk setiap posisi yang tersedia.",
     ];
     final bottomBar = Get.find<BottombarController>();
+    final positionData = Get.find<PosisitionViewmodel>();
 
     int previousIndex = bottomBar.currentIndex.value;
 
@@ -151,32 +153,56 @@ class SearchBarCustom extends StatelessWidget {
                                     child: Row(
                                       children: List.generate(
                                         categoryBar.length,
-                                        (index) => Container(
-                                          alignment: Alignment.center,
-                                          margin: const EdgeInsets.symmetric(
-                                            horizontal: 10,
-                                          ),
-                                          padding: const EdgeInsets.all(10),
-                                          decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(
-                                              10,
+                                        (index) => GestureDetector(
+                                          onTap:
+                                              () => positionData
+                                                  .clickToFilterItem(
+                                                    categoryBar[index],
+                                                  ),
+                                          child: Container(
+                                            alignment: Alignment.center,
+                                            margin: const EdgeInsets.symmetric(
+                                              horizontal: 10,
                                             ),
-                                            border: Border.all(
-                                              width: 2,
-                                              color: pinkBorderHumic,
+                                            padding: const EdgeInsets.all(10),
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              border: Border.all(
+                                                width: 2,
+                                                color:
+                                                    positionData
+                                                                .activeCategory
+                                                                .value ==
+                                                            categoryBar[index]
+                                                        ? redHumic
+                                                        : pinkBorderHumic,
+                                              ),
+                                              color:
+                                                  positionData
+                                                              .activeCategory
+                                                              .value ==
+                                                          categoryBar[index]
+                                                      ? redHumic
+                                                      : pinkHumic,
                                             ),
-                                            color: pinkHumic,
-                                          ),
-                                          // height: 50,
-                                          child: AutoSizeText(
-                                            categoryBar[index],
-                                            style: const TextStyle(
-                                              fontSize: 2,
-                                              fontWeight: FontWeight.w700,
-                                              color: redHumic,
+                                            // height: 50,
+                                            child: AutoSizeText(
+                                              categoryBar[index],
+                                              style: TextStyle(
+                                                fontSize: 2,
+                                                fontWeight: FontWeight.w700,
+                                                color:
+                                                    positionData
+                                                                .activeCategory
+                                                                .value ==
+                                                            categoryBar[index]
+                                                        ? whiteHumic
+                                                        : redHumic,
+                                              ),
+                                              maxLines: 1,
+                                              // minFontSize: 0,
                                             ),
-                                            maxLines: 1,
-                                            // minFontSize: 0,
                                           ),
                                         ),
                                       ),

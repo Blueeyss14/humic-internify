@@ -9,7 +9,7 @@ class PosisitionViewmodel extends GetxController {
   var indexPage = 0.obs;
 
   var filteredData = <PositionModel>[].obs;
-
+  var activeCategory = ''.obs;
   List<List<int>> get groupedItems {
     List<List<int>> groups = [];
     for (int i = 0; i < itemCount.value; i += maxPerRow) {
@@ -52,7 +52,7 @@ class PosisitionViewmodel extends GetxController {
         "location": "Bandung",
         "type": "Onsite",
         "paidStatus": "Paid",
-        "category": "Software Engineer",
+        "category": "Design",
         "status": false,
       },
       {
@@ -61,7 +61,7 @@ class PosisitionViewmodel extends GetxController {
         "location": "Bandung",
         "type": "Onsite",
         "paidStatus": "Paid",
-        "category": "Software Engineer",
+        "category": "Data/AI",
         "status": true,
       },
       {
@@ -70,16 +70,16 @@ class PosisitionViewmodel extends GetxController {
         "location": "Bandung",
         "type": "Onsite",
         "paidStatus": "Paid",
-        "category": "Software Engineer",
+        "category": "Design",
         "status": false,
       },
       {
-        "jobTitle": "Data Science",
+        "jobTitle": "Data Scientist",
         "image": "assets/images/job.png",
         "location": "Bandung",
         "type": "Onsite",
         "paidStatus": "Paid",
-        "category": "Software Engineer",
+        "category": "Data/AI",
         "status": true,
       },
       {
@@ -88,7 +88,7 @@ class PosisitionViewmodel extends GetxController {
         "location": "Bandung",
         "type": "Onsite",
         "paidStatus": "Paid",
-        "category": "Software Engineer",
+        "category": "Multimedia",
         "status": false,
       },
       {
@@ -101,6 +101,7 @@ class PosisitionViewmodel extends GetxController {
         "status": false,
       },
     ];
+
     data.value = datas.map((d) => PositionModel.toJson(d)).toList();
     filteredData.value = data;
     itemCount.value = data.length;
@@ -113,14 +114,19 @@ class PosisitionViewmodel extends GetxController {
 
   ///filter item
   void clickToFilterItem(String category) {
-    filteredData.value =
-        data
-            .where(
-              (item) => item.category.toLowerCase() == category.toLowerCase(),
-            )
-            .toList();
-
-    itemCount.value = filteredData.length;
+    if (activeCategory.value.toLowerCase() == category.toLowerCase()) {
+      activeCategory.value = '';
+      resetFilter();
+    } else {
+      activeCategory.value = category;
+      filteredData.value =
+          data
+              .where(
+                (item) => item.category.toLowerCase() == category.toLowerCase(),
+              )
+              .toList();
+      itemCount.value = filteredData.length;
+    }
   }
 
   void resetFilter() {

@@ -13,11 +13,13 @@ class InternshipPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final positionController = Get.find<PosisitionViewmodel>();
+
+    List icons = const [Iconsax.location, Iconsax.briefcase, Iconsax.moneys];
     return Obx(
       () => Column(
         children: [
           const SizedBox(height: 30),
-          for (int i = 0; i < positionController.data.length; i++)
+          for (int i = 0; i < positionController.filteredData.length; i++)
             GestureDetector(
               onTap: () {
                 positionController.selectPage(i);
@@ -47,7 +49,7 @@ class InternshipPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          positionController.data[i].jobTitle,
+                          positionController.filteredData[i].jobTitle,
                           style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
@@ -61,25 +63,25 @@ class InternshipPage extends StatelessWidget {
                           ),
                           decoration: BoxDecoration(
                             color:
-                                positionController.data[i].status
+                                positionController.filteredData[i].status
                                     ? softGreen
                                     : softRed,
                             border: Border.all(
                               width: 2,
                               color:
-                                  positionController.data[i].status
+                                  positionController.filteredData[i].status
                                       ? greenHumic
                                       : redHumic,
                             ),
                             borderRadius: BorderRadius.circular(30),
                           ),
                           child: Text(
-                            positionController.data[i].status
+                            positionController.filteredData[i].status
                                 ? "Opened"
                                 : "Closed",
                             style: TextStyle(
                               color:
-                                  positionController.data[i].status
+                                  positionController.filteredData[i].status
                                       ? greenHumic
                                       : redHumic,
                               fontSize: 12,
@@ -90,28 +92,42 @@ class InternshipPage extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: 20),
-                    Row(
-                      children: [
-                        const Icon(Iconsax.location, color: greyHumic),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 5),
-                          child: Text(positionController.data[i].location),
-                        ),
-                        const SizedBox(width: 5),
+                    SizedBox(
+                      width: double.infinity,
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: List.generate(icons.length, (index) {
+                            List<String> currPos = [
+                              "${positionController.filteredData[i].location}, ${positionController.filteredData[i].type}",
 
-                        const Icon(Iconsax.briefcase, color: greyHumic),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 5),
-                          child: Text(positionController.data[i].category),
+                              positionController.filteredData[i].category,
+                              positionController.filteredData[i].paidStatus,
+                            ];
+                            return Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Icon(icons[index], color: greyHumic, size: 17),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 5,
+                                  ),
+                                  child: Text(
+                                    currPos[index],
+                                    style: const TextStyle(
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.bold,
+                                      color: greyHumic,
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(width: 5),
+                              ],
+                            );
+                          }),
                         ),
-                        const SizedBox(width: 5),
-
-                        const Icon(Iconsax.moneys, color: greyHumic),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 5),
-                          child: Text(positionController.data[i].paidStatus),
-                        ),
-                      ],
+                      ),
                     ),
                   ],
                 ),

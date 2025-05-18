@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:humic_internify/src/features/viewmodels/posisition_viewmodel.dart';
+import 'package:humic_internify/src/styles/custom_color.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 class DetailMagang extends StatelessWidget {
   const DetailMagang({super.key});
@@ -10,10 +12,114 @@ class DetailMagang extends StatelessWidget {
     final positionController = Get.find<PosisitionViewmodel>();
     var currentPage = positionController.indexPage.value;
 
-    return Scaffold(
-      appBar: AppBar(),
+    List icons = const [Iconsax.location, Iconsax.briefcase, Iconsax.moneys];
 
-      body: Obx(() => Text(positionController.data[currentPage].jobTitle)),
+    return Scaffold(
+      backgroundColor: whiteHumic,
+      body: Obx(() {
+        var currPosition = positionController.data[currentPage];
+        return Column(
+          children: [
+            Container(
+              alignment: Alignment.center,
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              color: greyBlueHumic,
+              width: double.infinity,
+              height: 130,
+              child: SafeArea(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    IconButton(
+                      onPressed: () => Get.back(),
+                      icon: const Icon(
+                        Icons.arrow_back_ios,
+                        size: 20,
+                        color: Colors.black,
+                      ),
+                    ),
+                    const Expanded(
+                      child: Text(
+                        "Detail Magang",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w900,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Flexible(
+              child: Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 30,
+                  vertical: 30,
+                ),
+                alignment: Alignment.topLeft,
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        currPosition.jobTitle,
+                        style: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w900,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: List.generate(icons.length, (index) {
+                            List<String> currPos = [
+                              "${currPosition.location}, ${currPosition.type}",
+                              currPosition.category,
+                              currPosition.paidStatus,
+                            ];
+                            return Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Icon(icons[index], color: greyHumic, size: 17),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 5,
+                                  ),
+                                  child: Text(
+                                    currPos[index],
+                                    style: const TextStyle(
+                                      fontSize: 10,
+                                      fontWeight: FontWeight.bold,
+                                      color: greyHumic,
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(width: 5),
+                              ],
+                            );
+                          }),
+                        ),
+                      ),
+                      const SizedBox(height: 50),
+                      const Text(
+                        "Deskripsi Pekerjaan:",
+                        style: TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
+        );
+      }),
     );
   }
 }
