@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:humic_internify/src/features/viewmodels/posisition_viewmodel.dart';
+import 'package:humic_internify/src/shared/components/humic_button.dart';
 import 'package:humic_internify/src/shared/components/humic_circle.dart';
 import 'package:humic_internify/src/styles/custom_color.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
@@ -21,12 +22,13 @@ class DetailMagang extends StatelessWidget {
         var currPosition = positionController.data[currentPage];
         return Column(
           children: [
+            ///APPBAR
             Container(
               alignment: Alignment.center,
               padding: const EdgeInsets.symmetric(horizontal: 10),
               color: greyBlueHumic,
               width: double.infinity,
-              height: 130,
+              height: 120,
               child: SafeArea(
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -212,21 +214,16 @@ class DetailMagang extends StatelessWidget {
                         ),
 
                         const SizedBox(height: 40),
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 20,
-                            vertical: 10,
-                          ),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(5),
-                            color: redHumic,
-                          ),
-                          child: const Text(
-                            "Daftar",
-                            style: TextStyle(color: whiteHumic),
+                        const HumicButton(
+                          child: Text(
+                            "Daftar Magang",
+                            style: TextStyle(
+                              color: whiteHumic,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 10,
+                            ),
                           ),
                         ),
-                        const SizedBox(height: 500),
                       ],
                     ),
                   ),

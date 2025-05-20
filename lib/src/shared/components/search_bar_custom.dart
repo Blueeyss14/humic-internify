@@ -5,6 +5,7 @@ import 'package:get/route_manager.dart';
 import 'package:get/state_manager.dart';
 import 'package:humic_internify/src/features/viewmodels/bottombar_controller.dart';
 import 'package:humic_internify/src/features/viewmodels/posisition_viewmodel.dart';
+import 'package:humic_internify/src/shared/components/humic_circle.dart';
 import 'package:humic_internify/src/shared/components/textfield_custom.dart';
 import 'package:humic_internify/src/styles/custom_color.dart';
 import 'package:humic_internify/test_page.dart';
@@ -50,22 +51,88 @@ class SearchBarCustom extends StatelessWidget {
                       right: animationPadding,
                     )
                     : EdgeInsets.zero,
-            child: AnimatedContainer(
-              clipBehavior: Clip.antiAlias,
-              decoration: BoxDecoration(
-                borderRadius:
-                    bottomBar.currentIndex.value == 2
-                        ? BorderRadius.circular(20)
-                        : null,
-              ),
-              curve: Curves.easeOutBack,
-              duration: const Duration(milliseconds: 800),
-              width: double.infinity,
-              height: mediaQuery[bottomBar.currentIndex.value],
-              child: Image.asset(
-                "assets/images/appbar_image.png",
-                fit: BoxFit.cover,
-              ),
+            child: Stack(
+              children: [
+                AnimatedContainer(
+                  clipBehavior: Clip.antiAlias,
+                  decoration: BoxDecoration(
+                    borderRadius:
+                        bottomBar.currentIndex.value == 2
+                            ? BorderRadius.circular(20)
+                            : null,
+                  ),
+                  curve: Curves.easeOutBack,
+                  duration: const Duration(milliseconds: 800),
+                  width: double.infinity,
+                  height: mediaQuery[bottomBar.currentIndex.value],
+                  child: Image.asset(
+                    "assets/images/appbar_image.png",
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                Positioned.fill(
+                  child: AnimatedSwitcher(
+                    duration: const Duration(milliseconds: 500),
+                    child:
+                        bottomBar.currentIndex.value == 2
+                            ? Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 30,
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                key: ValueKey<int>(
+                                  bottomBar.currentIndex.value,
+                                ),
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(vertical: 30),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        const HumicCircle(
+                                          padding: EdgeInsets.all(10),
+                                          color: greyBlueHumic,
+                                          child: Center(
+                                            child: Icon(
+                                              Icons.arrow_back_ios_new,
+                                              size: 16,
+                                            ),
+                                          ),
+                                        ),
+                                        const Text(
+                                          "About Us",
+                                          style: TextStyle(color: Colors.white),
+                                        ),
+                                        HumicCircle(
+                                          padding: const EdgeInsets.all(10),
+                                          color: greyBlueHumic,
+                                          child: Center(
+                                            child: Transform.rotate(
+                                              angle: 3.14,
+                                              child: const Icon(
+                                                Icons.arrow_back_ios_new,
+                                                size: 16,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  const Text(
+                                    "Research Center Human Centric Engineering (RC HUMIC), merupakan pusat penelitian Telkom University yang berfokus pada pengembangkan rekayasa teknologi yang berkaitan dengan dukungan aktivitas manusia sehari-hari seperti bidang komputasi, informatika, elektronika, robotik, mekanikal, dan teknik biomedis.",
+                                    style: TextStyle(color: Colors.white),
+                                    textAlign: TextAlign.justify,
+                                  ),
+                                ],
+                              ),
+                            )
+                            : const SizedBox.shrink(),
+                  ),
+                ),
+              ],
             ),
           ),
           Container(

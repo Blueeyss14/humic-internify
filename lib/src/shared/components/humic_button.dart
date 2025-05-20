@@ -8,6 +8,8 @@ class HumicButton extends StatelessWidget {
   final EdgeInsetsGeometry? margin;
   final Color? color;
   final Color? textColor;
+  final void Function()? onTap;
+  final Widget? child;
   const HumicButton({
     super.key,
     this.width,
@@ -16,21 +18,26 @@ class HumicButton extends StatelessWidget {
     this.margin,
     this.color,
     this.textColor,
+    this.onTap,
+    this.child,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: width,
-      height: height,
-      padding:
-          padding ?? const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      margin: margin,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(5),
-        color: color ?? redHumic,
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: width,
+        height: height,
+        padding:
+            padding ?? const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+        margin: margin,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(6),
+          color: color ?? redHumic,
+        ),
+        child: child,
       ),
-      child: Text("Daftar", style: TextStyle(color: textColor ?? whiteHumic)),
     );
   }
 }
