@@ -211,6 +211,21 @@ class DetailMagang extends StatelessWidget {
                           ),
                         ),
 
+                        const SizedBox(height: 40),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 20,
+                            vertical: 10,
+                          ),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            color: redHumic,
+                          ),
+                          child: const Text(
+                            "Daftar",
+                            style: TextStyle(color: whiteHumic),
+                          ),
+                        ),
                         const SizedBox(height: 500),
                       ],
                     ),
