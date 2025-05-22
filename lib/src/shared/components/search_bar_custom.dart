@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/route_manager.dart';
 import 'package:get/state_manager.dart';
+import 'package:humic_internify/src/features/viewmodels/about_viewmodel.dart';
 import 'package:humic_internify/src/features/viewmodels/bottombar_controller.dart';
 import 'package:humic_internify/src/features/viewmodels/posisition_viewmodel.dart';
 import 'package:humic_internify/src/shared/components/humic_circle.dart';
@@ -15,6 +16,8 @@ class SearchBarCustom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final aboutBar = Get.find<AboutViewmodel>();
+
     List text = ["Tingkatkan keahlian, perluas kesempatan", "Cari internship"];
     List text2 = [
       "Asah keterampilanmu dan jadilah mahasiswa yang siap bersaing di dunia industri",
@@ -86,26 +89,36 @@ class SearchBarCustom extends StatelessWidget {
                                 ),
                                 children: [
                                   Padding(
-                                    padding: EdgeInsets.symmetric(vertical: 30),
+                                    padding: const EdgeInsets.symmetric(
+                                      vertical: 30,
+                                    ),
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        const HumicCircle(
-                                          padding: EdgeInsets.all(10),
+                                        HumicCircle(
+                                          onTap:
+                                              () => aboutBar.clickItem(false),
+                                          padding: const EdgeInsets.all(10),
                                           color: greyBlueHumic,
-                                          child: Center(
+                                          child: const Center(
                                             child: Icon(
                                               Icons.arrow_back_ios_new,
                                               size: 16,
                                             ),
                                           ),
                                         ),
-                                        const Text(
-                                          "About Us",
-                                          style: TextStyle(color: Colors.white),
+                                        Text(
+                                          aboutBar
+                                              .data[aboutBar.itemClicked.value]
+                                              .title,
+                                          style: const TextStyle(
+                                            color: Colors.white,
+                                          ),
                                         ),
                                         HumicCircle(
+                                          onTap:
+                                              () => aboutBar.clickItem(false),
                                           padding: const EdgeInsets.all(10),
                                           color: greyBlueHumic,
                                           child: Center(
@@ -121,10 +134,60 @@ class SearchBarCustom extends StatelessWidget {
                                       ],
                                     ),
                                   ),
-                                  const Text(
-                                    "Research Center Human Centric Engineering (RC HUMIC), merupakan pusat penelitian Telkom University yang berfokus pada pengembangkan rekayasa teknologi yang berkaitan dengan dukungan aktivitas manusia sehari-hari seperti bidang komputasi, informatika, elektronika, robotik, mekanikal, dan teknik biomedis.",
-                                    style: TextStyle(color: Colors.white),
-                                    textAlign: TextAlign.justify,
+                                  ...List.generate(
+                                    aboutBar
+                                        .data[aboutBar.itemClicked.value]
+                                        .description
+                                        .length,
+                                    (index) {
+                                      final text =
+                                          aboutBar
+                                              .data[aboutBar.itemClicked.value]
+                                              .description;
+
+                                      if (text.length > 1) {
+                                        return SizedBox(
+                                          width: double.infinity,
+                                          child: Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                '${index + 1}. ',
+                                                style: const TextStyle(
+                                                  height: 2,
+
+                                                  color: Colors.white,
+                                                  fontSize: 10,
+                                                ),
+                                              ),
+                                              Expanded(
+                                                child: Text(
+                                                  text[index],
+                                                  style: const TextStyle(
+                                                    height: 2,
+                                                    color: Colors.white,
+                                                    fontSize: 10,
+                                                  ),
+                                                  textAlign: TextAlign.justify,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        );
+                                      }
+                                      return Text(
+                                        text[index],
+                                        style: const TextStyle(
+                                          height: 2,
+                                          color: Colors.white,
+                                          fontSize: 10,
+                                        ),
+                                        textAlign: TextAlign.justify,
+                                      );
+                                    },
                                   ),
                                 ],
                               ),
