@@ -26,7 +26,7 @@ class HomeApp extends StatelessWidget {
     ScrollController scrollController = ScrollController();
 
     ever(page.currentIndex, (_) {
-      if (page.currentIndex.value != 2) {
+      if (page.currentIndex.value != 2 && scrollController.hasClients) {
         scrollController.jumpTo(0);
       }
     });
