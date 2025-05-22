@@ -100,7 +100,7 @@ class SearchBarCustom extends StatelessWidget {
                                           onTap:
                                               () => aboutBar.clickItem(false),
                                           padding: const EdgeInsets.all(10),
-                                          color: greyBlueHumic,
+                                          color: softGreyHumic,
                                           child: const Center(
                                             child: Icon(
                                               Icons.arrow_back_ios_new,
@@ -120,7 +120,7 @@ class SearchBarCustom extends StatelessWidget {
                                           onTap:
                                               () => aboutBar.clickItem(false),
                                           padding: const EdgeInsets.all(10),
-                                          color: greyBlueHumic,
+                                          color: softGreyHumic,
                                           child: Center(
                                             child: Transform.rotate(
                                               angle: 3.14,

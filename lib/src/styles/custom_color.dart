@@ -16,3 +16,5 @@ const splashScreen = Color(0xFF263742);
 
 const softGreen = Color(0xFFF6FFF4);
 const softRed = Color(0xFFFAF0EF);
+
+const softGreyHumic = Color(0xFFD9D9D9);
