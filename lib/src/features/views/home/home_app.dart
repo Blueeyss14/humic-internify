@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -5,6 +7,7 @@ import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_rx/src/rx_workers/rx_workers.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:humic_internify/src/features/viewmodels/bottombar_controller.dart';
+import 'package:humic_internify/src/features/viewmodels/languange_viewmodel.dart';
 import 'package:humic_internify/src/features/views/components/bottom_navbar.dart';
 import 'package:humic_internify/src/features/views/pages/about_us.dart';
 import 'package:humic_internify/src/features/views/pages/home_page.dart';
@@ -19,6 +22,7 @@ class HomeApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final page = Get.find<BottombarController>();
+    final language = Get.find<LanguangeViewmodel>();
     List<Widget> pages = const [
       HomePage(),
       SingleChildScrollView(child: InternshipPage()),
@@ -102,6 +106,26 @@ class HomeApp extends StatelessWidget {
               ),
               const BottomNavbar(),
               const HumicAppbar(),
+
+              AnimatedSwitcher(
+                switchInCurve: Curves.easeIn,
+                switchOutCurve: Curves.easeOut,
+                duration: const Duration(milliseconds: 150),
+                child:
+                    language.isOpened.value
+                        ? SizedBox(
+                          key: ValueKey<bool>(language.isOpened.value),
+                          child: BackdropFilter(
+                            filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
+                            child: Container(
+                              color: Colors.black.withAlpha(100),
+                              width: double.infinity,
+                              height: double.infinity,
+                            ),
+                          ),
+                        )
+                        : const SizedBox.shrink(),
+              ),
             ],
           ),
         ),
