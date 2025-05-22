@@ -3,6 +3,7 @@ import 'package:humic_internify/src/features/viewmodels/about_viewmodel.dart';
 import 'package:humic_internify/src/features/viewmodels/bottombar_controller.dart';
 import 'package:humic_internify/src/features/viewmodels/feedback_viewmodel.dart';
 import 'package:humic_internify/src/features/viewmodels/posisition_viewmodel.dart';
+import 'package:humic_internify/src/features/viewmodels/project_viewmodel.dart';
 import 'package:humic_internify/src/features/viewmodels/splash_screen_controller.dart';
 
 void initDependencies() {
@@ -11,4 +12,5 @@ void initDependencies() {
   Get.put(PosisitionViewmodel());
   Get.put(FeedbackViewmodel());
   Get.put(AboutViewmodel());
+  Get.put(ProjectViewmodel());
 }

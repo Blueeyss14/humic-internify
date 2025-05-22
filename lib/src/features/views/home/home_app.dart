@@ -6,6 +6,7 @@ import 'package:get/get_rx/src/rx_workers/rx_workers.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:humic_internify/src/features/viewmodels/bottombar_controller.dart';
 import 'package:humic_internify/src/features/views/components/bottom_navbar.dart';
+import 'package:humic_internify/src/features/views/pages/about_us.dart';
 import 'package:humic_internify/src/features/views/pages/home_page.dart';
 import 'package:humic_internify/src/features/views/pages/internship_page.dart';
 import 'package:humic_internify/src/shared/components/humic_appbar.dart';
@@ -64,12 +65,7 @@ class HomeApp extends StatelessWidget {
                       Column(
                         children: [
                           const SearchBarCustom(),
-                          if (page.currentIndex.value == 2)
-                            Container(
-                              color: Colors.green,
-                              height: 700,
-                              width: 300,
-                            ),
+                          if (page.currentIndex.value == 2) const AboutUs(),
                         ],
                       ),
                     ]),
