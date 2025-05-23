@@ -10,6 +10,7 @@ class HumicButton extends StatelessWidget {
   final Color? textColor;
   final void Function()? onTap;
   final Widget? child;
+  final AlignmentGeometry? alignment;
   const HumicButton({
     super.key,
     this.width,
@@ -20,6 +21,7 @@ class HumicButton extends StatelessWidget {
     this.textColor,
     this.onTap,
     this.child,
+    this.alignment,
   });
 
   @override
@@ -27,6 +29,7 @@ class HumicButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
+        alignment: alignment,
         width: width,
         height: height,
         padding:

@@ -1,7 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_instance/get_instance.dart';
-import 'package:get/route_manager.dart';
 import 'package:get/state_manager.dart';
 import 'package:humic_internify/src/features/viewmodels/about_viewmodel.dart';
 import 'package:humic_internify/src/features/viewmodels/bottombar_controller.dart';
@@ -9,7 +8,6 @@ import 'package:humic_internify/src/features/viewmodels/posisition_viewmodel.dar
 import 'package:humic_internify/src/shared/components/humic_circle.dart';
 import 'package:humic_internify/src/shared/components/textfield_custom.dart';
 import 'package:humic_internify/src/styles/custom_color.dart';
-import 'package:humic_internify/test_page.dart';
 
 class SearchBarCustom extends StatelessWidget {
   const SearchBarCustom({super.key});
@@ -263,85 +261,81 @@ class SearchBarCustom extends StatelessWidget {
                               : const SizedBox.shrink(),
                     ),
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      Get.to(const TestPage());
-                    },
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        AnimatedSwitcher(
-                          duration: const Duration(milliseconds: 300),
-                          child:
-                              bottomBar.currentIndex.value == 1
-                                  ? SingleChildScrollView(
-                                    key: ValueKey<int>(
-                                      bottomBar.currentIndex.value,
-                                    ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      AnimatedSwitcher(
+                        duration: const Duration(milliseconds: 300),
+                        child:
+                            bottomBar.currentIndex.value == 1
+                                ? SingleChildScrollView(
+                                  key: ValueKey<int>(
+                                    bottomBar.currentIndex.value,
+                                  ),
 
-                                    scrollDirection: Axis.horizontal,
-                                    child: Row(
-                                      children: List.generate(
-                                        categoryBar.length,
-                                        (index) => GestureDetector(
-                                          onTap:
-                                              () => positionData
-                                                  .clickToFilterItem(
-                                                    categoryBar[index],
-                                                  ),
-                                          child: Container(
-                                            alignment: Alignment.center,
-                                            margin: const EdgeInsets.symmetric(
-                                              horizontal: 10,
+                                  scrollDirection: Axis.horizontal,
+                                  child: Row(
+                                    children: List.generate(
+                                      categoryBar.length,
+                                      (index) => GestureDetector(
+                                        onTap:
+                                            () =>
+                                                positionData.clickToFilterItem(
+                                                  categoryBar[index],
+                                                ),
+                                        child: Container(
+                                          alignment: Alignment.center,
+                                          margin: const EdgeInsets.symmetric(
+                                            horizontal: 10,
+                                          ),
+                                          padding: const EdgeInsets.all(10),
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(
+                                              10,
                                             ),
-                                            padding: const EdgeInsets.all(10),
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(10),
-                                              border: Border.all(
-                                                width: 2,
-                                                color:
-                                                    positionData
-                                                                .activeCategory
-                                                                .value ==
-                                                            categoryBar[index]
-                                                        ? redHumic
-                                                        : pinkBorderHumic,
-                                              ),
+                                            border: Border.all(
+                                              width: 2,
                                               color:
                                                   positionData
                                                               .activeCategory
                                                               .value ==
                                                           categoryBar[index]
                                                       ? redHumic
-                                                      : pinkHumic,
+                                                      : pinkBorderHumic,
                                             ),
-                                            // height: 50,
-                                            child: AutoSizeText(
-                                              categoryBar[index],
-                                              style: TextStyle(
-                                                fontSize: 2,
-                                                fontWeight: FontWeight.w700,
-                                                color:
-                                                    positionData
-                                                                .activeCategory
-                                                                .value ==
-                                                            categoryBar[index]
-                                                        ? whiteHumic
-                                                        : redHumic,
-                                              ),
-                                              maxLines: 1,
-                                              // minFontSize: 0,
+                                            color:
+                                                positionData
+                                                            .activeCategory
+                                                            .value ==
+                                                        categoryBar[index]
+                                                    ? redHumic
+                                                    : pinkHumic,
+                                          ),
+                                          // height: 50,
+                                          child: AutoSizeText(
+                                            categoryBar[index],
+                                            style: TextStyle(
+                                              fontSize: 2,
+                                              fontWeight: FontWeight.w700,
+                                              color:
+                                                  positionData
+                                                              .activeCategory
+                                                              .value ==
+                                                          categoryBar[index]
+                                                      ? whiteHumic
+                                                      : redHumic,
                                             ),
+                                            maxLines: 1,
+                                            // minFontSize: 0,
                                           ),
                                         ),
                                       ),
                                     ),
-                                  )
-                                  : const SizedBox.shrink(),
-                        ),
-                      ],
-                    ),
+                                  ),
+                                )
+                                : const SizedBox.shrink(),
+                      ),
+                    ],
                   ),
                 ],
               ),
