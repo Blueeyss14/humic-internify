@@ -1,28 +1,67 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:humic_internify/src/shared/components/humic_circle.dart';
-import 'package:humic_internify/src/styles/custom_color.dart';
+import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 class ContactUs extends StatelessWidget {
   const ContactUs({super.key});
 
   @override
   Widget build(BuildContext context) {
+    List<Map<String, dynamic>> socials = [
+      {"icon": "assets/icons/instagram.png", "link": ""},
+      {"icon": "assets/icons/linkedin.png", "link": ""},
+      {"icon": "assets/icons/email.png", "link": ""},
+      {"icon": "assets/icons/website.png", "link": ""},
+    ];
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const AutoSizeText(
-          "Our Developers",
+          "Contact Us",
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
           maxLines: 1,
           minFontSize: 3,
         ),
+        const SizedBox(height: 20),
 
         Row(
-          children: List.generate(
-            4,
-            (index) => const HumicCircle(color: redHumic, size: 50),
-          ),
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Icon(Iconsax.location),
+            const SizedBox(width: 5),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  "Gedung Kultubai Selatan, Blok F",
+                  style: TextStyle(height: 2, fontWeight: FontWeight.bold),
+                ),
+
+                const Text(
+                  "Jl. Telekomunikasi, Terusan Buah Batu Bandung Jawa Barat, Indonesia, 40257.",
+                  style: TextStyle(height: 2),
+                ),
+
+                const SizedBox(height: 10),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: List.generate(
+                      socials.length,
+                      (index) => HumicCircle(
+                        margin: const EdgeInsets.only(right: 10),
+                        border: Border.all(width: 2),
+                        size: 45,
+                        child: Image.asset(socials[index]['icon'], width: 18),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
       ],
     );

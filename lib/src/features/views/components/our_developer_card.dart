@@ -88,7 +88,7 @@ class OurDeveloperCard extends StatelessWidget {
                   children: [
                     Container(
                       clipBehavior: Clip.antiAlias,
-                      height: 120,
+                      height: 140,
                       width: double.infinity,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),

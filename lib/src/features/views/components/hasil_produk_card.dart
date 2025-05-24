@@ -20,7 +20,7 @@ class HasilProdukCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const AutoSizeText(
-                "Hasil Produk",
+                "Hasil Produk Research",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
                 maxLines: 1,
                 minFontSize: 3,

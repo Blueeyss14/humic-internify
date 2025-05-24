@@ -7,6 +7,7 @@ class HumicCircle extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
   final Widget? child;
   final void Function()? onTap;
+  final BoxBorder? border;
   const HumicCircle({
     super.key,
     this.size,
@@ -15,6 +16,7 @@ class HumicCircle extends StatelessWidget {
     this.padding,
     this.child,
     this.onTap,
+    this.border,
   });
 
   @override
@@ -27,7 +29,11 @@ class HumicCircle extends StatelessWidget {
         margin: margin,
         width: size,
         height: size,
-        decoration: BoxDecoration(color: color, shape: BoxShape.circle),
+        decoration: BoxDecoration(
+          color: color,
+          shape: BoxShape.circle,
+          border: border,
+        ),
         child: child,
       ),
     );
