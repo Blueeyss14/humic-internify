@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:humic_internify/src/features/models/about_item_model.dart';
+import 'package:humic_internify/src/features/views/components/contact_us.dart';
 import 'package:humic_internify/src/features/views/components/hasil_produk_card.dart';
 import 'package:humic_internify/src/features/views/components/our_developer_card.dart';
 import 'package:humic_internify/src/styles/custom_color.dart';
@@ -62,8 +63,12 @@ class AboutUs extends StatelessWidget {
               HasilProdukCard(),
 
               ///Developer
-              SizedBox(height: 10),
+              SizedBox(height: 20),
               OurDeveloperCard(),
+
+              //Contact Us
+              SizedBox(height: 20),
+              ContactUs(),
             ],
           ),
         ),

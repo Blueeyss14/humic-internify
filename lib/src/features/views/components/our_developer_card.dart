@@ -35,7 +35,7 @@ class OurDeveloperCard extends StatelessWidget {
       },
       {
         "name": "Delkano",
-        "image": "assets/images/pexels-pixabay-53594.jpg",
+        "image": "assets/images/dell.png",
         "position": "Mobile Developer",
         "Link": "/",
       },
@@ -66,79 +66,82 @@ class OurDeveloperCard extends StatelessWidget {
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
-            children: [
-              ...List.generate(
-                developers.length,
-                (index) => Container(
-                  margin: const EdgeInsets.all(15),
-                  padding: const EdgeInsets.all(15),
-                  width: 150,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: whiteHumic,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withAlpha(40),
-                        blurRadius: 10,
-                        spreadRadius: 0.2,
-                        offset: const Offset(0, 4),
+            children: List.generate(
+              developers.length,
+              (index) => Container(
+                margin: const EdgeInsets.all(15),
+                padding: const EdgeInsets.all(15),
+                width: 150,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: whiteHumic,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withAlpha(40),
+                      blurRadius: 10,
+                      spreadRadius: 0.2,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
+                ),
+                child: Column(
+                  children: [
+                    Container(
+                      clipBehavior: Clip.antiAlias,
+                      height: 120,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        color: Colors.grey,
                       ),
-                    ],
-                  ),
-                  child: Column(
-                    children: [
-                      Container(
-                        height: 120,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: Colors.grey,
-                        ),
+                      child: Image.asset(
+                        developers[index]['image'],
+                        fit: BoxFit.cover,
                       ),
-                      const SizedBox(height: 10),
-                      AutoSizeText(
-                        developers[index]['name'],
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 1,
-                        ),
-                        // maxLines: 2,
-                        // minFontSize: 3,
+                    ),
+                    const SizedBox(height: 10),
+                    AutoSizeText(
+                      developers[index]['name'],
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 1,
                       ),
+                      // maxLines: 2,
+                      // minFontSize: 3,
+                    ),
 
-                      const SizedBox(height: 2),
-                      AutoSizeText(
-                        developers[index]['position'],
-                        style: const TextStyle(fontSize: 1),
-                        // maxLines: 2,
-                      ),
-                      const SizedBox(height: 7),
+                    const SizedBox(height: 2),
+                    AutoSizeText(
+                      developers[index]['position'],
+                      style: const TextStyle(fontSize: 1),
+                      // maxLines: 2,
+                    ),
+                    const SizedBox(height: 7),
 
-                      HumicButton(
-                        color: pinkHumic,
-                        alignment: Alignment.center,
-                        width: double.infinity,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset("assets/icons/link.png", width: 10),
-                            const SizedBox(width: 5),
-                            const Text(
-                              "Website",
-                              style: TextStyle(
-                                color: redHumic,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 12,
-                              ),
+                    HumicButton(
+                      color: pinkHumic,
+                      alignment: Alignment.center,
+                      width: double.infinity,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset("assets/icons/link.png", width: 10),
+                          const SizedBox(width: 5),
+                          const Text(
+                            "Website",
+                            style: TextStyle(
+                              color: redHumic,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12,
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
-            ],
+            ),
           ),
         ),
       ],
