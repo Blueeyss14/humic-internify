@@ -179,17 +179,17 @@ class FormPendaftaran extends StatelessWidget {
                         ///CV
                         const SizedBox(height: 20),
                         AttachFile(
-                          onTap: () => formPicker.pickFile(),
+                          onTap: () => formPicker.pickCV(),
                           title: "CV (Curiculum Vitae)",
-                          fileName: formPicker.fileNames.value,
+                          fileName: formPicker.cvFile.value,
                         ),
 
                         ///PORTFOLIO
                         const SizedBox(height: 10),
                         AttachFile(
-                          onTap: () => formPicker.pickFile(),
+                          onTap: () => formPicker.pickPortfolio(),
                           title: "Portofolio",
-                          fileName: formPicker.fileNames.value,
+                          fileName: formPicker.portfolioFile.value,
                         ),
 
                         const SizedBox(height: 20),

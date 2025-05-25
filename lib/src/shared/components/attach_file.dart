@@ -77,6 +77,7 @@ class AttachFile extends StatelessWidget {
                         decoration: TextDecoration.underline,
                         decorationColor: blueAttach,
                         color: blueAttach,
+                        fontSize: 12,
                       ),
                       overflow: TextOverflow.ellipsis,
                     ),
