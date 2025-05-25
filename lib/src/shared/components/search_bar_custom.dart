@@ -6,7 +6,7 @@ import 'package:humic_internify/src/features/viewmodels/about_viewmodel.dart';
 import 'package:humic_internify/src/features/viewmodels/bottombar_controller.dart';
 import 'package:humic_internify/src/features/viewmodels/posisition_viewmodel.dart';
 import 'package:humic_internify/src/shared/components/humic_circle.dart';
-import 'package:humic_internify/src/shared/components/textfield_custom.dart';
+import 'package:humic_internify/src/shared/components/search_textfield_custom.dart';
 import 'package:humic_internify/src/styles/custom_color.dart';
 
 class SearchBarCustom extends StatelessWidget {
@@ -256,7 +256,7 @@ class SearchBarCustom extends StatelessWidget {
                                         ? ValueKey<int>(currentIndex)
                                         : const ValueKey<String>('static'),
                                 padding: const EdgeInsets.only(top: 10),
-                                child: const TextfieldCustom(),
+                                child: const SearchTextfieldCustom(),
                               )
                               : const SizedBox.shrink(),
                     ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:humic_internify/src/features/viewmodels/posisition_viewmodel.dart';
+import 'package:humic_internify/src/routes/routes_name.dart';
 import 'package:humic_internify/src/shared/components/humic_button.dart';
 import 'package:humic_internify/src/shared/components/humic_circle.dart';
 import 'package:humic_internify/src/styles/custom_color.dart';
@@ -214,8 +215,9 @@ class DetailMagang extends StatelessWidget {
                         ),
 
                         const SizedBox(height: 40),
-                        const HumicButton(
-                          child: Text(
+                        HumicButton(
+                          onTap: () => Get.toNamed(RoutesName.formPendaftaran),
+                          child: const Text(
                             "Daftar Magang",
                             style: TextStyle(
                               color: whiteHumic,

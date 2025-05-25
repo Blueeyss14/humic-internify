@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:humic_internify/src/styles/custom_color.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
-class TextfieldCustom extends StatelessWidget {
-  const TextfieldCustom({super.key});
+class SearchTextfieldCustom extends StatelessWidget {
+  const SearchTextfieldCustom({super.key});
 
   @override
   Widget build(BuildContext context) {
