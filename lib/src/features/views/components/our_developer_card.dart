@@ -1,5 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/get_instance.dart';
+import 'package:humic_internify/src/features/viewmodels/carousel_scroll.dart';
 import 'package:humic_internify/src/shared/components/humic_button.dart';
 import 'package:humic_internify/src/styles/custom_color.dart';
 
@@ -8,6 +11,7 @@ class OurDeveloperCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final carousel = Get.find<CarouselScroll>();
     List<Map<String, dynamic>> developers = [
       {
         "name": "Taufik",
@@ -64,6 +68,7 @@ class OurDeveloperCard extends StatelessWidget {
         ),
         const SizedBox(height: 10),
         SingleChildScrollView(
+          controller: carousel.scrollController,
           scrollDirection: Axis.horizontal,
           child: Row(
             children: List.generate(

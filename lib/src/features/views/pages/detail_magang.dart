@@ -115,7 +115,7 @@ class DetailMagang extends StatelessWidget {
                         const Text(
                           "Deskripsi Pekerjaan:",
                           style: TextStyle(
-                            fontSize: 13,
+                            fontSize: 16,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
@@ -131,7 +131,7 @@ class DetailMagang extends StatelessWidget {
                         const Text(
                           "Kualifikasi:",
                           style: TextStyle(
-                            fontSize: 13,
+                            fontSize: 16,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
@@ -175,7 +175,7 @@ class DetailMagang extends StatelessWidget {
                         const Text(
                           "Benefit:",
                           style: TextStyle(
-                            fontSize: 13,
+                            fontSize: 16,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
@@ -222,7 +222,7 @@ class DetailMagang extends StatelessWidget {
                             style: TextStyle(
                               color: whiteHumic,
                               fontWeight: FontWeight.bold,
-                              fontSize: 10,
+                              fontSize: 14,
                             ),
                           ),
                         ),
