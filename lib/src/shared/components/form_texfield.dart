@@ -3,19 +3,26 @@ import 'package:humic_internify/src/styles/custom_color.dart';
 
 class FormTexfield extends StatelessWidget {
   final String? text;
-  final Color? color;
+  final Color? borderColor;
   final String? hintText;
   final int? maxlines;
   final double? height;
   final IconData? errorIcon;
+  final bool? isRequired;
+  final TextEditingController? controller;
+  final Color? textColor;
+
   const FormTexfield({
     super.key,
     this.text,
-    this.color,
+    this.borderColor,
     this.hintText,
     this.maxlines = 1,
     this.height,
     this.errorIcon,
+    this.isRequired = true,
+    this.controller,
+    this.textColor,
   });
 
   @override
@@ -25,7 +32,11 @@ class FormTexfield extends StatelessWidget {
       children: [
         Text(
           text ?? 'text',
-          style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+          style: TextStyle(
+            color: textColor ?? blackHumic1,
+            fontSize: 14,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         const SizedBox(height: 10),
         Row(
@@ -34,10 +45,14 @@ class FormTexfield extends StatelessWidget {
               child: Container(
                 height: height,
                 decoration: BoxDecoration(
-                  border: Border.all(color: greyHumic),
+                  border: Border.all(
+                    width: 1.3,
+                    color: borderColor ?? greyHumic,
+                  ),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: TextField(
+                  controller: controller,
                   maxLines: maxlines,
                   cursorColor: blackHumic1,
                   textAlignVertical: TextAlignVertical.center,
@@ -56,8 +71,8 @@ class FormTexfield extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(width: 5),
-            Icon(errorIcon, color: redHumic, size: 16),
+            if (isRequired!) const SizedBox(width: 5),
+            if (isRequired!) Icon(errorIcon, color: redHumic, size: 16),
           ],
         ),
       ],

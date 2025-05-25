@@ -53,57 +53,124 @@ class FormPendaftaran extends StatelessWidget {
               child: SizedBox(
                 child: SingleChildScrollView(
                   child: Padding(
-                    padding: const EdgeInsets.all(25),
+                    padding: const EdgeInsets.only(
+                      left: 25,
+                      top: 25,
+                      bottom: 25,
+                      right: 15,
+                    ),
                     child: Column(
                       children: [
-                        const Row(
+                        Row(
                           children: [
-                            Expanded(child: FormTexfield(text: "Nama Depan")),
-                            SizedBox(width: 10),
                             Expanded(
-                              child: FormTexfield(text: "Nama Belakang"),
+                              child: FormTexfield(
+                                controller: form.firstName.value,
+                                text: "Nama Depan",
+                                textColor:
+                                    form.isFirstNameError.value
+                                        ? redHumic
+                                        : null,
+                                isRequired:
+                                    form.isFirstNameError.value ? true : false,
+                                borderColor:
+                                    form.isFirstNameError.value
+                                        ? redHumic
+                                        : null,
+                                errorIcon:
+                                    form.isFirstNameError.value
+                                        ? Icons.error
+                                        : null,
+                              ),
                             ),
+                            const SizedBox(width: 10),
+                            Expanded(
+                              child: FormTexfield(
+                                controller: form.lastName.value,
+                                isRequired: false,
+                                text: "Nama Belakang",
+                              ),
+                            ),
+                            const SizedBox(width: 20),
                           ],
                         ),
                         const SizedBox(height: 20),
-                        const FormTexfield(
+                        FormTexfield(
+                          controller: form.email.value,
                           text: "Email",
+                          textColor: form.isEmailError.value ? redHumic : null,
                           hintText: "email@gmail.com",
-                          errorIcon: Icons.error,
+                          borderColor:
+                              form.isEmailError.value ? redHumic : null,
+                          errorIcon:
+                              form.isEmailError.value ? Icons.error : null,
                         ),
 
                         const SizedBox(height: 20),
-                        const FormTexfield(
+                        FormTexfield(
+                          controller: form.contact.value,
                           text: "Kontak",
+                          textColor:
+                              form.isContactError.value ? redHumic : null,
                           hintText: "ex: 08123456789",
+                          borderColor:
+                              form.isContactError.value ? redHumic : null,
+                          errorIcon:
+                              form.isContactError.value ? Icons.error : null,
                         ),
 
                         const SizedBox(height: 20),
-                        const FormTexfield(
+                        FormTexfield(
+                          controller: form.faculty.value,
                           text: "Fakultas",
+                          textColor:
+                              form.isFacultyError.value ? redHumic : null,
                           hintText: "ex: Fakultas Informatika",
+                          borderColor:
+                              form.isFacultyError.value ? redHumic : null,
+                          errorIcon:
+                              form.isFacultyError.value ? Icons.error : null,
                         ),
 
                         const SizedBox(height: 20),
-                        const FormTexfield(
+                        FormTexfield(
+                          controller: form.major.value,
                           text: "Program Studi",
+                          textColor: form.isMajorError.value ? redHumic : null,
                           hintText: "ex: S1 Teknologi Informasi",
+                          borderColor:
+                              form.isMajorError.value ? redHumic : null,
+                          errorIcon:
+                              form.isMajorError.value ? Icons.error : null,
                         ),
 
                         const SizedBox(height: 20),
-                        const FormTexfield(
+                        FormTexfield(
+                          controller: form.skills.value,
                           height: 100,
                           maxlines: null,
                           text: "Skill",
+                          textColor: form.isSkillsError.value ? redHumic : null,
                           hintText: "Ketik disini",
+                          borderColor:
+                              form.isSkillsError.value ? redHumic : null,
+                          errorIcon:
+                              form.isSkillsError.value ? Icons.error : null,
                         ),
 
                         const SizedBox(height: 20),
-                        const FormTexfield(
+                        FormTexfield(
+                          controller: form.motivation.value,
                           height: 130,
                           maxlines: null,
                           text: "Motivasi ingin bergabung ke Humic?",
+                          textColor:
+                              form.isMotivationError.value ? redHumic : null,
                           hintText: "Ketik disini",
+                          borderColor:
+                              form.isMotivationError.value ? redHumic : null,
+                          errorIcon:
+                              form.isMotivationError.value ? Icons.error : null,
                         ),
 
                         const SizedBox(height: 20),
@@ -140,26 +207,29 @@ class FormPendaftaran extends StatelessWidget {
 
                               const SizedBox(width: 10),
                               const Expanded(
-                                child: Text.rich(
-                                  TextSpan(
-                                    children: [
-                                      TextSpan(
-                                        text:
-                                            "Dengan melanjutkan, saya mengonfirmasi bahwa saya telah membaca secara seksama dan menyetujui ",
-                                      ),
-                                      TextSpan(
-                                        text: "Persyaratan Layanan ",
-                                        style: TextStyle(color: redHumic),
-                                      ),
-                                      TextSpan(text: "dan "),
-                                      TextSpan(
-                                        text: "Kebijakan Privasi.",
-                                        style: TextStyle(color: redHumic),
-                                      ),
-                                    ],
+                                child: Padding(
+                                  padding: EdgeInsets.only(right: 5),
+                                  child: Text.rich(
+                                    TextSpan(
+                                      children: [
+                                        TextSpan(
+                                          text:
+                                              "Dengan melanjutkan, saya mengonfirmasi bahwa saya telah membaca secara seksama dan menyetujui ",
+                                        ),
+                                        TextSpan(
+                                          text: "Persyaratan Layanan ",
+                                          style: TextStyle(color: redHumic),
+                                        ),
+                                        TextSpan(text: "dan "),
+                                        TextSpan(
+                                          text: "Kebijakan Privasi.",
+                                          style: TextStyle(color: redHumic),
+                                        ),
+                                      ],
+                                    ),
+                                    textAlign: TextAlign.justify,
+                                    style: TextStyle(fontSize: 12),
                                   ),
-                                  textAlign: TextAlign.justify,
-                                  style: TextStyle(fontSize: 12),
                                 ),
                               ),
                               const SizedBox(width: 15),
@@ -169,6 +239,9 @@ class FormPendaftaran extends StatelessWidget {
 
                         const SizedBox(height: 40),
                         HumicButton(
+                          margin: const EdgeInsets.only(right: 15),
+                          padding: const EdgeInsets.all(10),
+                          onTap: () => form.submitForm(),
                           color:
                               form.isAgree.value
                                   ? redHumic
