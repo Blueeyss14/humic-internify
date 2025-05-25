@@ -51,21 +51,31 @@ class FormTexfield extends StatelessWidget {
                   ),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: TextField(
-                  controller: controller,
-                  maxLines: maxlines,
-                  cursorColor: blackHumic1,
-                  textAlignVertical: TextAlignVertical.center,
-                  decoration: InputDecoration(
-                    hintText: hintText,
-                    hintStyle: const TextStyle(color: greyHumic, fontSize: 14),
-                    border: InputBorder.none,
+                child: Theme(
+                  data: Theme.of(context).copyWith(
+                    textSelectionTheme: const TextSelectionThemeData(
+                      selectionHandleColor: blackHumic1,
+                    ),
+                  ),
+                  child: TextField(
+                    controller: controller,
+                    maxLines: maxlines,
+                    cursorColor: blackHumic1,
+                    textAlignVertical: TextAlignVertical.center,
+                    decoration: InputDecoration(
+                      hintText: hintText,
+                      hintStyle: const TextStyle(
+                        color: greyHumic,
+                        fontSize: 14,
+                      ),
+                      border: InputBorder.none,
 
-                    isDense: true,
-                    disabledBorder: InputBorder.none,
-                    contentPadding: const EdgeInsets.symmetric(
-                      horizontal: 15,
-                      vertical: 12,
+                      isDense: true,
+                      disabledBorder: InputBorder.none,
+                      contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 15,
+                        vertical: 12,
+                      ),
                     ),
                   ),
                 ),

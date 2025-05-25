@@ -187,14 +187,14 @@ class FormPendaftaran extends StatelessWidget {
                                   border: Border.all(
                                     color:
                                         form.isAgree.value
-                                            ? Colors.blue
+                                            ? checkColor
                                             : blackHumic1,
                                   ),
                                   borderRadius: BorderRadius.circular(5),
                                   color:
                                       form.isAgree.value
-                                          ? Colors.blue
-                                          : Colors.white,
+                                          ? checkColor
+                                          : Colors.transparent,
                                 ),
                                 child:
                                     form.isAgree.value
@@ -245,7 +245,7 @@ class FormPendaftaran extends StatelessWidget {
                           color:
                               form.isAgree.value
                                   ? redHumic
-                                  : redHumic.withAlpha(150),
+                                  : redHumic.withAlpha(100),
                           alignment: Alignment.center,
                           width: MediaQuery.of(context).size.width,
                           child: const Text(
@@ -253,10 +253,11 @@ class FormPendaftaran extends StatelessWidget {
                             style: TextStyle(
                               color: whiteHumic,
                               fontWeight: FontWeight.bold,
-                              fontSize: 14,
+                              fontSize: 16,
                             ),
                           ),
                         ),
+                        const SizedBox(height: 10),
                       ],
                     ),
                   ),
