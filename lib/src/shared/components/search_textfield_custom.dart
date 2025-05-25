@@ -29,20 +29,23 @@ class SearchTextfieldCustom extends StatelessWidget {
                     selectionHandleColor: blackHumic1,
                   ),
                 ),
-                child: const TextField(
-                  style: TextStyle(fontSize: 14),
-                  textCapitalization: TextCapitalization.sentences,
-                  textAlignVertical: TextAlignVertical.center,
-                  cursorColor: blackHumic1,
-                  decoration: InputDecoration(
-                    hintText: "Cari Lowongan Magangmu di Sini",
-                    hintStyle: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 10,
-                      fontWeight: FontWeight.bold,
+                child: const Padding(
+                  padding: EdgeInsets.only(bottom: 2),
+                  child: TextField(
+                    style: TextStyle(fontSize: 14),
+                    textCapitalization: TextCapitalization.sentences,
+                    textAlignVertical: TextAlignVertical.center,
+                    cursorColor: blackHumic1,
+                    decoration: InputDecoration(
+                      hintText: "Cari Lowongan Magangmu di Sini",
+                      hintStyle: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      border: InputBorder.none,
+                      isDense: true,
                     ),
-                    border: InputBorder.none,
-                    isDense: true,
                   ),
                 ),
               ),

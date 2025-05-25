@@ -9,8 +9,8 @@ import 'package:humic_internify/src/shared/components/humic_circle.dart';
 import 'package:humic_internify/src/shared/components/search_textfield_custom.dart';
 import 'package:humic_internify/src/styles/custom_color.dart';
 
-class SearchBarCustom extends StatelessWidget {
-  const SearchBarCustom({super.key});
+class SearchBgCustom extends StatelessWidget {
+  const SearchBgCustom({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +28,8 @@ class SearchBarCustom extends StatelessWidget {
 
     List mediaQuery = [
       MediaQuery.of(context).size.height / 3,
-      MediaQuery.of(context).size.height / 3 + 50,
-      450.0,
+      MediaQuery.of(context).size.height / 3 + 40,
+      420.0,
     ];
 
     List categoryBar = ["Software Engineer", "Design", "Data/AI", "Multimedia"];

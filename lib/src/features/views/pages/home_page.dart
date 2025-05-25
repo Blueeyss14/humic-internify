@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
                   Image.asset("assets/images/life-at-humic.png"),
                   Positioned.fill(
                     child: Container(
-                      margin: const EdgeInsets.only(right: 110),
+                      margin: const EdgeInsets.only(right: 80),
                       alignment: Alignment.centerLeft,
                       child: const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 20),
@@ -34,7 +34,7 @@ class HomePage extends StatelessWidget {
                             AutoSizeText(
                               "Life at Humic Engineering",
                               style: TextStyle(
-                                fontSize: 10,
+                                fontSize: 14,
                                 fontWeight: FontWeight.w700,
                               ),
                               maxLines: 1,
@@ -44,10 +44,10 @@ class HomePage extends StatelessWidget {
                             SizedBox(height: 10),
                             AutoSizeText(
                               "Raih pengalaman internship yang bernilai dengan berkontribusi langsung dalam pengembangan solusi teknologi kami. Kembangkan kompetensi Anda melalui keterlibatan nyata dalam proyek IT serta bimbingan langsung dari para expert di bidang Software engineering dan IoT.",
-                              style: TextStyle(fontSize: 7, height: 1.7),
+                              style: TextStyle(fontSize: 12, height: 1.7),
                               maxLines: 5,
-                              maxFontSize: 7,
                               minFontSize: 3,
+                              textAlign: TextAlign.justify,
                             ),
                           ],
                         ),
@@ -60,12 +60,7 @@ class HomePage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Expanded(
-                    child: Image.asset(
-                      "assets/images/mereka-humic.png",
-                      width: 200,
-                    ),
-                  ),
+                  Image.asset("assets/images/mereka-humic.png", width: 150),
                   const SizedBox(width: 15),
                   const Expanded(
                     child: Column(
@@ -73,7 +68,7 @@ class HomePage extends StatelessWidget {
                       children: [
                         AutoSizeText(
                           "Kata mereka tentang",
-                          style: TextStyle(fontSize: 9),
+                          style: TextStyle(fontSize: 12),
                           maxLines: 1,
                           maxFontSize: 12,
                           minFontSize: 3,
@@ -82,26 +77,26 @@ class HomePage extends StatelessWidget {
                         AutoSizeText(
                           "Humic Engineering",
                           style: TextStyle(
-                            fontSize: 12,
+                            fontSize: 14,
                             fontWeight: FontWeight.w800,
                           ),
-                          maxLines: 1,
-                          maxFontSize: 12,
+                          // maxLines: 1,
                           minFontSize: 3,
                         ),
                         SizedBox(height: 5),
                         AutoSizeText(
                           "Humic engineering menjadi tempat yang menyenangkan bagi saya, karena dapat meningkatkan kemampuan saya dalam melakukan desain UI/UX. Banyak pembelajaran yang berharga serta memiliki lingkungan yang suportif",
-                          style: TextStyle(fontSize: 7, height: 1.7),
+                          style: TextStyle(fontSize: 10, height: 1.7),
                           maxLines: 5,
-                          maxFontSize: 7,
+                          // maxFontSize: 7,
                           minFontSize: 3,
+                          textAlign: TextAlign.justify,
                         ),
                         SizedBox(height: 5),
                         Text(
                           "Indra, Humic Internship Batch 3 2025 ",
                           style: TextStyle(
-                            fontSize: 7,
+                            fontSize: 8,
                             fontWeight: FontWeight.w800,
                             color: redHumic,
                           ),
