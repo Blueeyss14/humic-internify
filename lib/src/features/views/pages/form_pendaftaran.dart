@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:humic_internify/src/features/viewmodels/form_controller.dart';
+import 'package:humic_internify/src/features/viewmodels/form_picker_viewmodel.dart';
+import 'package:humic_internify/src/shared/components/attach_file.dart';
 import 'package:humic_internify/src/shared/components/form_texfield.dart';
 import 'package:humic_internify/src/shared/components/humic_button.dart';
 import 'package:humic_internify/src/styles/custom_color.dart';
@@ -11,6 +13,7 @@ class FormPendaftaran extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final form = Get.find<FormController>();
+    final formPicker = Get.find<FormPickerViewmodel>();
     return Scaffold(
       backgroundColor: whiteHumic,
       body: Obx(
@@ -173,6 +176,22 @@ class FormPendaftaran extends StatelessWidget {
                               form.isMotivationError.value ? Icons.error : null,
                         ),
 
+                        ///CV
+                        const SizedBox(height: 20),
+                        AttachFile(
+                          onTap: () => formPicker.pickFile(),
+                          title: "CV (Curiculum Vitae)",
+                          fileName: formPicker.fileNames.value,
+                        ),
+
+                        ///PORTFOLIO
+                        const SizedBox(height: 10),
+                        AttachFile(
+                          onTap: () => formPicker.pickFile(),
+                          title: "Portofolio",
+                          fileName: formPicker.fileNames.value,
+                        ),
+
                         const SizedBox(height: 20),
                         GestureDetector(
                           onTap: form.checkIsAgree,
@@ -208,7 +227,7 @@ class FormPendaftaran extends StatelessWidget {
                               const SizedBox(width: 10),
                               const Expanded(
                                 child: Padding(
-                                  padding: EdgeInsets.only(right: 5),
+                                  padding: EdgeInsets.only(right: 0),
                                   child: Text.rich(
                                     TextSpan(
                                       children: [
@@ -239,7 +258,7 @@ class FormPendaftaran extends StatelessWidget {
 
                         const SizedBox(height: 40),
                         HumicButton(
-                          margin: const EdgeInsets.only(right: 15),
+                          margin: const EdgeInsets.only(right: 10),
                           padding: const EdgeInsets.all(10),
                           onTap: () => form.submitForm(),
                           color:
@@ -257,6 +276,7 @@ class FormPendaftaran extends StatelessWidget {
                             ),
                           ),
                         ),
+
                         const SizedBox(height: 10),
                       ],
                     ),
