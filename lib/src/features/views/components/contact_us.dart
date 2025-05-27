@@ -31,35 +31,36 @@ class ContactUs extends StatelessWidget {
           children: [
             const Icon(Iconsax.location),
             const SizedBox(width: 5),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  "Gedung Kultubai Selatan, Blok F",
-                  style: TextStyle(height: 2, fontWeight: FontWeight.bold),
-                ),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    "Gedung Kultubai Selatan, Blok F",
+                    style: TextStyle(height: 2, fontWeight: FontWeight.bold),
+                  ),
 
-                const Text(
-                  "Jl. Telekomunikasi, Terusan Buah Batu Bandung Jawa Barat, Indonesia, 40257.",
-                  style: TextStyle(height: 2),
-                ),
-
-                const SizedBox(height: 10),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: List.generate(
-                      socials.length,
-                      (index) => HumicCircle(
-                        margin: const EdgeInsets.only(right: 10),
-                        border: Border.all(width: 2),
-                        size: 45,
-                        child: Image.asset(socials[index]['icon'], width: 18),
+                  const Text(
+                    "Jl. Telekomunikasi, Terusan Buah Batu Bandung Jawa Barat, Indonesia, 40257.",
+                    style: TextStyle(height: 2),
+                  ),
+                  const SizedBox(height: 10),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: List.generate(
+                        socials.length,
+                        (index) => HumicCircle(
+                          margin: const EdgeInsets.only(right: 10),
+                          border: Border.all(width: 2),
+                          size: 45,
+                          child: Image.asset(socials[index]['icon'], width: 18),
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ],
         ),
