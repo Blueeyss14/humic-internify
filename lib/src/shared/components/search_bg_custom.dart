@@ -256,7 +256,7 @@ class SearchBgCustom extends StatelessWidget {
                                     triggerAnimation
                                         ? ValueKey<int>(currentIndex)
                                         : const ValueKey<String>('static'),
-                                padding: const EdgeInsets.only(top: 10),
+                                padding: const EdgeInsets.only(top: 5),
                                 child: const SearchTextfieldCustom(),
                               )
                               : const SizedBox.shrink(),
