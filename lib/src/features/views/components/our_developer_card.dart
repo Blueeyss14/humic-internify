@@ -2,7 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
-import 'package:humic_internify/src/features/viewmodels/carousel_scroll.dart';
+import 'package:humic_internify/src/features/viewmodels/developer_viewmodel.dart';
 import 'package:humic_internify/src/shared/components/humic_button.dart';
 import 'package:humic_internify/src/styles/custom_color.dart';
 
@@ -11,51 +11,7 @@ class OurDeveloperCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final carousel = Get.find<CarouselScroll>();
-    List<Map<String, dynamic>> developers = [
-      {
-        "name": "Taufik",
-        "image": "assets/images/pexels-pixabay-53594.jpg",
-        "position": "Project Manager",
-        "Link": "/",
-      },
-      {
-        "name": "Reinhard",
-        "image": "assets/images/reinhard.jpg",
-        "position": "Web Designer",
-        "Link": "/",
-      },
-      {
-        "name": "Shafa",
-        "image": "assets/images/shafa.jpg",
-        "position": "Mobile Designer",
-        "Link": "/",
-      },
-      {
-        "name": "Faried",
-        "image": "assets/images/faried.jpg",
-        "position": "Frontend Developer",
-        "Link": "/",
-      },
-      {
-        "name": "Delkano",
-        "image": "assets/images/dell.png",
-        "position": "Mobile Developer",
-        "Link": "/",
-      },
-      {
-        "name": "Yohanes",
-        "image": "assets/images/yohanes.jpg",
-        "position": "Backend Developer",
-        "Link": "/",
-      },
-      {
-        "name": "Reihan",
-        "image": "assets/images/reihan.jpg",
-        "position": "Backend Developer",
-        "Link": "/",
-      },
-    ];
+    final dev = Get.find<DeveloperViewmodel>();
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,11 +24,11 @@ class OurDeveloperCard extends StatelessWidget {
         ),
         const SizedBox(height: 10),
         SingleChildScrollView(
-          controller: carousel.scrollController,
+          controller: dev.scrollController,
           scrollDirection: Axis.horizontal,
           child: Row(
             children: List.generate(
-              developers.length,
+              dev.devModel.length,
               (index) => Container(
                 margin: const EdgeInsets.all(15),
                 padding: const EdgeInsets.all(15),
@@ -100,13 +56,13 @@ class OurDeveloperCard extends StatelessWidget {
                         color: Colors.grey,
                       ),
                       child: Image.asset(
-                        developers[index]['image'],
+                        dev.devModel[index].image,
                         fit: BoxFit.cover,
                       ),
                     ),
                     const SizedBox(height: 10),
                     AutoSizeText(
-                      developers[index]['name'],
+                      dev.devModel[index].name,
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 1,
@@ -117,7 +73,7 @@ class OurDeveloperCard extends StatelessWidget {
 
                     const SizedBox(height: 2),
                     AutoSizeText(
-                      developers[index]['position'],
+                      dev.devModel[index].position,
                       style: const TextStyle(fontSize: 1),
                       // maxLines: 2,
                     ),

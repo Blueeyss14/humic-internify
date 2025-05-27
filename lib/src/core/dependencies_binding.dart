@@ -1,7 +1,7 @@
 import 'package:get/instance_manager.dart';
 import 'package:humic_internify/src/features/viewmodels/about_viewmodel.dart';
 import 'package:humic_internify/src/features/viewmodels/bottombar_controller.dart';
-import 'package:humic_internify/src/features/viewmodels/carousel_scroll.dart';
+import 'package:humic_internify/src/features/viewmodels/developer_viewmodel.dart';
 import 'package:humic_internify/src/features/viewmodels/feedback_viewmodel.dart';
 import 'package:humic_internify/src/features/viewmodels/form_controller.dart';
 import 'package:humic_internify/src/features/viewmodels/form_picker_viewmodel.dart';
@@ -20,5 +20,5 @@ void initDependencies() {
   Get.put(LanguangeViewmodel());
   Get.put(FormController());
   Get.put(FormPickerViewmodel());
-  Get.put(CarouselScroll());
+  Get.put(DeveloperViewmodel());
 }
