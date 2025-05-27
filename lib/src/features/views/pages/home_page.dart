@@ -38,7 +38,6 @@ class HomePage extends StatelessWidget {
                                 fontWeight: FontWeight.w700,
                               ),
                               maxLines: 1,
-                              maxFontSize: 12,
                               minFontSize: 3,
                             ),
                             SizedBox(height: 10),
@@ -114,6 +113,7 @@ class HomePage extends StatelessWidget {
                 "Jelajahi posisi yang kamu inginkan",
                 style: TextStyle(fontSize: 17, fontWeight: FontWeight.w700),
               ),
+              const SizedBox(height: 10),
 
               for (var group in posisitionController.groupedItems)
                 Row(

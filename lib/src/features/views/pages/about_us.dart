@@ -31,11 +31,11 @@ class AboutUs extends StatelessWidget {
                 "Kami bersama-sama menciptakan solusi yang memberdayakan bisnis dan meningkatkan efisiensi operasional.",
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
-                  fontSize: 10,
+                  fontSize: 12,
                   height: 2,
                 ),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 15),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(

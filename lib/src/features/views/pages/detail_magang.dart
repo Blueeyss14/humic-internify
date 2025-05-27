@@ -222,7 +222,7 @@ class DetailMagang extends StatelessWidget {
                             style: TextStyle(
                               color: whiteHumic,
                               fontWeight: FontWeight.bold,
-                              fontSize: 14,
+                              fontSize: 12,
                             ),
                           ),
                         ),

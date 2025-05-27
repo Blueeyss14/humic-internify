@@ -112,6 +112,7 @@ class SearchBgCustom extends StatelessWidget {
                                               .title,
                                           style: const TextStyle(
                                             color: Colors.white,
+                                            fontSize: 16,
                                           ),
                                         ),
                                         HumicCircle(
@@ -158,7 +159,7 @@ class SearchBgCustom extends StatelessWidget {
                                                   height: 2,
 
                                                   color: Colors.white,
-                                                  fontSize: 10,
+                                                  fontSize: 11,
                                                 ),
                                               ),
                                               Expanded(
@@ -167,7 +168,7 @@ class SearchBgCustom extends StatelessWidget {
                                                   style: const TextStyle(
                                                     height: 2,
                                                     color: Colors.white,
-                                                    fontSize: 10,
+                                                    fontSize: 11,
                                                   ),
                                                   textAlign: TextAlign.justify,
                                                 ),
@@ -181,7 +182,7 @@ class SearchBgCustom extends StatelessWidget {
                                         style: const TextStyle(
                                           height: 2,
                                           color: Colors.white,
-                                          fontSize: 10,
+                                          fontSize: 11,
                                         ),
                                         textAlign: TextAlign.justify,
                                       );
@@ -221,23 +222,23 @@ class SearchBgCustom extends StatelessWidget {
                             style: const TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
-                              fontSize: 13,
+                              fontSize: 14,
                             ),
-                            maxFontSize: 13,
+                            maxFontSize: 14,
                             maxLines: 1,
                             minFontSize: 3,
                           ),
-                        const SizedBox(height: 5),
+                        const SizedBox(height: 3),
                         if (bottomBar.currentIndex.value < text2.length)
                           AutoSizeText(
                             text2[bottomBar.currentIndex.value],
                             textAlign: TextAlign.center,
                             style: const TextStyle(
                               color: Colors.white,
-                              fontSize: 8,
+                              fontSize: 10,
                             ),
-                            maxFontSize: 8,
-                            maxLines: bottomBar.currentIndex.value == 1 ? 2 : 1,
+                            maxFontSize: 10,
+                            maxLines: 2,
                             minFontSize: 3,
                           ),
                       ],

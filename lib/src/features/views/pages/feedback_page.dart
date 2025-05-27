@@ -18,7 +18,7 @@ class FeedbackPage extends StatelessWidget {
           children: [
             const Text(
               "Frequently Asked Questions",
-              style: TextStyle(fontSize: 17, fontWeight: FontWeight.w700),
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
             ),
 
             const Padding(
@@ -37,9 +37,7 @@ class FeedbackPage extends StatelessWidget {
                     ),
                   ],
                 ),
-                maxLines: 3,
-                maxFontSize: 10,
-                minFontSize: 3,
+                style: TextStyle(fontSize: 10),
               ),
             ),
 
@@ -48,11 +46,8 @@ class FeedbackPage extends StatelessWidget {
               GestureDetector(
                 onTap: () => feedbackController.selectFeedback(i),
                 child: Container(
-                  margin: const EdgeInsets.only(top: 12),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 10,
-                    vertical: 10,
-                  ),
+                  margin: const EdgeInsets.only(top: 20),
+                  padding: const EdgeInsets.all(12),
                   width: double.infinity,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
@@ -71,7 +66,7 @@ class FeedbackPage extends StatelessWidget {
                                 style: const TextStyle(
                                   color: redHumic,
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 9,
+                                  fontSize: 12,
                                 ),
                               ),
                             ),
@@ -92,8 +87,9 @@ class FeedbackPage extends StatelessWidget {
                                     feedbackController.feedback[i].reply,
                                     style: const TextStyle(
                                       color: redHumic,
-                                      fontSize: 8,
+                                      fontSize: 10,
                                     ),
+                                    textAlign: TextAlign.justify,
                                   ),
                                 )
                                 : const SizedBox.shrink(),
