@@ -29,17 +29,15 @@ class HumicAppbar extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Hero(
-                  transitionOnUserGestures: true,
-                  tag: 'humic',
-                  child: Image.asset(
-                    bottomBar.currentIndex.value != 2
-                        ? "assets/images/white-logo.png"
-                        : "assets/images/black-logo.png",
-                    width: 80,
-                    height: 35,
-                  ),
+                Image.asset(
+                  bottomBar.currentIndex.value != 2
+                      ? "assets/images/white-logo.png"
+                      : "assets/images/black-logo.png",
+                  width: 80,
+                  height: 35,
                 ),
+
+                /*
                 PopupMenuButton<int>(
                   color: whiteHumic,
                   onSelected: (index) => language.chooseLanguage(index),
@@ -96,6 +94,31 @@ class HumicAppbar extends StatelessWidget {
                                   : whiteHumic,
                         ),
                       ],
+                    ),
+                  ),
+                ),
+                */
+                AnimatedContainer(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 5,
+                  ),
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color:
+                          bottomBar.currentIndex.value == 2
+                              ? blackHumic1
+                              : whiteHumic,
+                    ),
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  duration: const Duration(milliseconds: 300),
+                  child: SizedBox(
+                    height: 12,
+                    width: 18,
+                    child: Image.asset(
+                      language.data[language.selectedIndex.value].flag,
+                      fit: BoxFit.cover,
                     ),
                   ),
                 ),

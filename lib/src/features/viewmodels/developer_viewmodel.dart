@@ -45,7 +45,7 @@ class DeveloperViewmodel extends GetxController {
     List<Map<String, dynamic>> developers = [
       {
         "name": "Taufik",
-        "image": "assets/images/pexels-pixabay-53594.jpg",
+        "image": "assets/images/taufik.png",
         "position": "Project Manager",
         "Link": "/",
       },

@@ -237,21 +237,29 @@ class PosisitionViewmodel extends GetxController {
   void clickToFilterItem(String category) {
     if (activeCategory.value.toLowerCase() == category.toLowerCase()) {
       activeCategory.value = '';
-      resetFilter();
     } else {
       activeCategory.value = category;
-      filteredData.value =
-          data
-              .where(
-                (item) => item.category.toLowerCase() == category.toLowerCase(),
-              )
-              .toList();
-      itemCount.value = filteredData.length;
     }
+    applyFilters();
   }
 
-  void resetFilter() {
-    filteredData.value = data;
-    itemCount.value = data.length;
+  void searchItem(String query) {
+    applyFilters(query);
+  }
+
+  void applyFilters([String query = '']) {
+    final lowerQuery = query.toLowerCase();
+    filteredData.value =
+        data.where((item) {
+          final matchesCategory =
+              activeCategory.value.isEmpty ||
+              item.category.toLowerCase() == activeCategory.value.toLowerCase();
+          final matchesSearch =
+              item.jobTitle.toLowerCase().contains(lowerQuery) ||
+              item.category.toLowerCase().contains(lowerQuery);
+          return matchesCategory && matchesSearch;
+        }).toList();
+
+    itemCount.value = filteredData.length;
   }
 }

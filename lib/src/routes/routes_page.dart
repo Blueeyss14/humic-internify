@@ -17,7 +17,7 @@ class RoutesPage {
       name: RoutesName.home,
       page: () => const HomeApp(),
       transition: Transition.fade,
-      transitionDuration: const Duration(seconds: 3),
+      transitionDuration: const Duration(seconds: 1),
     ),
 
     GetPage(

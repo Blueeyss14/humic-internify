@@ -195,64 +195,67 @@ class FormPendaftaran extends StatelessWidget {
                         const SizedBox(height: 20),
                         GestureDetector(
                           onTap: form.checkIsAgree,
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                alignment: Alignment.center,
-                                width: 25,
-                                height: 25,
-                                decoration: BoxDecoration(
-                                  border: Border.all(
+                          child: Container(
+                            color: Colors.transparent,
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  alignment: Alignment.center,
+                                  width: 25,
+                                  height: 25,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color:
+                                          form.isAgree.value
+                                              ? checkColor
+                                              : blackHumic1,
+                                    ),
+                                    borderRadius: BorderRadius.circular(5),
                                     color:
                                         form.isAgree.value
                                             ? checkColor
-                                            : blackHumic1,
+                                            : Colors.transparent,
                                   ),
-                                  borderRadius: BorderRadius.circular(5),
-                                  color:
+                                  child:
                                       form.isAgree.value
-                                          ? checkColor
-                                          : Colors.transparent,
+                                          ? const Icon(
+                                            Icons.check,
+                                            color: Colors.white,
+                                          )
+                                          : const SizedBox.shrink(),
                                 ),
-                                child:
-                                    form.isAgree.value
-                                        ? const Icon(
-                                          Icons.check,
-                                          color: Colors.white,
-                                        )
-                                        : const SizedBox.shrink(),
-                              ),
 
-                              const SizedBox(width: 10),
-                              const Expanded(
-                                child: Padding(
-                                  padding: EdgeInsets.only(right: 0),
-                                  child: Text.rich(
-                                    TextSpan(
-                                      children: [
-                                        TextSpan(
-                                          text:
-                                              "Dengan melanjutkan, saya mengonfirmasi bahwa saya telah membaca secara seksama dan menyetujui ",
-                                        ),
-                                        TextSpan(
-                                          text: "Persyaratan Layanan ",
-                                          style: TextStyle(color: redHumic),
-                                        ),
-                                        TextSpan(text: "dan "),
-                                        TextSpan(
-                                          text: "Kebijakan Privasi.",
-                                          style: TextStyle(color: redHumic),
-                                        ),
-                                      ],
+                                const SizedBox(width: 10),
+                                const Expanded(
+                                  child: Padding(
+                                    padding: EdgeInsets.only(right: 0),
+                                    child: Text.rich(
+                                      TextSpan(
+                                        children: [
+                                          TextSpan(
+                                            text:
+                                                "Dengan melanjutkan, saya mengonfirmasi bahwa saya telah membaca secara seksama dan menyetujui ",
+                                          ),
+                                          TextSpan(
+                                            text: "Persyaratan Layanan ",
+                                            style: TextStyle(color: redHumic),
+                                          ),
+                                          TextSpan(text: "dan "),
+                                          TextSpan(
+                                            text: "Kebijakan Privasi.",
+                                            style: TextStyle(color: redHumic),
+                                          ),
+                                        ],
+                                      ),
+                                      textAlign: TextAlign.justify,
+                                      style: TextStyle(fontSize: 12),
                                     ),
-                                    textAlign: TextAlign.justify,
-                                    style: TextStyle(fontSize: 12),
                                   ),
                                 ),
-                              ),
-                              const SizedBox(width: 15),
-                            ],
+                                const SizedBox(width: 15),
+                              ],
+                            ),
                           ),
                         ),
 
