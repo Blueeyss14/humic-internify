@@ -2,9 +2,9 @@ import 'package:get/get.dart';
 
 class ProjectModel {
   String image;
-  String description;
+  String title;
 
-  ProjectModel(this.image, this.description);
+  ProjectModel(this.image, this.title);
 
   factory ProjectModel.toJson(Map<String, dynamic> json) {
     return ProjectModel(json["image"], json["description"]);
@@ -27,28 +27,31 @@ class ProjectViewmodel extends GetxController {
     List<Map<String, dynamic>> datas = [
       {
         "image": "assets/images/bg1.png",
-        "description": "Pengembangan Aplikasi Penerimaan Magang Humic",
+        "title":
+            "Produk Akhir Magang: Solusi IoT untuk Pemantauan Kesehatan yang Efektif dan Real-Time",
       },
       {
         "image": "assets/images/bg1.png",
-        "description": "Pengembangan Aplikasi Penerimaan Magang Humic",
+        "title":
+            "Produk Akhir Magang: Solusi IoT untuk Pemantauan Kesehatan yang Efektif dan Real-Time",
       },
       {
         "image": "assets/images/bg2.png",
-        "description": "Pengembangan Aplikasi Penerimaan Magang Humic",
+        "title":
+            "Produk Akhir Magang: Solusi IoT untuk Pemantauan Kesehatan yang Efektif dan Real-Time",
       },
       {
         "image": "assets/images/bg2.png",
-        "description": "Pengembangan Aplikasi Penerimaan Magang Humic",
+        "title": "Pengembangan Aplikasi Penerimaan Magang Humic",
       },
       {
         "image": "assets/images/bg1.png",
-        "description": "Pengembangan Aplikasi Penerimaan Magang Humic",
+        "title": "Pengembangan Aplikasi Penerimaan Magang Humic",
       },
     ];
 
     data.value =
-        datas.map((e) => ProjectModel(e["image"], e["description"])).toList();
+        datas.map((e) => ProjectModel(e["image"], e["title"])).toList();
   }
 
   List<ProjectModel> get paginatedData {

@@ -99,13 +99,15 @@ class HasilProdukCard extends StatelessWidget {
                     child: Container(
                       alignment: Alignment.center,
                       width: double.infinity,
-                      child: const Text(
-                        "Pengembangan Aplikasi Penerimaan Magang Humic",
-                        style: TextStyle(
+                      child: Text(
+                        project.paginatedData[index].title,
+                        style: const TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.bold,
+                          height: 1.8,
                         ),
                         textAlign: TextAlign.center,
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                   ),
