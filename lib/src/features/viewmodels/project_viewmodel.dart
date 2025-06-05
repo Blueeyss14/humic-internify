@@ -17,6 +17,8 @@ class ProjectViewmodel extends GetxController {
   var currentPage = 0.obs;
   final int itemsPerPage = 2;
 
+  var selectedItem = 0.obs;
+
   @override
   void onInit() {
     super.onInit();
@@ -30,24 +32,10 @@ class ProjectViewmodel extends GetxController {
         "title":
             "Produk Akhir Magang: Solusi IoT untuk Pemantauan Kesehatan yang Efektif dan Real-Time",
       },
-      {
-        "image": "assets/images/bg1.png",
-        "title":
-            "Produk Akhir Magang: Solusi IoT untuk Pemantauan Kesehatan yang Efektif dan Real-Time",
-      },
-      {
-        "image": "assets/images/bg2.png",
-        "title":
-            "Produk Akhir Magang: Solusi IoT untuk Pemantauan Kesehatan yang Efektif dan Real-Time",
-      },
-      {
-        "image": "assets/images/bg2.png",
-        "title": "Pengembangan Aplikasi Penerimaan Magang Humic",
-      },
-      {
-        "image": "assets/images/bg1.png",
-        "title": "Pengembangan Aplikasi Penerimaan Magang Humic",
-      },
+      {"image": "assets/images/bg1.png", "title": "test2"},
+      {"image": "assets/images/bg2.png", "title": "test3"},
+      {"image": "assets/images/bg2.png", "title": "test4"},
+      {"image": "assets/images/bg1.png", "title": "test5"},
     ];
 
     data.value =
@@ -71,5 +59,9 @@ class ProjectViewmodel extends GetxController {
     if (currentPage.value > 0) {
       currentPage.value--;
     }
+  }
+
+  void selectItem(int index) {
+    selectedItem.value = currentPage.value * itemsPerPage + index;
   }
 }

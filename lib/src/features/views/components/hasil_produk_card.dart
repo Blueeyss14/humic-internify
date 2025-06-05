@@ -2,8 +2,10 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:humic_internify/src/features/viewmodels/project_viewmodel.dart';
+import 'package:humic_internify/src/routes/routes_name.dart';
 import 'package:humic_internify/src/shared/components/humic_circle.dart';
 import 'package:humic_internify/src/styles/custom_color.dart';
 
@@ -62,56 +64,62 @@ class HasilProdukCard extends StatelessWidget {
           ///HASIL PRODUK
           ...List.generate(
             project.paginatedData.length,
-            (index) => Container(
-              margin: const EdgeInsets.only(bottom: 25),
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              width: double.infinity,
-              height: 210,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                color: whiteHumic,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withAlpha(60),
-                    blurRadius: 25,
-                    spreadRadius: 1,
-                    offset: const Offset(0, 4),
-                  ),
-                ],
-              ),
-              child: Column(
-                children: [
-                  const SizedBox(height: 20),
-                  Container(
-                    clipBehavior: Clip.antiAlias,
-                    height: 135,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.grey,
+            (index) => GestureDetector(
+              onTap: () {
+                project.selectItem(index);
+                Get.toNamed(RoutesName.detailProduk);
+              },
+              child: Container(
+                margin: const EdgeInsets.only(bottom: 25),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                width: double.infinity,
+                height: 210,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: whiteHumic,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withAlpha(60),
+                      blurRadius: 25,
+                      spreadRadius: 1,
+                      offset: const Offset(0, 4),
                     ),
-                    child: Image.asset(
-                      project.paginatedData[index].image,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  Flexible(
-                    child: Container(
-                      alignment: Alignment.center,
+                  ],
+                ),
+                child: Column(
+                  children: [
+                    const SizedBox(height: 20),
+                    Container(
+                      clipBehavior: Clip.antiAlias,
+                      height: 135,
                       width: double.infinity,
-                      child: Text(
-                        project.paginatedData[index].title,
-                        style: const TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                          height: 1.8,
-                        ),
-                        textAlign: TextAlign.center,
-                        overflow: TextOverflow.ellipsis,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.grey,
+                      ),
+                      child: Image.asset(
+                        project.paginatedData[index].image,
+                        fit: BoxFit.cover,
                       ),
                     ),
-                  ),
-                ],
+                    Flexible(
+                      child: Container(
+                        alignment: Alignment.center,
+                        width: double.infinity,
+                        child: Text(
+                          project.paginatedData[index].title,
+                          style: const TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                            height: 1.8,
+                          ),
+                          textAlign: TextAlign.center,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

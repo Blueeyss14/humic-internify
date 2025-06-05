@@ -2,6 +2,7 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:humic_internify/src/features/splash/splash_screen.dart';
 import 'package:humic_internify/src/features/views/home/home_app.dart';
 import 'package:humic_internify/src/features/views/pages/detail_magang.dart';
+import 'package:humic_internify/src/features/views/pages/detail_produk.dart';
 import 'package:humic_internify/src/features/views/pages/form_pendaftaran.dart';
 import 'package:humic_internify/src/routes/routes_name.dart';
 
@@ -30,6 +31,13 @@ class RoutesPage {
     GetPage(
       name: RoutesName.formPendaftaran,
       page: () => const FormPendaftaran(),
+      transition: Transition.leftToRight,
+      transitionDuration: const Duration(milliseconds: 100),
+    ),
+
+    GetPage(
+      name: RoutesName.detailProduk,
+      page: () => const DetailProduk(),
       transition: Transition.leftToRight,
       transitionDuration: const Duration(milliseconds: 100),
     ),
