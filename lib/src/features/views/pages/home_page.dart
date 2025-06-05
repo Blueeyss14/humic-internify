@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
                   Image.asset("assets/images/life-at-humic.png"),
                   Positioned.fill(
                     child: Container(
-                      margin: const EdgeInsets.only(right: 80),
+                      margin: const EdgeInsets.only(right: 50),
                       alignment: Alignment.centerLeft,
                       child: const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 20),
@@ -59,7 +59,7 @@ class HomePage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Image.asset("assets/images/mereka-humic.png", width: 150),
+                  Image.asset("assets/images/mereka-humic.png", width: 120),
                   const SizedBox(width: 15),
                   const Expanded(
                     child: Column(
@@ -86,7 +86,7 @@ class HomePage extends StatelessWidget {
                         AutoSizeText(
                           "Humic engineering menjadi tempat yang menyenangkan bagi saya, karena dapat meningkatkan kemampuan saya dalam melakukan desain UI/UX. Banyak pembelajaran yang berharga serta memiliki lingkungan yang suportif",
                           style: TextStyle(fontSize: 10, height: 1.7),
-                          maxLines: 5,
+                          maxLines: 6,
                           // maxFontSize: 7,
                           minFontSize: 3,
                           textAlign: TextAlign.justify,
@@ -95,7 +95,7 @@ class HomePage extends StatelessWidget {
                         Text(
                           "Indra, Humic Internship Batch 3 2025 ",
                           style: TextStyle(
-                            fontSize: 8,
+                            fontSize: 10,
                             fontWeight: FontWeight.w800,
                             color: redHumic,
                           ),
@@ -106,14 +106,14 @@ class HomePage extends StatelessWidget {
                 ],
               ),
 
-              const SizedBox(height: 30),
+              const SizedBox(height: 40),
 
               ///JELAJAHI POSISI
               const Text(
                 "Jelajahi posisi yang kamu inginkan",
-                style: TextStyle(fontSize: 17, fontWeight: FontWeight.w700),
+                style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 20),
 
               for (var group in posisitionController.groupedItems)
                 Row(
@@ -127,10 +127,10 @@ class HomePage extends StatelessWidget {
                         child: Container(
                           clipBehavior: Clip.antiAlias,
                           margin: const EdgeInsets.symmetric(
-                            horizontal: 25,
+                            horizontal: 15,
                             vertical: 15,
                           ),
-                          height: 130,
+                          height: 150,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15),
                           ),
@@ -150,10 +150,10 @@ class HomePage extends StatelessWidget {
                                       .data[group[index]]
                                       .jobTitle,
                                   style: const TextStyle(
-                                    fontSize: 10,
+                                    fontSize: 12,
                                     color: Colors.white,
                                   ),
-                                  maxFontSize: 10,
+                                  maxFontSize: 12,
                                   minFontSize: 3,
                                   maxLines: 2,
                                 ),

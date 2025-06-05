@@ -36,6 +36,12 @@ class AboutViewmodel extends GetxController {
           "Becoming the science and technology excellent center on development remote health monitoring systems based on Internet of Things (IoT).",
           "Becoming the science and technology excellent center on Big Data Analytic.",
           "Becoming the science and technology excellent center on health development of Information and Communication Technology (ICT).",
+          "test",
+          "test",
+          "test",
+          "test",
+          "test",
+          "test",
         ],
       },
       {

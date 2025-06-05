@@ -12,7 +12,7 @@ class FeedbackPage extends StatelessWidget {
     final feedbackController = Get.find<FeedbackViewmodel>();
     return Obx(
       () => Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

@@ -78,7 +78,7 @@ class SearchBgCustom extends StatelessWidget {
                         bottomBar.currentIndex.value == 2
                             ? Padding(
                               padding: const EdgeInsets.symmetric(
-                                horizontal: 30,
+                                horizontal: 0,
                               ),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -86,10 +86,10 @@ class SearchBgCustom extends StatelessWidget {
                                   bottomBar.currentIndex.value,
                                 ),
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      vertical: 30,
-                                    ),
+                                  Container(
+                                    padding: const EdgeInsets.all(30),
+                                    width: double.infinity,
+
                                     child: Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
@@ -133,60 +133,89 @@ class SearchBgCustom extends StatelessWidget {
                                       ],
                                     ),
                                   ),
-                                  ...List.generate(
-                                    aboutBar
-                                        .data[aboutBar.itemClicked.value]
-                                        .description
-                                        .length,
-                                    (index) {
-                                      final text =
-                                          aboutBar
-                                              .data[aboutBar.itemClicked.value]
-                                              .description;
 
-                                      if (text.length > 1) {
-                                        return SizedBox(
-                                          width: double.infinity,
-                                          child: Row(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                '${index + 1}. ',
-                                                style: const TextStyle(
-                                                  height: 2,
+                                  Flexible(
+                                    child: Container(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 30,
+                                      ),
+                                      child: SingleChildScrollView(
+                                        child: Column(
+                                          children: [
+                                            ...List.generate(
+                                              aboutBar
+                                                  .data[aboutBar
+                                                      .itemClicked
+                                                      .value]
+                                                  .description
+                                                  .length,
+                                              (index) {
+                                                final text =
+                                                    aboutBar
+                                                        .data[aboutBar
+                                                            .itemClicked
+                                                            .value]
+                                                        .description;
 
-                                                  color: Colors.white,
-                                                  fontSize: 11,
-                                                ),
-                                              ),
-                                              Expanded(
-                                                child: Text(
+                                                if (text.length > 1) {
+                                                  return SizedBox(
+                                                    width: double.infinity,
+                                                    child: Row(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Text(
+                                                          '${index + 1}. ',
+                                                          style:
+                                                              const TextStyle(
+                                                                height: 2,
+
+                                                                color:
+                                                                    Colors
+                                                                        .white,
+                                                                fontSize: 12,
+                                                              ),
+                                                        ),
+                                                        Expanded(
+                                                          child: Text(
+                                                            text[index],
+                                                            style:
+                                                                const TextStyle(
+                                                                  height: 2,
+                                                                  color:
+                                                                      Colors
+                                                                          .white,
+                                                                  fontSize: 12,
+                                                                ),
+                                                            textAlign:
+                                                                TextAlign
+                                                                    .justify,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  );
+                                                }
+                                                return Text(
                                                   text[index],
                                                   style: const TextStyle(
                                                     height: 2,
                                                     color: Colors.white,
-                                                    fontSize: 11,
+                                                    fontSize: 12,
                                                   ),
                                                   textAlign: TextAlign.justify,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        );
-                                      }
-                                      return Text(
-                                        text[index],
-                                        style: const TextStyle(
-                                          height: 2,
-                                          color: Colors.white,
-                                          fontSize: 11,
+                                                );
+                                              },
+                                            ),
+                                            const SizedBox(height: 30),
+                                          ],
                                         ),
-                                        textAlign: TextAlign.justify,
-                                      );
-                                    },
+                                      ),
+                                    ),
                                   ),
                                 ],
                               ),
