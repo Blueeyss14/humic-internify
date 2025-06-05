@@ -60,9 +60,10 @@ class InternshipPage extends StatelessWidget {
                         ),
 
                         Container(
+                          alignment: Alignment.center,
                           padding: const EdgeInsets.symmetric(
-                            horizontal: 10,
-                            vertical: 5,
+                            horizontal: 8,
+                            vertical: 4,
                           ),
                           decoration: BoxDecoration(
                             color:
@@ -87,7 +88,7 @@ class InternshipPage extends StatelessWidget {
                                   positionController.filteredData[i].status
                                       ? greenHumic
                                       : redHumic,
-                              fontSize: 12,
+                              fontSize: 11,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -119,7 +120,7 @@ class InternshipPage extends StatelessWidget {
                                   child: Text(
                                     currPos[index],
                                     style: const TextStyle(
-                                      fontSize: 10,
+                                      fontSize: 11,
                                       fontWeight: FontWeight.bold,
                                       color: greyHumic,
                                     ),
