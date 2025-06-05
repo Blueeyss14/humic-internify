@@ -99,7 +99,7 @@ class DetailMagang extends StatelessWidget {
                                     child: Text(
                                       currPos[index],
                                       style: const TextStyle(
-                                        fontSize: 10,
+                                        fontSize: 11,
                                         fontWeight: FontWeight.bold,
                                         color: greyHumic,
                                       ),

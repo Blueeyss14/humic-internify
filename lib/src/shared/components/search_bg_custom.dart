@@ -177,7 +177,7 @@ class SearchBgCustom extends StatelessWidget {
                                                                 color:
                                                                     Colors
                                                                         .white,
-                                                                fontSize: 10,
+                                                                fontSize: 12,
                                                               ),
                                                         ),
                                                         Expanded(
@@ -189,7 +189,7 @@ class SearchBgCustom extends StatelessWidget {
                                                                   color:
                                                                       Colors
                                                                           .white,
-                                                                  fontSize: 10,
+                                                                  fontSize: 12,
                                                                 ),
                                                             textAlign:
                                                                 TextAlign

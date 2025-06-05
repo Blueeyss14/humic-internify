@@ -7,10 +7,10 @@ class HumicButton extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
   final EdgeInsetsGeometry? margin;
   final Color? color;
-  final Color? textColor;
   final void Function()? onTap;
   final Widget? child;
   final AlignmentGeometry? alignment;
+  final bool? isBorder;
   const HumicButton({
     super.key,
     this.width,
@@ -18,14 +18,15 @@ class HumicButton extends StatelessWidget {
     this.padding,
     this.margin,
     this.color,
-    this.textColor,
     this.onTap,
     this.child,
     this.alignment,
+    this.isBorder = false,
   });
 
   @override
   Widget build(BuildContext context) {
+    double border = 1.5;
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -33,9 +34,14 @@ class HumicButton extends StatelessWidget {
         width: width,
         height: height,
         padding:
-            padding ?? const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+            padding ??
+            EdgeInsets.symmetric(
+              horizontal: isBorder! ? (15 - border) : 15,
+              vertical: isBorder! ? (10 - border) : 10,
+            ),
         margin: margin,
         decoration: BoxDecoration(
+          border: isBorder! ? Border.all(color: redHumic, width: border) : null,
           borderRadius: BorderRadius.circular(6),
           color: color ?? redHumic,
         ),
