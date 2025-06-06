@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/state_manager.dart';
@@ -28,9 +29,11 @@ class SearchBgCustom extends StatelessWidget {
 
     List mediaQuery = [
       MediaQuery.of(context).size.height / 3,
-      MediaQuery.of(context).size.height / 3 + 40,
+      MediaQuery.of(context).size.height / 3 + 30,
       420.0,
     ];
+
+    final categorySize = (MediaQuery.of(context).size.height / 3) / 3 - 30;
 
     List categoryBar = ["Software Engineer", "Design", "Data/AI", "Multimedia"];
     return Obx(() {
@@ -226,7 +229,7 @@ class SearchBgCustom extends StatelessWidget {
               ],
             ),
           ),
-          Container(
+          SizedBox(
             // color: Colors.amber,
             width: double.infinity,
             height: MediaQuery.of(context).size.height / 3,
@@ -238,12 +241,48 @@ class SearchBgCustom extends StatelessWidget {
                   color: Colors.green,
                   width: double.infinity,
                   height: (MediaQuery.of(context).size.height / 3) / 3,
+                  child: AnimatedSwitcher(
+                    duration: const Duration(milliseconds: 300),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      key: ValueKey<int>(bottomBar.currentIndex.value),
+                      children: [
+                        if (bottomBar.currentIndex.value < text.length)
+                          AutoSizeText(
+                            text[bottomBar.currentIndex.value],
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14,
+                            ),
+                            maxFontSize: 14,
+                            maxLines: 1,
+                            minFontSize: 3,
+                          ),
+                        const SizedBox(height: 3),
+                        if (bottomBar.currentIndex.value < text2.length)
+                          AutoSizeText(
+                            text2[bottomBar.currentIndex.value],
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 10,
+                            ),
+                            maxFontSize: 10,
+                            maxLines: 2,
+                            minFontSize: 3,
+                          ),
+                      ],
+                    ),
+                  ),
                 ),
-                Container(
-                  alignment: Alignment.bottomCenter,
+                const SizedBox(height: 20),
+                SizedBox(
+                  // alignment: Alignment.bottomCenter,
                   // color: Colors.blue,
                   width: double.infinity,
-                  // height: (MediaQuery.of(context).size.height / 3) / 3,
+                  height: 40,
                   child: AnimatedSwitcher(
                     duration: const Duration(milliseconds: 300),
                     child:
@@ -253,16 +292,17 @@ class SearchBgCustom extends StatelessWidget {
                                   triggerAnimation
                                       ? ValueKey<int>(currentIndex)
                                       : const ValueKey<String>('static'),
-                              padding: const EdgeInsets.only(top: 5),
+                              padding: const EdgeInsets.only(top: 0),
                               child: const SearchTextfieldCustom(),
                             )
                             : const SizedBox.shrink(),
                   ),
                 ),
+                const SizedBox(height: 20),
                 Container(
-                  color: Colors.purple,
+                  // color: Colors.purple,
                   width: double.infinity,
-                  height: (MediaQuery.of(context).size.height / 3) / 3,
+                  height: 40,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
@@ -290,7 +330,9 @@ class SearchBgCustom extends StatelessWidget {
                                           margin: const EdgeInsets.symmetric(
                                             horizontal: 10,
                                           ),
-                                          padding: const EdgeInsets.all(10),
+                                          padding: const EdgeInsets.symmetric(
+                                            horizontal: 10,
+                                          ),
                                           decoration: BoxDecoration(
                                             borderRadius: BorderRadius.circular(
                                               10,
@@ -313,7 +355,7 @@ class SearchBgCustom extends StatelessWidget {
                                                     ? redHumic
                                                     : pinkHumic,
                                           ),
-                                          // height: 50,
+                                          height: 40,
                                           child: AutoSizeText(
                                             categoryBar[index],
                                             style: TextStyle(
@@ -357,40 +399,40 @@ class SearchBgCustom extends StatelessWidget {
           //   child: Stack(
           //     alignment: Alignment.center,
           //     children: [
-          //       AnimatedSwitcher(
-          //         duration: const Duration(milliseconds: 300),
-          //         child: Column(
-          //           key: ValueKey<int>(bottomBar.currentIndex.value),
-          //           children: [
-          //             if (bottomBar.currentIndex.value < text.length)
-          //               AutoSizeText(
-          //                 text[bottomBar.currentIndex.value],
-          //                 textAlign: TextAlign.center,
-          //                 style: const TextStyle(
-          //                   color: Colors.white,
-          //                   fontWeight: FontWeight.bold,
-          //                   fontSize: 14,
-          //                 ),
-          //                 maxFontSize: 14,
-          //                 maxLines: 1,
-          //                 minFontSize: 3,
-          //               ),
-          //             const SizedBox(height: 3),
-          //             if (bottomBar.currentIndex.value < text2.length)
-          //               AutoSizeText(
-          //                 text2[bottomBar.currentIndex.value],
-          //                 textAlign: TextAlign.center,
-          //                 style: const TextStyle(
-          //                   color: Colors.white,
-          //                   fontSize: 10,
-          //                 ),
-          //                 maxFontSize: 10,
-          //                 maxLines: 2,
-          //                 minFontSize: 3,
-          //               ),
-          //           ],
+          // AnimatedSwitcher(
+          //   duration: const Duration(milliseconds: 300),
+          //   child: Column(
+          //     key: ValueKey<int>(bottomBar.currentIndex.value),
+          //     children: [
+          //       if (bottomBar.currentIndex.value < text.length)
+          //         AutoSizeText(
+          //           text[bottomBar.currentIndex.value],
+          //           textAlign: TextAlign.center,
+          //           style: const TextStyle(
+          //             color: Colors.white,
+          //             fontWeight: FontWeight.bold,
+          //             fontSize: 14,
+          //           ),
+          //           maxFontSize: 14,
+          //           maxLines: 1,
+          //           minFontSize: 3,
           //         ),
-          //       ),
+          //       const SizedBox(height: 3),
+          //       if (bottomBar.currentIndex.value < text2.length)
+          //         AutoSizeText(
+          //           text2[bottomBar.currentIndex.value],
+          //           textAlign: TextAlign.center,
+          //           style: const TextStyle(
+          //             color: Colors.white,
+          //             fontSize: 10,
+          //           ),
+          //           maxFontSize: 10,
+          //           maxLines: 2,
+          //           minFontSize: 3,
+          //         ),
+          //     ],
+          //   ),
+          // ),
 
           // Align(
           //   alignment: Alignment.center,
