@@ -17,7 +17,9 @@ class HumicAppbar extends StatelessWidget {
 
     return Obx(
       () => AnimatedContainer(
+        // alignment: Alignment.topCenter,
         height: MediaQuery.of(context).size.height / 8,
+        // height: 80,
         color:
             bottomBar.currentIndex.value == 2
                 ? greyBlueHumic

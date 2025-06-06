@@ -24,7 +24,7 @@ class SearchTextfieldCustom extends StatelessWidget {
         ),
         // margin: const EdgeInsets.symmetric(horizontal: 40),
         width: MediaQuery.of(context).size.width,
-        height: 40,
+        height: 38,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
