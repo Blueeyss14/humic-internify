@@ -227,71 +227,43 @@ class SearchBgCustom extends StatelessWidget {
             ),
           ),
           Container(
-            alignment: Alignment.bottomCenter,
-            height: MediaQuery.of(context).size.height / 3,
+            // color: Colors.amber,
             width: double.infinity,
-            child: Container(
-              // color: Colors.amber,
-              margin: const EdgeInsets.symmetric(horizontal: 40),
-              alignment: Alignment.center,
-              width: MediaQuery.of(context).size.height,
-              height: MediaQuery.of(context).size.height / 5,
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  AnimatedSwitcher(
+            height: MediaQuery.of(context).size.height / 3,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Container(
+                  alignment: Alignment.bottomCenter,
+                  color: Colors.green,
+                  width: double.infinity,
+                  height: (MediaQuery.of(context).size.height / 3) / 3,
+                ),
+                Container(
+                  alignment: Alignment.bottomCenter,
+                  // color: Colors.blue,
+                  width: double.infinity,
+                  // height: (MediaQuery.of(context).size.height / 3) / 3,
+                  child: AnimatedSwitcher(
                     duration: const Duration(milliseconds: 300),
-                    child: Column(
-                      key: ValueKey<int>(bottomBar.currentIndex.value),
-                      children: [
-                        if (bottomBar.currentIndex.value < text.length)
-                          AutoSizeText(
-                            text[bottomBar.currentIndex.value],
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14,
-                            ),
-                            maxFontSize: 14,
-                            maxLines: 1,
-                            minFontSize: 3,
-                          ),
-                        const SizedBox(height: 3),
-                        if (bottomBar.currentIndex.value < text2.length)
-                          AutoSizeText(
-                            text2[bottomBar.currentIndex.value],
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 10,
-                            ),
-                            maxFontSize: 10,
-                            maxLines: 2,
-                            minFontSize: 3,
-                          ),
-                      ],
-                    ),
+                    child:
+                        currentIndex != 2
+                            ? Padding(
+                              key:
+                                  triggerAnimation
+                                      ? ValueKey<int>(currentIndex)
+                                      : const ValueKey<String>('static'),
+                              padding: const EdgeInsets.only(top: 5),
+                              child: const SearchTextfieldCustom(),
+                            )
+                            : const SizedBox.shrink(),
                   ),
-
-                  Align(
-                    alignment: Alignment.center,
-                    child: AnimatedSwitcher(
-                      duration: const Duration(milliseconds: 300),
-                      child:
-                          currentIndex != 2
-                              ? Padding(
-                                key:
-                                    triggerAnimation
-                                        ? ValueKey<int>(currentIndex)
-                                        : const ValueKey<String>('static'),
-                                padding: const EdgeInsets.only(top: 5),
-                                child: const SearchTextfieldCustom(),
-                              )
-                              : const SizedBox.shrink(),
-                    ),
-                  ),
-                  Column(
+                ),
+                Container(
+                  color: Colors.purple,
+                  width: double.infinity,
+                  height: (MediaQuery.of(context).size.height / 3) / 3,
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       AnimatedSwitcher(
@@ -367,10 +339,156 @@ class SearchBgCustom extends StatelessWidget {
                       ),
                     ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
+          // Container(
+          //   color: Colors.amber,
+          //   alignment: Alignment.bottomCenter,
+          //   height: MediaQuery.of(context).size.height / 3,
+          //   width: double.infinity,
+          // child: Container(
+          //   color: Colors.green,
+          //   margin: const EdgeInsets.symmetric(horizontal: 40),
+          //   alignment: Alignment.center,
+          //   width: MediaQuery.of(context).size.height,
+          //   height: MediaQuery.of(context).size.height / 5,
+          //   child: Stack(
+          //     alignment: Alignment.center,
+          //     children: [
+          //       AnimatedSwitcher(
+          //         duration: const Duration(milliseconds: 300),
+          //         child: Column(
+          //           key: ValueKey<int>(bottomBar.currentIndex.value),
+          //           children: [
+          //             if (bottomBar.currentIndex.value < text.length)
+          //               AutoSizeText(
+          //                 text[bottomBar.currentIndex.value],
+          //                 textAlign: TextAlign.center,
+          //                 style: const TextStyle(
+          //                   color: Colors.white,
+          //                   fontWeight: FontWeight.bold,
+          //                   fontSize: 14,
+          //                 ),
+          //                 maxFontSize: 14,
+          //                 maxLines: 1,
+          //                 minFontSize: 3,
+          //               ),
+          //             const SizedBox(height: 3),
+          //             if (bottomBar.currentIndex.value < text2.length)
+          //               AutoSizeText(
+          //                 text2[bottomBar.currentIndex.value],
+          //                 textAlign: TextAlign.center,
+          //                 style: const TextStyle(
+          //                   color: Colors.white,
+          //                   fontSize: 10,
+          //                 ),
+          //                 maxFontSize: 10,
+          //                 maxLines: 2,
+          //                 minFontSize: 3,
+          //               ),
+          //           ],
+          //         ),
+          //       ),
+
+          // Align(
+          //   alignment: Alignment.center,
+          //   child: AnimatedSwitcher(
+          //     duration: const Duration(milliseconds: 300),
+          //     child:
+          //         currentIndex != 2
+          //             ? Padding(
+          //               key:
+          //                   triggerAnimation
+          //                       ? ValueKey<int>(currentIndex)
+          //                       : const ValueKey<String>('static'),
+          //               padding: const EdgeInsets.only(top: 5),
+          //               child: const SearchTextfieldCustom(),
+          //             )
+          //             : const SizedBox.shrink(),
+          //   ),
+          // ),
+          // Column(
+          //   mainAxisAlignment: MainAxisAlignment.end,
+          //   children: [
+          //     AnimatedSwitcher(
+          //       duration: const Duration(milliseconds: 300),
+          //       child:
+          //           bottomBar.currentIndex.value == 1
+          //               ? SingleChildScrollView(
+          //                 key: ValueKey<int>(
+          //                   bottomBar.currentIndex.value,
+          //                 ),
+
+          //                 scrollDirection: Axis.horizontal,
+          //                 child: Row(
+          //                   children: List.generate(
+          //                     categoryBar.length,
+          //                     (index) => GestureDetector(
+          //                       onTap:
+          //                           () =>
+          //                               positionData.clickToFilterItem(
+          //                                 categoryBar[index],
+          //                               ),
+          //                       child: Container(
+          //                         alignment: Alignment.center,
+          //                         margin: const EdgeInsets.symmetric(
+          //                           horizontal: 10,
+          //                         ),
+          //                         padding: const EdgeInsets.all(10),
+          //                         decoration: BoxDecoration(
+          //                           borderRadius: BorderRadius.circular(
+          //                             10,
+          //                           ),
+          //                           border: Border.all(
+          //                             width: 2,
+          //                             color:
+          //                                 positionData
+          //                                             .activeCategory
+          //                                             .value ==
+          //                                         categoryBar[index]
+          //                                     ? redHumic
+          //                                     : pinkBorderHumic,
+          //                           ),
+          //                           color:
+          //                               positionData
+          //                                           .activeCategory
+          //                                           .value ==
+          //                                       categoryBar[index]
+          //                                   ? redHumic
+          //                                   : pinkHumic,
+          //                         ),
+          //                         // height: 50,
+          //                         child: AutoSizeText(
+          //                           categoryBar[index],
+          //                           style: TextStyle(
+          //                             fontSize: 2,
+          //                             fontWeight: FontWeight.w700,
+          //                             color:
+          //                                 positionData
+          //                                             .activeCategory
+          //                                             .value ==
+          //                                         categoryBar[index]
+          //                                     ? whiteHumic
+          //                                     : redHumic,
+          //                           ),
+          //                           maxLines: 1,
+          //                           // minFontSize: 0,
+          //                         ),
+          //                       ),
+          //                     ),
+          //                   ),
+          //                 ),
+          //               )
+          //               : const SizedBox.shrink(),
+          //     ),
+          //   ],
+          // ),
+          //     ],
+          //   ),
+          // ),
+          // ),
         ],
       );
     });
