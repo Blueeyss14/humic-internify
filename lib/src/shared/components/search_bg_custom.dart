@@ -294,7 +294,7 @@ class SearchBgCustom extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(height: 30),
-                          Container(
+                          SizedBox(
                             // color: Colors.blue,
                             width: double.infinity,
                             height: 38,
@@ -311,7 +311,7 @@ class SearchBgCustom extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(height: 20),
-                          Container(
+                          SizedBox(
                             // color: Colors.purple,
                             width: double.infinity,
                             height: categorySize,
