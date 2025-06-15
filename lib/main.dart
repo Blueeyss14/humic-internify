@@ -10,8 +10,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   initDependencies();
   // await GetStorage.init();
-  runApp(DevicePreview(enabled: true, builder: (context) => const MyApp()));
-  // runApp(const MyApp());
+  // runApp(DevicePreview(enabled: true, builder: (context) => const MyApp()));
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
