@@ -116,7 +116,8 @@ class ProjectViewmodel extends GetxController {
       error.value = "";
 
       final response = await http.get(
-        Uri.parse('http://localhost:3001/hasil-research-api/get'),
+        // Uri.parse('http://localhost:3001/hasil-research-api/get'),
+        Uri.parse('http://192.168.18.186:3001/hasil-research-api/get'),
         headers: {'Content-Type': 'application/json'},
       );
 

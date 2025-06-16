@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
@@ -97,8 +98,11 @@ class HasilProdukCard extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.grey,
                       ),
-                      child: Image.asset(
-                        project.paginatedData[index].image,
+                      child: CachedNetworkImage(
+                        imageUrl: project.paginatedData[index].image,
+                        errorWidget:
+                            (context, error, stackTrace) =>
+                                const SizedBox.shrink(),
                         fit: BoxFit.cover,
                       ),
                     ),
