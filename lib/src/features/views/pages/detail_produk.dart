@@ -266,23 +266,30 @@ class DetailProduk extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 20),
-                    const Text(
-                      "Program magang di berbagai perusahaan teknologi dan startup semakin menjadi wadah bagi para mahasiswa untuk melahirkan inovasi. Salah satu bidang yang kini banyak dilirik adalah Internet of Things (IoT) untuk sektor kesehatan. Melalui proyek akhir magang, para talenta muda ini berhasil mengembangkan berbagai solusi canggih. Salah satu yang menonjol adalah \"VitalSense IoT\", sebuah platform pemantauan kesehatan terintegrasi yang menunjukkan potensi besar dalam mentransformasi layanan kesehatan di masa depan.",
-                      style: TextStyle(fontSize: 12),
-                      textAlign: TextAlign.justify,
-                    ),
-                    const SizedBox(height: 20),
+                    // const Text(
+                    //   "Program magang di berbagai perusahaan teknologi dan startup semakin menjadi wadah bagi para mahasiswa untuk melahirkan inovasi. Salah satu bidang yang kini banyak dilirik adalah Internet of Things (IoT) untuk sektor kesehatan. Melalui proyek akhir magang, para talenta muda ini berhasil mengembangkan berbagai solusi canggih. Salah satu yang menonjol adalah \"VitalSense IoT\", sebuah platform pemantauan kesehatan terintegrasi yang menunjukkan potensi besar dalam mentransformasi layanan kesehatan di masa depan.",
+                    //   style: TextStyle(fontSize: 12),
+                    //   textAlign: TextAlign.justify,
+                    // ),
+                    // const SizedBox(height: 20),
 
-                    const Text(
-                      "Tujuan utama dikembangkannya aplikasi VitalSense IoT adalah untuk menyediakan sistem pemantauan kondisi vital pasien secara real-time dan dapat diakses dari jarak jauh. Aplikasi ini dirancang untuk mengumpulkan data penting seperti detak jantung, suhu tubuh, saturasi oksigen, dan laju pernapasan melalui sensor-sensor nirkabel. Tujuannya adalah agar tenaga medis dapat memantau pasien, terutama mereka yang berisiko tinggi atau dalam masa pemulihan di rumah, tanpa memerlukan kunjungan fisik yang konstan. Selain itu, aplikasi ini bertujuan memberikan peringatan dini (early warning) kepada tim medis atau keluarga jika terdeteksi adanya parameter vital yang keluar dari batas normal.",
-                      style: TextStyle(fontSize: 12),
-                      textAlign: TextAlign.justify,
-                    ),
-                    const SizedBox(height: 20),
+                    // const Text(
+                    //   "Tujuan utama dikembangkannya aplikasi VitalSense IoT adalah untuk menyediakan sistem pemantauan kondisi vital pasien secara real-time dan dapat diakses dari jarak jauh. Aplikasi ini dirancang untuk mengumpulkan data penting seperti detak jantung, suhu tubuh, saturasi oksigen, dan laju pernapasan melalui sensor-sensor nirkabel. Tujuannya adalah agar tenaga medis dapat memantau pasien, terutama mereka yang berisiko tinggi atau dalam masa pemulihan di rumah, tanpa memerlukan kunjungan fisik yang konstan. Selain itu, aplikasi ini bertujuan memberikan peringatan dini (early warning) kepada tim medis atau keluarga jika terdeteksi adanya parameter vital yang keluar dari batas normal.",
+                    //   style: TextStyle(fontSize: 12),
+                    //   textAlign: TextAlign.justify,
+                    // ),
+                    // const SizedBox(height: 20),
 
-                    const Text(
-                      "Dampak yang diharapkan dari implementasi VitalSense IoT sangat signifikan. Pertama, ia meningkatkan kualitas perawatan pasien dengan memungkinkan deteksi dini perburukan kondisi, sehingga intervensi medis bisa dilakukan lebih cepat dan berpotensi menyelamatkan nyawa. Kedua, aplikasi ini meningkatkan efisiensi tenaga medis, memungkinkan mereka memantau lebih banyak pasien dengan sumber daya yang ada. Ketiga, VitalSense IoT memberikan rasa aman dan kemandirian bagi pasien dan keluarganya, karena kondisi kesehatan dapat terpantau terus-menerus. Kehadiran inovasi seperti VitalSense IoT, yang lahir dari program magang, membuktikan kontribusi nyata generasi muda dalam menciptakan solusi teknologi tepat guna untuk sektor kesehatan.",
-                      style: TextStyle(fontSize: 12),
+                    // const Text(
+                    //   "Dampak yang diharapkan dari implementasi VitalSense IoT sangat signifikan. Pertama, ia meningkatkan kualitas perawatan pasien dengan memungkinkan deteksi dini perburukan kondisi, sehingga intervensi medis bisa dilakukan lebih cepat dan berpotensi menyelamatkan nyawa. Kedua, aplikasi ini meningkatkan efisiensi tenaga medis, memungkinkan mereka memantau lebih banyak pasien dengan sumber daya yang ada. Ketiga, VitalSense IoT memberikan rasa aman dan kemandirian bagi pasien dan keluarganya, karena kondisi kesehatan dapat terpantau terus-menerus. Kehadiran inovasi seperti VitalSense IoT, yang lahir dari program magang, membuktikan kontribusi nyata generasi muda dalam menciptakan solusi teknologi tepat guna untuk sektor kesehatan.",
+                    //   style: TextStyle(fontSize: 12),
+                    //   textAlign: TextAlign.justify,
+                    // ),
+
+                    ///fetch
+                    Text(
+                      project.data[project.selectedItem.value].deskripsi,
+                      style: const TextStyle(fontSize: 12),
                       textAlign: TextAlign.justify,
                     ),
                     const SizedBox(height: 30),
