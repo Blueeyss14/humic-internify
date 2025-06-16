@@ -1,0 +1,13 @@
+workflows:
+  ios-workflow:
+    name: iOS unsigned build
+    environment:
+      xcode: latest
+    scripts:
+      - name: Build unsigned IPA
+        script: |
+          flutter pub get
+          flutter build ios --no-codesign
+    artifacts:
+      - build/ios/iphoneos/Runner.app
+      - build/ios/ipa/*.ipa
