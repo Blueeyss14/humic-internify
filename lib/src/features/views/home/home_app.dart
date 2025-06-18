@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_rx/src/rx_workers/rx_workers.dart';
@@ -35,12 +34,27 @@ class HomeApp extends StatelessWidget {
       }
     });
 
-    return PopScope(
-      canPop: true,
-      onPopInvokedWithResult: (didPop, result) {
-        if (!didPop) {
-          SystemNavigator.pop();
-        }
+    return WillPopScope(
+      onWillPop: () async {
+        bool? exit = await showDialog(
+          context: context,
+          builder:
+              (context) => AlertDialog(
+                title: Text('Konfirmasi'),
+                content: Text('Apakah Anda yakin ingin keluar?'),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.of(context).pop(false),
+                    child: Text('Batal'),
+                  ),
+                  TextButton(
+                    onPressed: () => Navigator.of(context).pop(true),
+                    child: Text('Keluar'),
+                  ),
+                ],
+              ),
+        );
+        return exit ?? false;
       },
       child: Scaffold(
         resizeToAvoidBottomInset: false,
