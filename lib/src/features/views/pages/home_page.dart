@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
@@ -138,12 +139,13 @@ class HomePage extends StatelessWidget {
                           child: Stack(
                             fit: StackFit.expand,
                             children: [
-                              Image.asset(
-                                '${dotenv.env['API_BASE_URL']}${posisitionController.data[group[index]].image}',
+                              CachedNetworkImage(
+                                imageUrl:
+                                    '${dotenv.env['API_BASE_URL']}${posisitionController.data[group[index]].image}',
                                 fit: BoxFit.cover,
                               ),
                               Container(
-                                margin: const EdgeInsets.only(right: 50),
+                                margin: const EdgeInsets.only(right: 30),
                                 padding: const EdgeInsets.all(10),
                                 alignment: Alignment.bottomLeft,
                                 child: AutoSizeText(
