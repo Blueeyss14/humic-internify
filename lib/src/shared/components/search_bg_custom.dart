@@ -34,13 +34,8 @@ class SearchBgCustom extends StatelessWidget {
 
     double categorySize = 38;
 
-    // final positionController = Get.find<PosisitionViewmodel>();
-    List categoryBar = [
-      "Software Engineering",
-      "Design",
-      "Data/AI",
-      "Multimedia",
-    ];
+    final categoryBar = positionData.categoryList;
+
     return Obx(() {
       final animationPadding = bottomBar.currentIndex.value == 2 ? 30.0 : 0.0;
 

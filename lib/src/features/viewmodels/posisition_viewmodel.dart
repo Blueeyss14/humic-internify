@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:humic_internify/src/features/models/position_model.dart';
@@ -7,6 +6,8 @@ import 'package:http/http.dart' as http;
 
 class PosisitionViewmodel extends GetxController {
   var data = <PositionModel>[].obs;
+  var filteredData = <PositionModel>[].obs;
+  var categoryList = <String>[].obs;
 
   var isLoading = false.obs;
   var error = "".obs;
@@ -14,9 +15,8 @@ class PosisitionViewmodel extends GetxController {
   var itemCount = 0.obs;
   final int maxPerRow = 2;
   var indexPage = 0.obs;
-
-  var filteredData = <PositionModel>[].obs;
   var activeCategory = ''.obs;
+
   List<List<int>> get groupedItems {
     List<List<int>> groups = [];
     for (int i = 0; i < itemCount.value; i += maxPerRow) {
@@ -51,6 +51,11 @@ class PosisitionViewmodel extends GetxController {
             datas.map<PositionModel>((d) => PositionModel.fromJson(d)).toList();
         filteredData.value = data;
         itemCount.value = data.length;
+
+        // ambil kategori unik dari data
+        final seen = <String>{};
+        categoryList.value =
+            data.map((e) => e.category).where((cat) => seen.add(cat)).toList();
       } else {
         error.value = "Failed to load data. Status: ${response.statusCode}";
       }
@@ -61,12 +66,12 @@ class PosisitionViewmodel extends GetxController {
     }
   }
 
-  ///index page
+  /// index page
   void selectPage(int index) {
     indexPage.value = index;
   }
 
-  ///filter item
+  /// filter item berdasarkan kategori
   void clickToFilterItem(String category) {
     if (activeCategory.value.toLowerCase() == category.toLowerCase()) {
       activeCategory.value = '';

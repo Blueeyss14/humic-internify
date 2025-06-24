@@ -12,29 +12,31 @@ class BottomNavbar extends StatelessWidget {
     final bottomBar = Get.find<BottombarController>().icon;
 
     double padding = 30;
-    double screenWidth = MediaQuery.of(context).size.width;
-    double availableWidth = screenWidth - (padding * 2);
-    double itemWidth = availableWidth / bottomBar.length;
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        IntrinsicHeight(
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: padding),
-            width: screenWidth,
-            decoration: const BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.vertical(top: Radius.circular(35)),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black12,
-                  blurRadius: 20,
-                  offset: Offset(0, -4),
-                ),
-              ],
-            ),
-            child: Obx(
-              () => Stack(
+
+    return Obx(() {
+      double screenWidth = MediaQuery.of(context).size.width;
+      double availableWidth = screenWidth - (padding * 2);
+      double itemWidth = availableWidth / bottomBar.length;
+
+      return Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          IntrinsicHeight(
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: padding),
+              width: screenWidth,
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.vertical(top: Radius.circular(35)),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black12,
+                    blurRadius: 20,
+                    offset: Offset(0, -4),
+                  ),
+                ],
+              ),
+              child: Stack(
                 children: [
                   Row(
                     children: List.generate(
@@ -100,8 +102,8 @@ class BottomNavbar extends StatelessWidget {
               ),
             ),
           ),
-        ),
-      ],
-    );
+        ],
+      );
+    });
   }
 }

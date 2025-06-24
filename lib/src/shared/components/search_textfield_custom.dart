@@ -60,6 +60,7 @@ class SearchTextfieldCustom extends StatelessWidget {
             GestureDetector(
               onTap: () {
                 bottombarController.currentIndex.value = 1;
+                bottombarController.fetchIcon(1);
               },
               child: Container(
                 padding: const EdgeInsets.all(5),
