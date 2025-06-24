@@ -17,53 +17,53 @@ class HasilProdukCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final project = Get.find<ProjectViewmodel>();
     return Obx(() {
-      if (project.data.isEmpty && !project.isLoading.value) {
-        return Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const AutoSizeText(
-                  "Hasil Produk Research",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
-                  maxLines: 1,
-                  minFontSize: 3,
-                ),
+      return Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const AutoSizeText(
+                "Hasil Produk Research",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+                maxLines: 1,
+                minFontSize: 3,
+              ),
 
-                ///BUTTON
-                Row(
-                  children: [
-                    HumicCircle(
-                      onTap: () => project.prevPage(),
-                      size: 30,
-                      color: redHumic,
+              ///BUTTON
+              Row(
+                children: [
+                  HumicCircle(
+                    onTap: () => project.prevPage(),
+                    size: 30,
+                    color: redHumic,
+                    child: const Icon(
+                      Icons.arrow_back_ios_new_outlined,
+                      size: 12,
+                      color: whiteHumic,
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  HumicCircle(
+                    onTap: () => project.nextPage(),
+                    size: 30,
+                    color: redHumic,
+                    child: Transform.rotate(
+                      angle: 3.14,
                       child: const Icon(
                         Icons.arrow_back_ios_new_outlined,
                         size: 12,
                         color: whiteHumic,
                       ),
                     ),
-                    const SizedBox(width: 10),
-                    HumicCircle(
-                      onTap: () => project.nextPage(),
-                      size: 30,
-                      color: redHumic,
-                      child: Transform.rotate(
-                        angle: 3.14,
-                        child: const Icon(
-                          Icons.arrow_back_ios_new_outlined,
-                          size: 12,
-                          color: whiteHumic,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            const SizedBox(height: 30),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          const SizedBox(height: 30),
 
-            ///HASIL PRODUK
+          ///HASIL PRODUK
+          if (project.data.isNotEmpty)
             ...List.generate(
               project.paginatedData.length,
               (index) => GestureDetector(
@@ -127,12 +127,11 @@ class HasilProdukCard extends StatelessWidget {
                   ),
                 ),
               ),
-            ),
-          ],
-        );
-      } else {
-        return Text("No Data");
-      }
+            )
+          else
+            const Text("No Data"),
+        ],
+      );
     });
   }
 }
