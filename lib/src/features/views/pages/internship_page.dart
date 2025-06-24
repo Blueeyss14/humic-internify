@@ -23,7 +23,8 @@ class InternshipPage extends StatelessWidget {
             //clicked
             GestureDetector(
               onTap: () {
-                if (positionController.filteredData[i].status) {
+                if (positionController.filteredData[i].status.toLowerCase() ==
+                    'dibuka') {
                   positionController.selectPage(i);
                   Get.toNamed(RoutesName.detailMagang);
                 }
@@ -68,12 +69,16 @@ class InternshipPage extends StatelessWidget {
                           decoration: BoxDecoration(
                             color:
                                 positionController.filteredData[i].status
+                                            .toLowerCase() ==
+                                        'dibuka'
                                     ? softGreen
                                     : softRed,
                             border: Border.all(
                               width: 2,
                               color:
                                   positionController.filteredData[i].status
+                                              .toLowerCase() ==
+                                          'dibuka'
                                       ? greenHumic
                                       : redHumic,
                             ),
@@ -81,11 +86,15 @@ class InternshipPage extends StatelessWidget {
                           ),
                           child: Text(
                             positionController.filteredData[i].status
+                                        .toLowerCase() ==
+                                    'dibuka'
                                 ? "Opened"
                                 : "Closed",
                             style: TextStyle(
                               color:
                                   positionController.filteredData[i].status
+                                              .toLowerCase() ==
+                                          'dibuka'
                                       ? greenHumic
                                       : redHumic,
                               fontSize: 11,

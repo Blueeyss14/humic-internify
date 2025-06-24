@@ -1,4 +1,5 @@
 import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -51,9 +52,7 @@ class ProjectViewmodel extends GetxController {
   Future<String?> loginAndGetToken() async {
     try {
       final response = await http.post(
-        Uri.parse(
-          'https://internify-backend-ckdrhfhzbahnesdm.indonesiacentral-01.azurewebsites.net/auth-api/login',
-        ),
+        Uri.parse('${dotenv.env['API_BASE_URL']}/auth-api/login'),
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({
           'email': 'admin.test@gmail.com',
@@ -79,7 +78,7 @@ class ProjectViewmodel extends GetxController {
   Future<void> addData(String token) async {
     try {
       var uri = Uri.parse(
-        'https://internify-backend-ckdrhfhzbahnesdm.indonesiacentral-01.azurewebsites.net/hasil-research-api/add',
+        '${dotenv.env['API_BASE_URL']}/hasil-research-api/add',
       );
 
       var request = http.MultipartRequest('POST', uri);
@@ -115,9 +114,7 @@ class ProjectViewmodel extends GetxController {
       error.value = "";
 
       final response = await http.get(
-        Uri.parse(
-          'https://internify-backend-ckdrhfhzbahnesdm.indonesiacentral-01.azurewebsites.net/hasil-research-api/get',
-        ),
+        Uri.parse('${dotenv.env['API_BASE_URL']}/hasil-research-api/get'),
         headers: {'Content-Type': 'application/json'},
       );
 

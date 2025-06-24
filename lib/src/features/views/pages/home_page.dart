@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:humic_internify/src/features/viewmodels/posisition_viewmodel.dart';
 import 'package:humic_internify/src/features/views/pages/feedback_page.dart';
@@ -138,7 +139,7 @@ class HomePage extends StatelessWidget {
                             fit: StackFit.expand,
                             children: [
                               Image.asset(
-                                posisitionController.data[group[index]].image,
+                                '${dotenv.env['API_BASE_URL']}${posisitionController.data[group[index]].image}',
                                 fit: BoxFit.cover,
                               ),
                               Container(

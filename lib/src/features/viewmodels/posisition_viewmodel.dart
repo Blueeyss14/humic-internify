@@ -1,8 +1,15 @@
+import 'dart:convert';
+
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:humic_internify/src/features/models/position_model.dart';
+import 'package:http/http.dart' as http;
 
 class PosisitionViewmodel extends GetxController {
   var data = <PositionModel>[].obs;
+
+  var isLoading = false.obs;
+  var error = "".obs;
 
   var itemCount = 0.obs;
   final int maxPerRow = 2;
@@ -26,206 +33,32 @@ class PosisitionViewmodel extends GetxController {
     fetchPositionData();
   }
 
-  void fetchPositionData() {
-    List<Map<String, dynamic>> datas = [
-      {
-        "jobTitle": "Backend Developer",
-        "image": "assets/images/job.png",
-        "location": "Bandung",
-        "type": "Onsite",
-        "paidStatus": "Paid",
-        "category": "Software Engineer",
-        "status": true,
-        "description":
-            "Bertanggung jawab membantu tim desain dalam merancang antarmuka pengguna (UI) yang intuitif dan pengalaman pengguna (UX) yang optimal untuk aplikasi web maupun mobile, melalui wireframe, prototipe, dan desain visual.",
-        "qualification": {
-          "Mahasiswa Universitas Telkom (Semua Jurusan)",
-          "Kreatif dalam mendesain antarmuka dan pengalaman pengguna",
-          "Menguasai pembuatan prototipe menggunakan Figma dan Adobe Photoshop",
-          "Memiliki kemampuan ilustasi dan desain grafis",
-          "Memahami user research, wireframing, dan usability testing",
-        },
-        "benefit": {
-          "Sertifikasi Magang",
-          "Professional Networking",
-          "Self Improvement",
-          "Uang magang jika masuk ke dalam project",
-        },
-      },
-      {
-        "jobTitle": "Frontend Developer",
-        "image": "assets/images/job.png",
-        "location": "Bandung",
-        "type": "Onsite",
-        "paidStatus": "Paid",
-        "category": "Software Engineer",
-        "status": true,
+  void fetchPositionData() async {
+    try {
+      isLoading.value = true;
+      error.value = "";
 
-        "description":
-            "Bertanggung jawab membantu tim desain dalam merancang antarmuka pengguna (UI) yang intuitif dan pengalaman pengguna (UX) yang optimal untuk aplikasi web maupun mobile, melalui wireframe, prototipe, dan desain visual.",
-        "qualification": {
-          "Mahasiswa Universitas Telkom (Semua Jurusan)",
-          "Kreatif dalam mendesain antarmuka dan pengalaman pengguna",
-          "Menguasai pembuatan prototipe menggunakan Figma dan Adobe Photoshop",
-          "Memiliki kemampuan ilustasi dan desain grafis",
-          "Memahami user research, wireframing, dan usability testing",
-        },
-        "benefit": {
-          "Sertifikasi Magang",
-          "Professional Networking",
-          "Self Improvement",
-          "Uang magang jika masuk ke dalam project",
-        },
-      },
-      {
-        "jobTitle": "UI/UX Designer",
-        "image": "assets/images/job.png",
-        "location": "Bandung",
-        "type": "Onsite",
-        "paidStatus": "Paid",
-        "category": "Design",
-        "status": false,
-        "description":
-            "Bertanggung jawab membantu tim desain dalam merancang antarmuka pengguna (UI) yang intuitif dan pengalaman pengguna (UX) yang optimal untuk aplikasi web maupun mobile, melalui wireframe, prototipe, dan desain visual.",
-        "qualification": {
-          "Mahasiswa Universitas Telkom (Semua Jurusan)",
-          "Kreatif dalam mendesain antarmuka dan pengalaman pengguna",
-          "Menguasai pembuatan prototipe menggunakan Figma dan Adobe Photoshop",
-          "Memiliki kemampuan ilustasi dan desain grafis",
-          "Memahami user research, wireframing, dan usability testing",
-        },
-        "benefit": {
-          "Sertifikasi Magang",
-          "Professional Networking",
-          "Self Improvement",
-          "Uang magang jika masuk ke dalam project",
-        },
-      },
-      {
-        "jobTitle": "AI Developer",
-        "image": "assets/images/job.png",
-        "location": "Bandung",
-        "type": "Onsite",
-        "paidStatus": "Paid",
-        "category": "Data/AI",
-        "status": true,
-        "description":
-            "Bertanggung jawab membantu tim desain dalam merancang antarmuka pengguna (UI) yang intuitif dan pengalaman pengguna (UX) yang optimal untuk aplikasi web maupun mobile, melalui wireframe, prototipe, dan desain visual.",
-        "qualification": {
-          "Mahasiswa Universitas Telkom (Semua Jurusan)",
-          "Kreatif dalam mendesain antarmuka dan pengalaman pengguna",
-          "Menguasai pembuatan prototipe menggunakan Figma dan Adobe Photoshop",
-          "Memiliki kemampuan ilustasi dan desain grafis",
-          "Memahami user research, wireframing, dan usability testing",
-        },
-        "benefit": {
-          "Sertifikasi Magang",
-          "Professional Networking",
-          "Self Improvement",
-          "Uang magang jika masuk ke dalam project",
-        },
-      },
-      {
-        "jobTitle": "Content Writer",
-        "image": "assets/images/job.png",
-        "location": "Bandung",
-        "type": "Onsite",
-        "paidStatus": "Paid",
-        "category": "Design",
-        "status": false,
-        "description":
-            "Bertanggung jawab membantu tim desain dalam merancang antarmuka pengguna (UI) yang intuitif dan pengalaman pengguna (UX) yang optimal untuk aplikasi web maupun mobile, melalui wireframe, prototipe, dan desain visual.",
-        "qualification": {
-          "Mahasiswa Universitas Telkom (Semua Jurusan)",
-          "Kreatif dalam mendesain antarmuka dan pengalaman pengguna",
-          "Menguasai pembuatan prototipe menggunakan Figma dan Adobe Photoshop",
-          "Memiliki kemampuan ilustasi dan desain grafis",
-          "Memahami user research, wireframing, dan usability testing",
-        },
-        "benefit": {
-          "Sertifikasi Magang",
-          "Professional Networking",
-          "Self Improvement",
-          "Uang magang jika masuk ke dalam project",
-        },
-      },
-      {
-        "jobTitle": "Data Scientist",
-        "image": "assets/images/job.png",
-        "location": "Bandung",
-        "type": "Onsite",
-        "paidStatus": "Paid",
-        "category": "Data/AI",
-        "status": true,
-        "description":
-            "Bertanggung jawab membantu tim desain dalam merancang antarmuka pengguna (UI) yang intuitif dan pengalaman pengguna (UX) yang optimal untuk aplikasi web maupun mobile, melalui wireframe, prototipe, dan desain visual.",
-        "qualification": {
-          "Mahasiswa Universitas Telkom (Semua Jurusan)",
-          "Kreatif dalam mendesain antarmuka dan pengalaman pengguna",
-          "Menguasai pembuatan prototipe menggunakan Figma dan Adobe Photoshop",
-          "Memiliki kemampuan ilustasi dan desain grafis",
-          "Memahami user research, wireframing, dan usability testing",
-        },
-        "benefit": {
-          "Sertifikasi Magang",
-          "Professional Networking",
-          "Self Improvement",
-          "Uang magang jika masuk ke dalam project",
-        },
-      },
-      {
-        "jobTitle": "Multimedia Designer",
-        "image": "assets/images/job.png",
-        "location": "Bandung",
-        "type": "Onsite",
-        "paidStatus": "Paid",
-        "category": "Multimedia",
-        "status": false,
-        "description":
-            "Bertanggung jawab membantu tim desain dalam merancang antarmuka pengguna (UI) yang intuitif dan pengalaman pengguna (UX) yang optimal untuk aplikasi web maupun mobile, melalui wireframe, prototipe, dan desain visual.",
-        "qualification": {
-          "Mahasiswa Universitas Telkom (Semua Jurusan)",
-          "Kreatif dalam mendesain antarmuka dan pengalaman pengguna",
-          "Menguasai pembuatan prototipe menggunakan Figma dan Adobe Photoshop",
-          "Memiliki kemampuan ilustasi dan desain grafis",
-          "Memahami user research, wireframing, dan usability testing",
-        },
-        "benefit": {
-          "Sertifikasi Magang",
-          "Professional Networking",
-          "Self Improvement",
-          "Uang magang jika masuk ke dalam project",
-        },
-      },
-      {
-        "jobTitle": "Mobile Developer",
-        "image": "assets/images/job.png",
-        "location": "Bandung",
-        "type": "Onsite",
-        "paidStatus": "Paid",
-        "category": "Software Engineer",
-        "status": false,
-        "description":
-            "Bertanggung jawab membantu tim desain dalam merancang antarmuka pengguna (UI) yang intuitif dan pengalaman pengguna (UX) yang optimal untuk aplikasi web maupun mobile, melalui wireframe, prototipe, dan desain visual.",
-        "qualification": {
-          "Mahasiswa Universitas Telkom (Semua Jurusan)",
-          "Kreatif dalam mendesain antarmuka dan pengalaman pengguna",
-          "Menguasai pembuatan prototipe menggunakan Figma dan Adobe Photoshop",
-          "Memiliki kemampuan ilustasi dan desain grafis",
-          "Memahami user research, wireframing, dan usability testing",
-        },
-        "benefit": {
-          "Sertifikasi Magang",
-          "Professional Networking",
-          "Self Improvement",
-          "Uang magang jika masuk ke dalam project",
-        },
-      },
-    ];
+      final response = await http.get(
+        Uri.parse('${dotenv.env['API_BASE_URL']}/lowongan-magang-api/get'),
+        headers: {'Content-Type': 'application/json'},
+      );
 
-    data.value = datas.map((d) => PositionModel.toJson(d)).toList();
-    filteredData.value = data;
-    itemCount.value = data.length;
+      if (response.statusCode == 200) {
+        final result = jsonDecode(response.body);
+        final datas = result['data'];
+
+        data.value =
+            datas.map<PositionModel>((d) => PositionModel.fromJson(d)).toList();
+        filteredData.value = data;
+        itemCount.value = data.length;
+      } else {
+        error.value = "Failed to load data. Status: ${response.statusCode}";
+      }
+    } catch (e) {
+      error.value = "error: $e";
+    } finally {
+      isLoading.value = false;
+    }
   }
 
   ///index page

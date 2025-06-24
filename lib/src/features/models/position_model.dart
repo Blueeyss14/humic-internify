@@ -1,7 +1,7 @@
 class PositionModel {
   String jobTitle;
   String image;
-  bool status;
+  String status;
   String location;
   String type;
   String paidStatus;
@@ -23,18 +23,20 @@ class PositionModel {
     this.benefit,
   );
 
-  factory PositionModel.toJson(Map<String, dynamic> json) {
+  factory PositionModel.fromJson(Map<String, dynamic> json) {
     return PositionModel(
-      json['jobTitle'] ?? '',
-      json['image'] ?? '',
-      json['location'] ?? '',
-      json['status'] ?? false,
-      json['type'] ?? '',
-      json['paidStatus'] ?? '',
-      json['category'] ?? '',
-      json['description'] ?? '',
-      List<String>.from(json['qualification'] ?? []),
-      List<String>.from(json['benefit'] ?? []),
+      json['posisi'] ?? '',
+      json['image_path'] ?? '',
+      json['lokasi'] ?? '',
+      json['status_lowongan'] ?? '',
+      json['lokasi'] ?? '',
+      json['paid'] ?? '',
+      json['kelompok_peminatan'] ?? '',
+      json['jobdesk'] ?? '',
+      // List<String>.from(json['kualifikasi'] ?? []),
+      // List<String>.from(json['benefit'] ?? []),
+      [json['kualifikasi']?.toString() ?? ''],
+      [json['benefit']?.toString() ?? ''],
     );
   }
 }
