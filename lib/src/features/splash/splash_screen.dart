@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/instance_manager.dart';
 import 'package:get/state_manager.dart';
 import 'package:humic_internify/src/features/viewmodels/splash_screen_controller.dart';
-import 'package:humic_internify/src/styles/custom_color.dart';
+import 'package:humic_internify/src/shared/styles/custom_color.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});

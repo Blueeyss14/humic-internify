@@ -8,7 +8,7 @@ import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:humic_internify/src/features/viewmodels/project_viewmodel.dart';
 import 'package:humic_internify/src/routes/routes_name.dart';
 import 'package:humic_internify/src/shared/components/humic_circle.dart';
-import 'package:humic_internify/src/styles/custom_color.dart';
+import 'package:humic_internify/src/shared/styles/custom_color.dart';
 
 class HasilProdukCard extends StatelessWidget {
   const HasilProdukCard({super.key});

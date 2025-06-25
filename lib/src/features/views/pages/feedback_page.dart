@@ -2,7 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:humic_internify/src/features/viewmodels/feedback_viewmodel.dart';
-import 'package:humic_internify/src/styles/custom_color.dart';
+import 'package:humic_internify/src/shared/styles/custom_color.dart';
 
 class FeedbackPage extends StatelessWidget {
   const FeedbackPage({super.key});

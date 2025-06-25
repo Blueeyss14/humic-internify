@@ -4,7 +4,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:humic_internify/src/features/viewmodels/developer_viewmodel.dart';
 import 'package:humic_internify/src/shared/components/humic_button.dart';
-import 'package:humic_internify/src/styles/custom_color.dart';
+import 'package:humic_internify/src/shared/styles/custom_color.dart';
 
 class OurDeveloperCard extends StatelessWidget {
   const OurDeveloperCard({super.key});

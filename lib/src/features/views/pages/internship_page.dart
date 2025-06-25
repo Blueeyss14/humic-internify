@@ -5,7 +5,7 @@ import 'package:get/route_manager.dart';
 import 'package:humic_internify/src/features/viewmodels/posisition_viewmodel.dart';
 import 'package:humic_internify/src/routes/routes_name.dart';
 import 'package:humic_internify/src/shared/components/humic_loading.dart';
-import 'package:humic_internify/src/styles/custom_color.dart';
+import 'package:humic_internify/src/shared/styles/custom_color.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 class InternshipPage extends StatelessWidget {

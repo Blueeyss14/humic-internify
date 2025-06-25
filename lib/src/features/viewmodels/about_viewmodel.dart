@@ -21,7 +21,7 @@ class AboutViewmodel extends GetxController {
     fetchData();
   }
 
-  void fetchData() {
+  Future<void> fetchData() async {
     List<Map<String, dynamic>> datas = [
       {
         "title": "About Us",

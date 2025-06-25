@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:humic_internify/src/styles/custom_color.dart';
+import 'package:humic_internify/src/shared/styles/custom_color.dart';
 
 class HumicButton extends StatelessWidget {
   final double? width;

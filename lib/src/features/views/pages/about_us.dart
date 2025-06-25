@@ -3,7 +3,7 @@ import 'package:humic_internify/src/features/models/about_item_model.dart';
 import 'package:humic_internify/src/features/views/components/contact_us.dart';
 import 'package:humic_internify/src/features/views/components/hasil_produk_card.dart';
 import 'package:humic_internify/src/features/views/components/our_developer_card.dart';
-import 'package:humic_internify/src/styles/custom_color.dart';
+import 'package:humic_internify/src/shared/styles/custom_color.dart';
 
 class AboutUs extends StatelessWidget {
   const AboutUs({super.key});

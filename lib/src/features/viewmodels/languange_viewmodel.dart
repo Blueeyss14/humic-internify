@@ -23,7 +23,7 @@ class LanguangeViewmodel extends GetxController {
     fetchData();
   }
 
-  void fetchData() {
+  Future<void> fetchData() async {
     List<Map<String, dynamic>> datas = [
       {'country': 'Indonesia', 'flag': 'assets/images/indonesia.png'},
       {'country': 'English', 'flag': 'assets/images/united-states.png'},

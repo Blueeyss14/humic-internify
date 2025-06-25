@@ -102,11 +102,4 @@ class PosisitionViewmodel extends GetxController {
 
     itemCount.value = filteredData.length;
   }
-
-  Future<void> refreshData() async {
-    await fetchPositionData();
-    activeCategory.value = '';
-    indexPage.value = 0;
-    applyFilters();
-  }
 }

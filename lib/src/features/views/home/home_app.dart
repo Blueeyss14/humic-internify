@@ -12,7 +12,7 @@ import 'package:humic_internify/src/features/views/pages/home_page.dart';
 import 'package:humic_internify/src/features/views/pages/internship_page.dart';
 import 'package:humic_internify/src/shared/components/humic_appbar.dart';
 import 'package:humic_internify/src/shared/components/search_bg_custom.dart';
-import 'package:humic_internify/src/styles/custom_color.dart';
+import 'package:humic_internify/src/shared/styles/custom_color.dart';
 import 'package:humic_internify/test_page.dart';
 
 class HomeApp extends StatelessWidget {

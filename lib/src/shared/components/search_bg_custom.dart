@@ -7,7 +7,7 @@ import 'package:humic_internify/src/features/viewmodels/bottombar_controller.dar
 import 'package:humic_internify/src/features/viewmodels/posisition_viewmodel.dart';
 import 'package:humic_internify/src/shared/components/humic_circle.dart';
 import 'package:humic_internify/src/shared/components/search_textfield_custom.dart';
-import 'package:humic_internify/src/styles/custom_color.dart';
+import 'package:humic_internify/src/shared/styles/custom_color.dart';
 
 class SearchBgCustom extends StatelessWidget {
   const SearchBgCustom({super.key});

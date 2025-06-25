@@ -41,7 +41,7 @@ class DeveloperViewmodel extends GetxController {
     super.onClose();
   }
 
-  void fetchDeveloper() {
+  Future<void> fetchDeveloper() async {
     List<Map<String, dynamic>> developers = [
       {
         "name": "Taufik",

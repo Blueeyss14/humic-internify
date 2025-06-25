@@ -4,7 +4,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:humic_internify/src/features/viewmodels/project_viewmodel.dart';
-import 'package:humic_internify/src/styles/custom_color.dart';
+import 'package:humic_internify/src/shared/styles/custom_color.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
 class DetailProduk extends StatelessWidget {

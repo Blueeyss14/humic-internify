@@ -21,7 +21,7 @@ class FeedbackViewmodel extends GetxController {
     fetchFeedback();
   }
 
-  void fetchFeedback() {
+  Future<void> fetchFeedback() async {
     List<Map<String, dynamic>> datas = [
       {
         "feedback": "Bagaimana cara magang disini?",
