@@ -18,13 +18,13 @@ class MyHttpOverrides extends HttpOverrides {
 }
 
 void main() async {
-  await dotenv.load(fileName: ".env");
+  await dotenv.load(fileName: "assets/.env");
   WidgetsFlutterBinding.ensureInitialized();
   HttpOverrides.global = MyHttpOverrides();
   initDependencies();
   // await GetStorage.init();
-  runApp(DevicePreview(enabled: true, builder: (context) => const MyApp()));
-  // runApp(const MyApp());
+  // runApp(DevicePreview(enabled: true, builder: (context) => const MyApp()));
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {

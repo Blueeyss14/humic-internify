@@ -25,7 +25,7 @@ class PosisitionViewmodel extends GetxController {
     fetchPositionData();
   }
 
-  void fetchPositionData() async {
+  Future<void> fetchPositionData() async {
     try {
       isLoading.value = true;
       error.value = "";
@@ -101,5 +101,12 @@ class PosisitionViewmodel extends GetxController {
         }).toList();
 
     itemCount.value = filteredData.length;
+  }
+
+  Future<void> refreshData() async {
+    await fetchPositionData();
+    activeCategory.value = '';
+    indexPage.value = 0;
+    applyFilters();
   }
 }
