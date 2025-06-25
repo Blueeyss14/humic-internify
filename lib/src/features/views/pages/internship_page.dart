@@ -4,6 +4,7 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/route_manager.dart';
 import 'package:humic_internify/src/features/viewmodels/posisition_viewmodel.dart';
 import 'package:humic_internify/src/routes/routes_name.dart';
+import 'package:humic_internify/src/shared/components/humic_loading.dart';
 import 'package:humic_internify/src/styles/custom_color.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
@@ -15,8 +16,24 @@ class InternshipPage extends StatelessWidget {
     final positionController = Get.find<PosisitionViewmodel>();
 
     List icons = const [Iconsax.location, Iconsax.briefcase, Iconsax.moneys];
-    return Obx(
-      () => Column(
+    return Obx(() {
+      if (positionController.isLoading.value) {
+        return Container(
+          height: 120,
+          alignment: Alignment.center,
+          child: const Center(child: HumicLoading()),
+        );
+      }
+
+      if (positionController.data.isEmpty) {
+        return Container(
+          height: 120,
+          alignment: Alignment.center,
+          child: const Text("Tidak Ada Lowongan Yang tersedia"),
+        );
+      }
+
+      return Column(
         children: [
           const SizedBox(height: 30),
           for (int i = 0; i < positionController.filteredData.length; i++)
@@ -148,7 +165,7 @@ class InternshipPage extends StatelessWidget {
             ),
           const SizedBox(height: 100),
         ],
-      ),
-    );
+      );
+    });
   }
 }
