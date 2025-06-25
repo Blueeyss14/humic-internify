@@ -38,6 +38,10 @@ class SearchTextfieldCustom extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: 2),
                   child: TextField(
+                    onTap: () {
+                      bottombarController.currentIndex.value = 1;
+                      bottombarController.fetchIcon(1);
+                    },
                     onChanged: (value) => positionController.searchItem(value),
                     style: const TextStyle(fontSize: 14),
                     textCapitalization: TextCapitalization.sentences,
