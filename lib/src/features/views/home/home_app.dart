@@ -13,6 +13,7 @@ import 'package:humic_internify/src/features/views/pages/internship_page.dart';
 import 'package:humic_internify/src/shared/components/humic_appbar.dart';
 import 'package:humic_internify/src/shared/components/search_bg_custom.dart';
 import 'package:humic_internify/src/shared/styles/custom_color.dart';
+import 'package:humic_internify/src/shared/widgets/humic_refresher.dart';
 import 'package:humic_internify/test_page.dart';
 
 class HomeApp extends StatelessWidget {
@@ -24,7 +25,10 @@ class HomeApp extends StatelessWidget {
     final language = Get.find<LanguangeViewmodel>();
     List<Widget> pages = const [
       HomePage(),
-      SingleChildScrollView(child: InternshipPage()),
+      HumicRefresher(
+        showLoading: false,
+        child: SingleChildScrollView(child: InternshipPage()),
+      ),
     ];
     ScrollController scrollController = ScrollController();
 

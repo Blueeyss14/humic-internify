@@ -3,33 +3,18 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
-import 'package:humic_internify/src/core/refresh_apps.dart';
 import 'package:humic_internify/src/features/viewmodels/posisition_viewmodel.dart';
 import 'package:humic_internify/src/features/views/pages/feedback_page.dart';
-import 'package:humic_internify/src/shared/components/humic_loading.dart';
 import 'package:humic_internify/src/shared/styles/custom_color.dart';
-import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
+import 'package:humic_internify/src/shared/widgets/humic_refresher.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    RefreshController refreshController = RefreshController(
-      initialRefresh: false,
-    );
     final posisitionController = Get.find<PosisitionViewmodel>();
-    return SmartRefresher(
-      onRefresh: () async {
-        await refreshAllData();
-        refreshController.refreshCompleted();
-      },
-      controller: refreshController,
-      header: const WaterDropHeader(
-        refresh: HumicLoading(),
-        waterDropColor: redHumic,
-      ),
-      enablePullDown: true,
+    return HumicRefresher(
       child: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(20),
