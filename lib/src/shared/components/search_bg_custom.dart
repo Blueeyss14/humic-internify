@@ -245,9 +245,28 @@ class SearchBgCustom extends StatelessWidget {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
+                          // Flexible(
+                          //   child: Container(
+                          //     alignment: Alignment.center,
+                          //     width: double.infinity,
+                          //     // color: Colors.amber,
+                          //     child: Row(
+                          //       mainAxisAlignment:
+                          //           MainAxisAlignment.spaceBetween,
+                          //       children: [
+                          // Image.asset(
+                          //   "assets/images/white-logo.png",
+                          //   width: 80,
+                          //   height: 35,
+                          // ),
+
+                          //         Text("data"),
+                          //       ],
+                          //     ),
+                          //   ),
+                          // ),
                           Container(
                             alignment: Alignment.bottomCenter,
-                            // color: Colors.green,
                             width: double.infinity,
                             height: 50,
                             child: AnimatedSwitcher(
@@ -294,7 +313,7 @@ class SearchBgCustom extends StatelessWidget {
                               ),
                             ),
                           ),
-                          const SizedBox(height: 30),
+                          const SizedBox(height: 20),
                           SizedBox(
                             // color: Colors.blue,
                             width: double.infinity,

@@ -17,15 +17,7 @@ class PosisitionViewmodel extends GetxController {
   var indexPage = 0.obs;
   var activeCategory = ''.obs;
 
-  List<List<int>> get groupedItems {
-    List<List<int>> groups = [];
-    for (int i = 0; i < itemCount.value; i += maxPerRow) {
-      int end =
-          (i + maxPerRow < itemCount.value) ? i + maxPerRow : itemCount.value;
-      groups.add(List.generate(end - i, (j) => i + j));
-    }
-    return groups;
-  }
+  var itemGroup = 0.obs;
 
   @override
   void onInit() {
@@ -51,8 +43,8 @@ class PosisitionViewmodel extends GetxController {
             datas.map<PositionModel>((d) => PositionModel.fromJson(d)).toList();
         filteredData.value = data;
         itemCount.value = data.length;
+        itemGroup.value = data.length;
 
-        // ambil kategori unik dari data
         final seen = <String>{};
         categoryList.value =
             data.map((e) => e.category).where((cat) => seen.add(cat)).toList();
@@ -64,6 +56,16 @@ class PosisitionViewmodel extends GetxController {
     } finally {
       isLoading.value = false;
     }
+  }
+
+  List<List<int>> get groupedItems {
+    List<List<int>> groups = [];
+    for (int i = 0; i < itemGroup.value; i += maxPerRow) {
+      int end =
+          (i + maxPerRow < itemGroup.value) ? i + maxPerRow : itemGroup.value;
+      groups.add(List.generate(end - i, (j) => i + j));
+    }
+    return groups;
   }
 
   /// index page
