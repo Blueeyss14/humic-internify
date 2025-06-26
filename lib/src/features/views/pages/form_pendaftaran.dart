@@ -194,6 +194,10 @@ class FormPendaftaran extends StatelessWidget {
                           onTap: () => formPicker.pickCV(),
                           title: "CV (Curiculum Vitae)",
                           fileName: formPicker.cvFile.value,
+                          borderColor:
+                              form.isMotivationError.value ? redHumic : null,
+                          errorIcon:
+                              form.isMotivationError.value ? Icons.error : null,
                         ),
 
                         ///PORTFOLIO
@@ -202,6 +206,10 @@ class FormPendaftaran extends StatelessWidget {
                           onTap: () => formPicker.pickPortfolio(),
                           title: "Portofolio",
                           fileName: formPicker.portfolioFile.value,
+                          borderColor:
+                              form.isMotivationError.value ? redHumic : null,
+                          errorIcon:
+                              form.isMotivationError.value ? Icons.error : null,
                         ),
 
                         const SizedBox(height: 20),
