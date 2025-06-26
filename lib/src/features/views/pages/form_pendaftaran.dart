@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:humic_internify/src/features/viewmodels/form_controller.dart';
 import 'package:humic_internify/src/features/viewmodels/form_picker_viewmodel.dart';
-import 'package:humic_internify/src/features/viewmodels/posisition_viewmodel.dart';
 import 'package:humic_internify/src/shared/components/attach_file.dart';
 import 'package:humic_internify/src/shared/components/form_texfield.dart';
 import 'package:humic_internify/src/shared/components/humic_button.dart';
@@ -15,14 +14,8 @@ class FormPendaftaran extends StatelessWidget {
   Widget build(BuildContext context) {
     final form = Get.find<FormController>();
     final formPicker = Get.find<FormPickerViewmodel>();
+    final String? idLowonganMagang = Get.arguments as String?;
 
-    /// index posisi magang
-    final int? positionIndex = Get.arguments as int?;
-    String? jobTitle;
-    if (positionIndex != null) {
-      final positionController = Get.find<PosisitionViewmodel>();
-      jobTitle = positionController.data[positionIndex].jobTitle;
-    }
     return Scaffold(
       backgroundColor: whiteHumic,
       body: Obx(
@@ -63,7 +56,6 @@ class FormPendaftaran extends StatelessWidget {
                 ),
               ),
             ),
-
             Flexible(
               child: SizedBox(
                 child: SingleChildScrollView(
@@ -86,8 +78,7 @@ class FormPendaftaran extends StatelessWidget {
                                     form.isFirstNameError.value
                                         ? redHumic
                                         : null,
-                                isRequired:
-                                    form.isFirstNameError.value ? true : false,
+                                isRequired: form.isFirstNameError.value,
                                 borderColor:
                                     form.isFirstNameError.value
                                         ? redHumic
@@ -120,7 +111,6 @@ class FormPendaftaran extends StatelessWidget {
                           errorIcon:
                               form.isEmailError.value ? Icons.error : null,
                         ),
-
                         const SizedBox(height: 20),
                         FormTexfield(
                           controller: form.contact.value,
@@ -133,7 +123,6 @@ class FormPendaftaran extends StatelessWidget {
                           errorIcon:
                               form.isContactError.value ? Icons.error : null,
                         ),
-
                         const SizedBox(height: 20),
                         FormTexfield(
                           controller: form.faculty.value,
@@ -146,7 +135,6 @@ class FormPendaftaran extends StatelessWidget {
                           errorIcon:
                               form.isFacultyError.value ? Icons.error : null,
                         ),
-
                         const SizedBox(height: 20),
                         FormTexfield(
                           controller: form.major.value,
@@ -158,7 +146,6 @@ class FormPendaftaran extends StatelessWidget {
                           errorIcon:
                               form.isMajorError.value ? Icons.error : null,
                         ),
-
                         const SizedBox(height: 20),
                         FormTexfield(
                           controller: form.skills.value,
@@ -172,7 +159,6 @@ class FormPendaftaran extends StatelessWidget {
                           errorIcon:
                               form.isSkillsError.value ? Icons.error : null,
                         ),
-
                         const SizedBox(height: 20),
                         FormTexfield(
                           controller: form.motivation.value,
@@ -187,31 +173,24 @@ class FormPendaftaran extends StatelessWidget {
                           errorIcon:
                               form.isMotivationError.value ? Icons.error : null,
                         ),
-
-                        ///CV
                         const SizedBox(height: 20),
                         AttachFile(
                           onTap: () => formPicker.pickCV(),
                           title: "CV (Curiculum Vitae)",
                           fileName: formPicker.cvFile.value,
-                          borderColor:
-                              form.isMotivationError.value ? redHumic : null,
-                          errorIcon:
-                              form.isMotivationError.value ? Icons.error : null,
+                          borderColor: form.isCVError.value ? redHumic : null,
+                          errorIcon: form.isCVError.value ? Icons.error : null,
                         ),
-
-                        ///PORTFOLIO
                         const SizedBox(height: 10),
                         AttachFile(
                           onTap: () => formPicker.pickPortfolio(),
                           title: "Portofolio",
                           fileName: formPicker.portfolioFile.value,
                           borderColor:
-                              form.isMotivationError.value ? redHumic : null,
+                              form.isPortfoError.value ? redHumic : null,
                           errorIcon:
-                              form.isMotivationError.value ? Icons.error : null,
+                              form.isPortfoError.value ? Icons.error : null,
                         ),
-
                         const SizedBox(height: 20),
                         GestureDetector(
                           onTap: form.checkIsAgree,
@@ -245,7 +224,6 @@ class FormPendaftaran extends StatelessWidget {
                                           )
                                           : const SizedBox.shrink(),
                                 ),
-
                                 const SizedBox(width: 10),
                                 const Expanded(
                                   child: Padding(
@@ -278,16 +256,18 @@ class FormPendaftaran extends StatelessWidget {
                             ),
                           ),
                         ),
-
                         const SizedBox(height: 40),
                         HumicButton(
                           margin: const EdgeInsets.only(right: 10),
                           padding: const EdgeInsets.all(10),
                           onTap: () {
-                            form.submitForm(
-                              jobTitle: jobTitle,
-                              // formPicker: formPicker,
-                            );
+                            if (idLowonganMagang != null) {
+                              form.submitForm(
+                                idLowonganMagang: idLowonganMagang,
+                              );
+                            } else {
+                              print("ID lowongan magang kosong");
+                            }
                           },
                           color:
                               form.isAgree.value
@@ -304,7 +284,6 @@ class FormPendaftaran extends StatelessWidget {
                             ),
                           ),
                         ),
-
                         const SizedBox(height: 10),
                       ],
                     ),

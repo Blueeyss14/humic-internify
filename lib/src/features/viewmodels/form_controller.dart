@@ -3,14 +3,14 @@ import 'package:get/get.dart';
 import 'package:humic_internify/src/features/viewmodels/form_picker_viewmodel.dart';
 import 'package:humic_internify/src/features/views/dialogs/form_dialog.dart';
 import 'package:humic_internify/src/routes/routes_name.dart';
+import 'package:http/http.dart' as http;
+import 'package:http_parser/http_parser.dart';
 
 final formPicker = Get.find<FormPickerViewmodel>();
 
 class FormController extends GetxController {
   var isAgree = false.obs;
-
   var isLastNameError = false.obs;
-
   var isFirstNameError = false.obs;
   var isEmailError = false.obs;
   var isContactError = false.obs;
@@ -47,7 +47,7 @@ class FormController extends GetxController {
     isAgree.value = !isAgree.value;
   }
 
-  void submitForm({String? jobTitle}) async {
+  void submitForm({required String idLowonganMagang}) async {
     if (isAgree.value) {
       isFirstNameError.value = firstName.value.text.isEmpty;
       isEmailError.value = email.value.text.isEmpty;
@@ -59,33 +59,29 @@ class FormController extends GetxController {
       isCVError.value = formPicker.cvFile.isEmpty;
       isPortfoError.value = formPicker.portfolioFile.isEmpty;
 
-      if ((errorList.any((e) => e.value))) {
+      if (errorList.any((e) => e.value)) {
         print("gak boleh submit");
-      } else {
-        print("boleh submit");
+        return;
+      }
 
-        bool accepted = await formDialog();
+      bool accepted = await formDialog();
+      if (accepted) {
+        print("==== DATA FORMULIR ====");
+        print("ID Lowongan: $idLowonganMagang");
+        print("Nama Depan: ${firstName.value.text}");
+        print("Nama Belakang: ${lastName.value.text}");
+        print("Email: ${email.value.text}");
+        print("Kontak: ${contact.value.text}");
+        print("Fakultas: ${faculty.value.text}");
+        print("Program Studi: ${major.value.text}");
+        print("Skill: ${skills.value.text}");
+        print("Motivasi: ${motivation.value.text}");
+        print("CV File: ${formPicker.cvFile.value}");
+        print("Portfolio File: ${formPicker.portfolioFile.value}");
+        print("=======================");
 
-        if (accepted) {
-          print("==== DATA FORMULIR ====");
-          if (jobTitle != null) print("Job Title: $jobTitle");
-          print("Nama Depan: ${firstName.value.text}");
-          print("Nama Belakang: ${lastName.value.text}");
-          print("Email: ${email.value.text}");
-          print("Kontak: ${contact.value.text}");
-          print("Fakultas: ${faculty.value.text}");
-          print("Program Studi: ${major.value.text}");
-          print("Skill: ${skills.value.text}");
-          print("Motivasi: ${motivation.value.text}");
-          if (formPicker.cvFile.isNotEmpty &&
-              formPicker.portfolioFile.isNotEmpty) {
-            print("CV File: " + formPicker.cvFile.value);
-            print("Portfolio File: " + formPicker.portfolioFile.value);
-          }
-          print("=======================");
-
-          resetForm();
-        }
+        await sendFormToApi(idLowonganMagang);
+        resetForm();
       }
     }
   }
@@ -100,7 +96,6 @@ class FormController extends GetxController {
     skills.value.clear();
     motivation.value.clear();
     formPicker.resetFiles();
-
     isAgree.value = false;
     isFirstNameError.value = false;
     isLastNameError.value = false;
@@ -110,7 +105,54 @@ class FormController extends GetxController {
     isMajorError.value = false;
     isSkillsError.value = false;
     isMotivationError.value = false;
-
     Get.offAllNamed(RoutesName.home);
+  }
+
+  Future<void> sendFormToApi(String idLowonganMagang) async {
+    var uri = Uri.parse(
+      'https://internify-backend-ckdrhfhzbahnesdm.indonesiacentral-01.azurewebsites.net/magang/daftar/$idLowonganMagang',
+    );
+
+    var request = http.MultipartRequest('POST', uri);
+
+    request.fields['nama_depan'] = firstName.value.text;
+    request.fields['nama_belakang'] = lastName.value.text;
+    request.fields['email'] = email.value.text;
+    request.fields['kontak'] = contact.value.text;
+    request.fields['jurusan'] = major.value.text;
+    request.fields['angkatan'] = '2021';
+    request.fields['motivasi'] = motivation.value.text;
+    request.fields['relevant_skills'] = skills.value.text;
+
+    if (formPicker.cvFile.value.isNotEmpty) {
+      request.files.add(
+        await http.MultipartFile.fromPath(
+          'cv',
+          formPicker.cvFile.value,
+          contentType: MediaType('application', 'pdf'),
+        ),
+      );
+    }
+
+    if (formPicker.portfolioFile.value.isNotEmpty) {
+      request.files.add(
+        await http.MultipartFile.fromPath(
+          'portofolio',
+          formPicker.portfolioFile.value,
+          contentType: MediaType('application', 'pdf'),
+        ),
+      );
+    }
+
+    try {
+      var response = await request.send();
+      if (response.statusCode == 200) {
+        print("Submit form berhasil");
+      } else {
+        print("Gagal submit. Status code: ${response.statusCode}");
+      }
+    } catch (e) {
+      print("Error kirim form: $e");
+    }
   }
 }

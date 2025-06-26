@@ -12,8 +12,7 @@ class FormPickerViewmodel extends GetxController {
         allowedExtensions: ['pdf'],
       );
       if (result != null) {
-        List<String> names = result.names.whereType<String>().toList();
-        cvFile.value = names.join(', ');
+        cvFile.value = result.files.single.path ?? '';
       } else {
         print("User canceled the picker");
       }
@@ -29,8 +28,7 @@ class FormPickerViewmodel extends GetxController {
         allowedExtensions: ['pdf'],
       );
       if (result != null) {
-        List<String> names = result.names.whereType<String>().toList();
-        portfolioFile.value = names.join(', ');
+        portfolioFile.value = result.files.single.path ?? '';
       } else {
         print("User canceled the picker");
       }

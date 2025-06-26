@@ -220,7 +220,7 @@ class DetailMagang extends StatelessWidget {
                             positionController.selectPage(currentPage);
                             Get.toNamed(
                               RoutesName.formPendaftaran,
-                              arguments: currentPage,
+                              arguments: currPosition.id,
                             );
                           },
                           child: const Text(

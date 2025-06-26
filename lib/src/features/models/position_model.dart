@@ -1,4 +1,5 @@
 class PositionModel {
+  String id;
   String jobTitle;
   String image;
   String status;
@@ -11,6 +12,7 @@ class PositionModel {
   List<String> benefit;
 
   PositionModel(
+    this.id,
     this.jobTitle,
     this.image,
     this.location,
@@ -25,6 +27,7 @@ class PositionModel {
 
   factory PositionModel.fromJson(Map<String, dynamic> json) {
     return PositionModel(
+      json['id']?.toString() ?? '',
       json['posisi'] ?? '',
       json['image_path'] ?? '',
       json['lokasi'] ?? '',
