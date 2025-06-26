@@ -14,7 +14,6 @@ import 'package:humic_internify/src/shared/components/humic_appbar.dart';
 import 'package:humic_internify/src/shared/components/search_bg_custom.dart';
 import 'package:humic_internify/src/shared/styles/custom_color.dart';
 import 'package:humic_internify/src/shared/widgets/humic_refresher.dart';
-import 'package:humic_internify/test_page.dart';
 
 class HomeApp extends StatelessWidget {
   const HomeApp({super.key});
@@ -101,8 +100,8 @@ class HomeApp extends StatelessWidget {
               ],
             ),
             const BottomNavbar(),
-            const HumicAppbar(),
 
+            const HumicAppbar(),
             AnimatedSwitcher(
               switchInCurve: Curves.easeIn,
               switchOutCurve: Curves.easeOut,
@@ -125,13 +124,13 @@ class HomeApp extends StatelessWidget {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed:
-            () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => TestPage()),
-            ),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed:
+      //       () => Navigator.push(
+      //         context,
+      //         MaterialPageRoute(builder: (context) => TestPage()),
+      //       ),
+      // ),
     );
   }
 }

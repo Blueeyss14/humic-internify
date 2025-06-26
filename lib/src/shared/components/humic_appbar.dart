@@ -20,7 +20,7 @@ class HumicAppbar extends StatelessWidget {
         alignment: Alignment.bottomCenter,
         // height: MediaQuery.of(context).size.height / 8,
         padding: const EdgeInsets.only(right: 30, left: 30, bottom: 20),
-        height: 100,
+        height: (MediaQuery.of(context).size.height / 3 + 50) / 4 + 10,
         color:
             bottomBar.currentIndex.value == 2
                 ? greyBlueHumic
