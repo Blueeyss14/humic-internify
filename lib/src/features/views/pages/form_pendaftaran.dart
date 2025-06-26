@@ -265,8 +265,9 @@ class FormPendaftaran extends StatelessWidget {
                               form.submitForm(
                                 idLowonganMagang: idLowonganMagang,
                               );
+                              print('id: $idLowonganMagang');
                             } else {
-                              print("ID lowongan magang kosong");
+                              print("ID kosong");
                             }
                           },
                           color:

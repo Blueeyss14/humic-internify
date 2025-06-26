@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:humic_internify/src/features/viewmodels/form_picker_viewmodel.dart';
 import 'package:humic_internify/src/features/views/dialogs/form_dialog.dart';
@@ -78,6 +79,7 @@ class FormController extends GetxController {
         print("Motivasi: ${motivation.value.text}");
         print("CV File: ${formPicker.cvFile.value}");
         print("Portfolio File: ${formPicker.portfolioFile.value}");
+        print("Id: $idLowonganMagang");
         print("=======================");
 
         await sendFormToApi(idLowonganMagang);
@@ -110,7 +112,7 @@ class FormController extends GetxController {
 
   Future<void> sendFormToApi(String idLowonganMagang) async {
     var uri = Uri.parse(
-      'https://internify-backend-ckdrhfhzbahnesdm.indonesiacentral-01.azurewebsites.net/magang/daftar/$idLowonganMagang',
+      '${dotenv.env['API_BASE_URL']}/lamaran-magang-api/add/$idLowonganMagang',
     );
 
     var request = http.MultipartRequest('POST', uri);
@@ -147,12 +149,12 @@ class FormController extends GetxController {
     try {
       var response = await request.send();
       if (response.statusCode == 200) {
-        print("Submit form berhasil");
+        print("Berhasil Slurd");
       } else {
-        print("Gagal submit. Status code: ${response.statusCode}");
+        print("Gagal coy. Status code: ${response.statusCode}");
       }
     } catch (e) {
-      print("Error kirim form: $e");
+      print("Error: $e");
     }
   }
 }
