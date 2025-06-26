@@ -38,4 +38,9 @@ class FormPickerViewmodel extends GetxController {
       print("Error when choosing file: $e");
     }
   }
+
+  void resetFiles() {
+    cvFile.value = '';
+    portfolioFile.value = '';
+  }
 }

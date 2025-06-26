@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:humic_internify/src/features/viewmodels/form_controller.dart';
 import 'package:humic_internify/src/features/viewmodels/form_picker_viewmodel.dart';
+import 'package:humic_internify/src/features/viewmodels/posisition_viewmodel.dart';
 import 'package:humic_internify/src/shared/components/attach_file.dart';
 import 'package:humic_internify/src/shared/components/form_texfield.dart';
 import 'package:humic_internify/src/shared/components/humic_button.dart';
@@ -14,6 +15,14 @@ class FormPendaftaran extends StatelessWidget {
   Widget build(BuildContext context) {
     final form = Get.find<FormController>();
     final formPicker = Get.find<FormPickerViewmodel>();
+
+    /// index posisi magang
+    final int? positionIndex = Get.arguments as int?;
+    String? jobTitle;
+    if (positionIndex != null) {
+      final positionController = Get.find<PosisitionViewmodel>();
+      jobTitle = positionController.data[positionIndex].jobTitle;
+    }
     return Scaffold(
       backgroundColor: whiteHumic,
       body: Obx(
@@ -30,7 +39,10 @@ class FormPendaftaran extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     IconButton(
-                      onPressed: () => Get.back(),
+                      onPressed: () {
+                        Get.back();
+                        form.resetForm();
+                      },
                       icon: const Icon(
                         Icons.arrow_back_ios,
                         size: 20,
@@ -263,7 +275,12 @@ class FormPendaftaran extends StatelessWidget {
                         HumicButton(
                           margin: const EdgeInsets.only(right: 10),
                           padding: const EdgeInsets.all(10),
-                          onTap: () => form.submitForm(),
+                          onTap: () {
+                            form.submitForm(
+                              jobTitle: jobTitle,
+                              // formPicker: formPicker,
+                            );
+                          },
                           color:
                               form.isAgree.value
                                   ? redHumic

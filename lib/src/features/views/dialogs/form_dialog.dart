@@ -4,8 +4,8 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:humic_internify/src/shared/components/humic_button.dart';
 import 'package:humic_internify/src/shared/styles/custom_color.dart';
 
-void formDialog() {
-  Get.defaultDialog(
+Future<bool> formDialog() async {
+  final result = await Get.defaultDialog<bool>(
     backgroundColor: whiteHumic,
     title: 'Apakah Anda yakin ingin mengirim formulir ini?',
     titleStyle: const TextStyle(
@@ -15,23 +15,29 @@ void formDialog() {
     ),
     titlePadding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
     contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-    content: const Row(
+    content: Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         HumicButton(
+          onTap: () {
+            Get.back(result: false);
+          },
           alignment: Alignment.center,
           width: 90,
           isBorder: true,
           color: Colors.transparent,
-          child: Text(
+          child: const Text(
             "Batal",
             style: TextStyle(color: redHumic, fontWeight: FontWeight.bold),
           ),
         ),
         HumicButton(
+          onTap: () {
+            Get.back(result: true);
+          },
           alignment: Alignment.center,
           width: 90,
-          child: Text(
+          child: const Text(
             "Submit",
             style: TextStyle(color: whiteHumic, fontWeight: FontWeight.bold),
           ),
@@ -39,4 +45,6 @@ void formDialog() {
       ],
     ),
   );
+
+  return result ?? false;
 }

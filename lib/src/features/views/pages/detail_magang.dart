@@ -13,13 +13,13 @@ class DetailMagang extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final positionController = Get.find<PosisitionViewmodel>();
-    var currentPage = positionController.indexPage.value;
 
     List icons = const [Iconsax.location, Iconsax.briefcase, Iconsax.moneys];
 
     return Scaffold(
       backgroundColor: whiteHumic,
       body: Obx(() {
+        var currentPage = positionController.indexPage.value;
         var currPosition = positionController.data[currentPage];
         return Column(
           children: [
@@ -216,7 +216,13 @@ class DetailMagang extends StatelessWidget {
 
                         const SizedBox(height: 40),
                         HumicButton(
-                          onTap: () => Get.toNamed(RoutesName.formPendaftaran),
+                          onTap: () {
+                            positionController.selectPage(currentPage);
+                            Get.toNamed(
+                              RoutesName.formPendaftaran,
+                              arguments: currentPage,
+                            );
+                          },
                           child: const Text(
                             "Daftar Magang",
                             style: TextStyle(
