@@ -27,7 +27,7 @@ class LamaranTerkirim extends StatelessWidget {
                 const Text(
                   "Lamaran Telah Terkirim",
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 18,
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
                   ),
@@ -37,14 +37,14 @@ class LamaranTerkirim extends StatelessWidget {
 
                 const Text(
                   "Kami akan segera memeriksa lamaran kamu.",
-                  style: TextStyle(fontSize: 12, color: Colors.black),
+                  style: TextStyle(fontSize: 14, color: Colors.black),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 10),
 
                 const Text(
                   "Cek email secara berkala untuk informasi selanjutnya!",
-                  style: TextStyle(fontSize: 12, color: Colors.black),
+                  style: TextStyle(fontSize: 14, color: Colors.black),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 35),
@@ -55,13 +55,13 @@ class LamaranTerkirim extends StatelessWidget {
                     alignment: Alignment.center,
                     padding: const EdgeInsets.symmetric(
                       horizontal: 20,
-                      vertical: 12,
+                      vertical: 14,
                     ),
                     borderRadius: BorderRadius.circular(10),
                     child: const Text(
                       "Kembali ke Beranda",
                       style: TextStyle(
-                        fontSize: 10,
+                        fontSize: 12,
                         color: whiteHumic,
                         fontWeight: FontWeight.bold,
                       ),

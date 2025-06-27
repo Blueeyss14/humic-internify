@@ -5,8 +5,7 @@ import 'package:humic_internify/src/shared/components/humic_loading.dart';
 
 class HumicBlurLoading extends StatelessWidget {
   final bool? isLoading;
-  final bool? goToPage;
-  const HumicBlurLoading({super.key, this.isLoading = false, this.goToPage});
+  const HumicBlurLoading({super.key, this.isLoading = false});
 
   @override
   Widget build(BuildContext context) {

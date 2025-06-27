@@ -87,6 +87,7 @@ class FormController extends GetxController {
         await sendFormToApi(idLowonganMagang);
 
         resetForm();
+        Get.offAllNamed(RoutesName.lamaranTerkirim);
       }
     }
   }
@@ -110,10 +111,11 @@ class FormController extends GetxController {
     isMajorError.value = false;
     isSkillsError.value = false;
     isMotivationError.value = false;
+    isCVError.value = false;
+    isPortfoError.value = false;
 
     ///Loading Handler
     isLoading.value = false;
-    Get.offAllNamed(RoutesName.lamaranTerkirim);
   }
 
   Future<void> sendFormToApi(String idLowonganMagang) async {
