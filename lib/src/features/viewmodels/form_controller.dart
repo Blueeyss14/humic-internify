@@ -11,6 +11,8 @@ final formPicker = Get.find<FormPickerViewmodel>();
 
 class FormController extends GetxController {
   var isAgree = false.obs;
+  var isLoading = false.obs;
+
   var isLastNameError = false.obs;
   var isFirstNameError = false.obs;
   var isEmailError = false.obs;
@@ -67,7 +69,9 @@ class FormController extends GetxController {
 
       bool accepted = await formDialog();
       if (accepted) {
-        print("==== DATA FORMULIR ====");
+        ///Loading handler
+        isLoading.value = true;
+
         print("ID Lowongan: $idLowonganMagang");
         print("Nama Depan: ${firstName.value.text}");
         print("Nama Belakang: ${lastName.value.text}");
@@ -79,10 +83,9 @@ class FormController extends GetxController {
         print("Motivasi: ${motivation.value.text}");
         print("CV File: ${formPicker.cvFile.value}");
         print("Portfolio File: ${formPicker.portfolioFile.value}");
-        print("Id: $idLowonganMagang");
-        print("=======================");
 
         await sendFormToApi(idLowonganMagang);
+
         resetForm();
       }
     }
@@ -107,7 +110,10 @@ class FormController extends GetxController {
     isMajorError.value = false;
     isSkillsError.value = false;
     isMotivationError.value = false;
-    Get.offAllNamed(RoutesName.home);
+
+    ///Loading Handler
+    isLoading.value = false;
+    Get.offAllNamed(RoutesName.lamaranTerkirim);
   }
 
   Future<void> sendFormToApi(String idLowonganMagang) async {

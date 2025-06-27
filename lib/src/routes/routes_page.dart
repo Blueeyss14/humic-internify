@@ -4,6 +4,7 @@ import 'package:humic_internify/src/features/views/home/home_app.dart';
 import 'package:humic_internify/src/features/views/pages/detail_magang.dart';
 import 'package:humic_internify/src/features/views/pages/detail_produk.dart';
 import 'package:humic_internify/src/features/views/pages/form_pendaftaran.dart';
+import 'package:humic_internify/src/features/views/pages/lamaran_terkirim.dart';
 import 'package:humic_internify/src/routes/routes_name.dart';
 
 class RoutesPage {
@@ -12,7 +13,7 @@ class RoutesPage {
       name: RoutesName.splash,
       page: () => const SplashScreen(),
       transition: Transition.fade,
-      transitionDuration: const Duration(milliseconds: 500),
+      transitionDuration: const Duration(milliseconds: 300),
     ),
     GetPage(
       name: RoutesName.home,
@@ -40,6 +41,13 @@ class RoutesPage {
       page: () => const DetailProduk(),
       transition: Transition.leftToRight,
       transitionDuration: const Duration(milliseconds: 100),
+    ),
+
+    GetPage(
+      name: RoutesName.lamaranTerkirim,
+      page: () => const LamaranTerkirim(),
+      transition: Transition.fade,
+      transitionDuration: const Duration(milliseconds: 200),
     ),
   ];
 }
