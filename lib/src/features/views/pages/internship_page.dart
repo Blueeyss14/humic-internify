@@ -42,7 +42,10 @@ class InternshipPage extends StatelessWidget {
               onTap: () {
                 if (positionController.filteredData[i].status.toLowerCase() ==
                     'dibuka') {
-                  positionController.selectPage(i);
+                  final originalIndex = positionController.data.indexWhere(
+                    (item) => item.id == positionController.filteredData[i].id,
+                  );
+                  positionController.selectPage(originalIndex);
                   Get.toNamed(RoutesName.detailMagang);
                 }
               },

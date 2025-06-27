@@ -23,7 +23,7 @@ class FormPendaftaran extends StatelessWidget {
         form.resetForm();
       },
       child: Scaffold(
-        resizeToAvoidBottomInset: true,
+        resizeToAvoidBottomInset: false,
         backgroundColor: whiteHumic,
         body: Obx(
           () => Stack(

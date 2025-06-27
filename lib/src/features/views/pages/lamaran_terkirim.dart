@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:humic_internify/src/features/viewmodels/bottombar_controller.dart';
 import 'package:humic_internify/src/routes/routes_name.dart';
 import 'package:humic_internify/src/shared/components/humic_button.dart';
 import 'package:humic_internify/src/shared/styles/custom_color.dart';
@@ -9,6 +10,7 @@ class LamaranTerkirim extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bottombarController = Get.find<BottombarController>();
     return PopScope(
       canPop: false,
       onPopInvokedWithResult: (didPop, result) {
@@ -51,7 +53,11 @@ class LamaranTerkirim extends StatelessWidget {
 
                 IntrinsicWidth(
                   child: HumicButton(
-                    onTap: () => Get.offAllNamed(RoutesName.home),
+                    onTap: () {
+                      bottombarController.currentIndex.value = 0;
+                      bottombarController.fetchIcon(0);
+                      Get.offAllNamed(RoutesName.home);
+                    },
                     alignment: Alignment.center,
                     padding: const EdgeInsets.symmetric(
                       horizontal: 20,
