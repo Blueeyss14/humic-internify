@@ -10,6 +10,7 @@ import 'package:humic_internify/src/features/views/components/bottom_navbar.dart
 import 'package:humic_internify/src/features/views/pages/about_us.dart';
 import 'package:humic_internify/src/features/views/pages/home_page.dart';
 import 'package:humic_internify/src/features/views/pages/internship_page.dart';
+import 'package:humic_internify/src/features/views/pages/lamaran_terkirim.dart';
 import 'package:humic_internify/src/shared/components/humic_appbar.dart';
 import 'package:humic_internify/src/shared/components/search_bg_custom.dart';
 import 'package:humic_internify/src/shared/styles/custom_color.dart';
@@ -37,100 +38,106 @@ class HomeApp extends StatelessWidget {
       }
     });
 
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      backgroundColor: humicBackground,
-      body: Obx(
-        () => Stack(
-          alignment: Alignment.topCenter,
-          children: [
-            CustomScrollView(
-              controller: scrollController,
-              physics:
-                  page.currentIndex.value == 2
-                      ? const AlwaysScrollableScrollPhysics()
-                      : const NeverScrollableScrollPhysics(),
-              slivers: [
-                SliverList(
-                  delegate: SliverChildListDelegate([
-                    AnimatedContainer(
-                      height:
-                          page.currentIndex.value == 2
-                              ? MediaQuery.of(context).size.height / 8
-                              : 0,
-                      duration: const Duration(milliseconds: 300),
-                    ),
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, result) {
+        return;
+      },
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        backgroundColor: humicBackground,
+        body: Obx(
+          () => Stack(
+            alignment: Alignment.topCenter,
+            children: [
+              CustomScrollView(
+                controller: scrollController,
+                physics:
+                    page.currentIndex.value == 2
+                        ? const AlwaysScrollableScrollPhysics()
+                        : const NeverScrollableScrollPhysics(),
+                slivers: [
+                  SliverList(
+                    delegate: SliverChildListDelegate([
+                      AnimatedContainer(
+                        height:
+                            page.currentIndex.value == 2
+                                ? MediaQuery.of(context).size.height / 8
+                                : 0,
+                        duration: const Duration(milliseconds: 300),
+                      ),
 
-                    Column(
-                      children: [
-                        const SearchBgCustom(),
-                        if (page.currentIndex.value == 2) const AboutUs(),
-                      ],
-                    ),
-                  ]),
-                ),
-                if (page.currentIndex.value != 2)
-                  SliverFillRemaining(
-                    child: AnimatedSwitcher(
-                      duration: const Duration(milliseconds: 300),
-                      child:
-                          page.currentIndex.value < pages.length
-                              ? Container(
-                                alignment: Alignment.topCenter,
-                                key: ValueKey<int>(page.currentIndex.value),
-                                child: pages[page.currentIndex.value],
-                              )
-                              : const SizedBox(),
-                    ),
-                  )
-                else
-                  SliverToBoxAdapter(
-                    child: AnimatedSwitcher(
-                      duration: const Duration(milliseconds: 300),
-                      child:
-                          page.currentIndex.value < pages.length
-                              ? Container(
-                                alignment: Alignment.topCenter,
-                                key: ValueKey<int>(page.currentIndex.value),
-                                child: pages[page.currentIndex.value],
-                              )
-                              : const SizedBox(),
-                    ),
+                      Column(
+                        children: [
+                          const SearchBgCustom(),
+                          if (page.currentIndex.value == 2) const AboutUs(),
+                        ],
+                      ),
+                    ]),
                   ),
-              ],
-            ),
-            const BottomNavbar(),
+                  if (page.currentIndex.value != 2)
+                    SliverFillRemaining(
+                      child: AnimatedSwitcher(
+                        duration: const Duration(milliseconds: 300),
+                        child:
+                            page.currentIndex.value < pages.length
+                                ? Container(
+                                  alignment: Alignment.topCenter,
+                                  key: ValueKey<int>(page.currentIndex.value),
+                                  child: pages[page.currentIndex.value],
+                                )
+                                : const SizedBox(),
+                      ),
+                    )
+                  else
+                    SliverToBoxAdapter(
+                      child: AnimatedSwitcher(
+                        duration: const Duration(milliseconds: 300),
+                        child:
+                            page.currentIndex.value < pages.length
+                                ? Container(
+                                  alignment: Alignment.topCenter,
+                                  key: ValueKey<int>(page.currentIndex.value),
+                                  child: pages[page.currentIndex.value],
+                                )
+                                : const SizedBox(),
+                      ),
+                    ),
+                ],
+              ),
+              const BottomNavbar(),
 
-            const HumicAppbar(),
-            AnimatedSwitcher(
-              switchInCurve: Curves.easeIn,
-              switchOutCurve: Curves.easeOut,
-              duration: const Duration(milliseconds: 150),
-              child:
-                  language.isOpened.value
-                      ? SizedBox(
-                        key: ValueKey<bool>(language.isOpened.value),
-                        child: BackdropFilter(
-                          filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
-                          child: Container(
-                            color: Colors.black.withAlpha(100),
-                            width: double.infinity,
-                            height: double.infinity,
+              const HumicAppbar(),
+              AnimatedSwitcher(
+                switchInCurve: Curves.easeIn,
+                switchOutCurve: Curves.easeOut,
+                duration: const Duration(milliseconds: 150),
+                child:
+                    language.isOpened.value
+                        ? SizedBox(
+                          key: ValueKey<bool>(language.isOpened.value),
+                          child: BackdropFilter(
+                            filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
+                            child: Container(
+                              color: Colors.black.withAlpha(100),
+                              width: double.infinity,
+                              height: double.infinity,
+                            ),
                           ),
-                        ),
-                      )
-                      : const SizedBox.shrink(),
-            ),
-          ],
+                        )
+                        : const SizedBox.shrink(),
+              ),
+            ],
+          ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed:
+              () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => LamaranTerkirim()),
+              ),
         ),
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed:
-      //       () => Navigator.push(
-      //         context,
-      //         MaterialPageRoute(builder: (context) => TestPage()),
-      //       ),
-      // ),
     );
   }
 }

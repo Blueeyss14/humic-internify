@@ -11,6 +11,7 @@ class HumicButton extends StatelessWidget {
   final Widget? child;
   final AlignmentGeometry? alignment;
   final bool? isBorder;
+  final BorderRadiusGeometry? borderRadius;
   const HumicButton({
     super.key,
     this.width,
@@ -22,6 +23,7 @@ class HumicButton extends StatelessWidget {
     this.child,
     this.alignment,
     this.isBorder = false,
+    this.borderRadius,
   });
 
   @override
@@ -42,7 +44,7 @@ class HumicButton extends StatelessWidget {
         margin: margin,
         decoration: BoxDecoration(
           border: isBorder! ? Border.all(color: redHumic, width: border) : null,
-          borderRadius: BorderRadius.circular(6),
+          borderRadius: borderRadius ?? BorderRadius.circular(6),
           color: color ?? redHumic,
         ),
         child: child,
