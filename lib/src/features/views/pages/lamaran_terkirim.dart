@@ -47,7 +47,7 @@ class LamaranTerkirim extends StatelessWidget {
                   style: TextStyle(fontSize: 12, color: Colors.black),
                   textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: 40),
+                const SizedBox(height: 35),
 
                 IntrinsicWidth(
                   child: HumicButton(
