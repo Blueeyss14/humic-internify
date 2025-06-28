@@ -1,15 +1,16 @@
-import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class ProjectModel {
+  int id;
   String image;
   String title;
   String deskripsi;
 
   ProjectModel({
+    required this.id,
     required this.image,
     required this.title,
     required this.deskripsi,
@@ -17,6 +18,7 @@ class ProjectModel {
 
   factory ProjectModel.fromJson(Map<String, dynamic> json) {
     return ProjectModel(
+      id: json["id"],
       image: json["image_path"] ?? "",
       title: json["nama_project"] ?? "",
       deskripsi: json["deskripsi"] ?? "",
@@ -36,76 +38,7 @@ class ProjectViewmodel extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    initData();
-  }
-
-  void initData() async {
-    final token = await loginAndGetToken();
-    if (token != null) {
-      await addData(token);
-      await fetchData();
-    } else {
-      print("Login failed, token null");
-    }
-  }
-
-  Future<String?> loginAndGetToken() async {
-    try {
-      final response = await http.post(
-        Uri.parse('${dotenv.env['API_BASE_URL']}/auth-api/login'),
-        headers: {'Content-Type': 'application/json'},
-        body: jsonEncode({
-          'email': 'admin.test@gmail.com',
-          'password': '12345678',
-        }),
-      );
-
-      if (response.statusCode == 200) {
-        final data = jsonDecode(response.body);
-        print("Login sukses");
-        return data['token'];
-      } else {
-        print("Login gagal: ${response.statusCode}");
-        print("Body: ${response.body}");
-        return null;
-      }
-    } catch (e) {
-      print("Exception login: $e");
-      return null;
-    }
-  }
-
-  Future<void> addData(String token) async {
-    try {
-      var uri = Uri.parse(
-        '${dotenv.env['API_BASE_URL']}/hasil-research-api/add',
-      );
-
-      var request = http.MultipartRequest('POST', uri);
-      request.headers['Authorization'] = 'Bearer $token';
-
-      request.fields['nama_project'] = 'Project Dummy Flutter';
-      request.fields['deskripsi'] = 'Deskripsi dummy tanpa UI';
-
-      final bytes = await rootBundle.load('assets/images/dummy.jpg');
-      final imageData = bytes.buffer.asUint8List();
-
-      request.files.add(
-        http.MultipartFile.fromBytes('image', imageData, filename: 'dummy.jpg'),
-      );
-
-      var streamedResponse = await request.send();
-      var response = await http.Response.fromStream(streamedResponse);
-
-      if (response.statusCode == 200) {
-        print("Data berhasil ditambahkan");
-      } else {
-        print("Gagal tambah data: ${response.statusCode}");
-        print("Body: ${response.body}");
-      }
-    } catch (e) {
-      print("Exception POST multipart: $e");
-    }
+    fetchData();
   }
 
   Future<void> fetchData() async {
@@ -121,10 +54,10 @@ class ProjectViewmodel extends GetxController {
       if (response.statusCode == 200) {
         final List<dynamic> jsonData = json.decode(response.body)['data'];
         data.value = jsonData.map((e) => ProjectModel.fromJson(e)).toList();
-        print("Data berhasil di-fetch: ${data.length} item");
+        print("Data berhasil slurd: ${data.length} item");
       } else {
         error.value = "Failed: ${response.statusCode}";
-        print("Gagal fetch: ${response.body}");
+        print("Gagal fetch coy: ${response.body}");
       }
     } catch (e) {
       error.value = e.toString();

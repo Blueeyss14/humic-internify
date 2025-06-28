@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_navigation/get_navigation.dart';
@@ -100,7 +101,8 @@ class HasilProdukCard extends StatelessWidget {
                           color: Colors.grey,
                         ),
                         child: CachedNetworkImage(
-                          imageUrl: project.paginatedData[index].image,
+                          imageUrl:
+                              '${dotenv.env['API_BASE_URL']}${project.paginatedData[index].image}',
                           errorWidget:
                               (context, error, stackTrace) =>
                                   const SizedBox.shrink(),
@@ -129,7 +131,20 @@ class HasilProdukCard extends StatelessWidget {
               ),
             )
           else
-            const Text("No Data"),
+            // const Text("No Data"),
+            Container(
+              padding: const EdgeInsets.all(10),
+              alignment: Alignment.center,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: greyBlueHumic,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: const Text(
+                "Belum Ada Hasil Produk Reaserch",
+                style: TextStyle(fontSize: 12, letterSpacing: 1.5),
+              ),
+            ),
         ],
       );
     });

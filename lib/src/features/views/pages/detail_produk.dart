@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_navigation/get_navigation.dart';
@@ -76,7 +77,7 @@ class DetailProduk extends StatelessWidget {
                       borderRadius: BorderRadius.circular(15),
                       child: CachedNetworkImage(
                         imageUrl:
-                            project.data[project.selectedItem.value].image,
+                            '${dotenv.env['API_BASE_URL']}${project.data[project.selectedItem.value].image}',
 
                         errorWidget:
                             (context, url, error) => const SizedBox.shrink(),
