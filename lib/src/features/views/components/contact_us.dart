@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:humic_internify/src/shared/components/humic_circle.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ContactUs extends StatelessWidget {
   const ContactUs({super.key});
@@ -9,10 +10,23 @@ class ContactUs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> socials = [
-      {"icon": "assets/icons/instagram.png", "link": ""},
-      {"icon": "assets/icons/linkedin.png", "link": ""},
-      {"icon": "assets/icons/email.png", "link": ""},
-      {"icon": "assets/icons/website.png", "link": ""},
+      {
+        "icon": "assets/icons/instagram.png",
+        "link":
+            "https://www.instagram.com/humicengineering?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+      },
+      {
+        "icon": "assets/icons/linkedin.png",
+        "link": "https://www.linkedin.com/company/humic-engineering/about/",
+      },
+      {
+        "icon": "assets/icons/email.png",
+        "link": "mailto:humic@telkomuniversity.ac.id",
+      },
+      {
+        "icon": "assets/icons/website.png",
+        "link": "https://humic.telkomuniversity.ac.id/",
+      },
     ];
 
     return Column(
@@ -41,7 +55,7 @@ class ContactUs extends StatelessWidget {
                   ),
 
                   const Text(
-                    "Jl. Telekomunikasi, Terusan Buah Batu Bandung Jawa Barat, Indonesia, 40257.",
+                    "Jl. Telekomunikasi, Terusan Buah Batu Bandung Jawa Barat, Indonesia, 40257.",
                     style: TextStyle(height: 2),
                   ),
                   const SizedBox(height: 10),
@@ -51,6 +65,20 @@ class ContactUs extends StatelessWidget {
                       children: List.generate(
                         socials.length,
                         (index) => HumicCircle(
+                          onTap: () async {
+                            final url = socials[index]['link'];
+                            if (url != null && url.toString().isNotEmpty) {
+                              try {
+                                await launchUrl(
+                                  Uri.parse(url),
+                                  mode: LaunchMode.externalApplication,
+                                );
+                              } catch (e) {
+                                debugPrint("Gagal membuka URL: $e");
+                              }
+                            }
+                          },
+
                           margin: const EdgeInsets.only(right: 10),
                           border: Border.all(width: 2),
                           size: 45,
