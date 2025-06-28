@@ -4,6 +4,7 @@ import 'package:humic_internify/src/features/viewmodels/about_viewmodel.dart';
 import 'package:humic_internify/src/features/viewmodels/developer_viewmodel.dart';
 import 'package:humic_internify/src/features/viewmodels/feedback_viewmodel.dart';
 import 'package:humic_internify/src/features/viewmodels/languange_viewmodel.dart';
+import 'package:humic_internify/src/features/viewmodels/partnership_viewmodel.dart';
 import 'package:humic_internify/src/features/viewmodels/posisition_viewmodel.dart';
 import 'package:humic_internify/src/features/viewmodels/project_viewmodel.dart';
 
@@ -14,4 +15,5 @@ Future<void> refreshAllData() async {
   await Get.find<ProjectViewmodel>().fetchData();
   await Get.find<LanguangeViewmodel>().fetchData();
   await Get.find<DeveloperViewmodel>().fetchDeveloper();
+  await Get.find<PartnershipViewmodel>().fectData();
 }

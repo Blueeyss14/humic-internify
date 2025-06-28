@@ -1,5 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:humic_internify/src/features/models/about_item_model.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_instance/get_instance.dart';
+import 'package:humic_internify/src/features/viewmodels/partnership_viewmodel.dart';
 import 'package:humic_internify/src/features/views/components/contact_us.dart';
 import 'package:humic_internify/src/features/views/components/hasil_produk_card.dart';
 import 'package:humic_internify/src/features/views/components/our_developer_card.dart';
@@ -10,8 +14,7 @@ class AboutUs extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final aboutItem = AboutItemModel.aboutData();
-    // final project = Get.find<ProjectViewmodel>();
+    final partnership = Get.find<PartnershipViewmodel>();
     return Column(
       children: [
         const SizedBox(height: 50),
@@ -40,11 +43,17 @@ class AboutUs extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    for (int i = 0; i < aboutItem.length; i++)
+                    for (int i = 0; i < partnership.data.length; i++)
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 10),
                         height: 80,
-                        child: Image.asset(aboutItem[i].image, width: 100),
+                        child: CachedNetworkImage(
+                          imageUrl:
+                              '${dotenv.env['API_BASE_URL']}${partnership.data[i].image}',
+                          width: 100,
+                          errorWidget:
+                              (context, url, error) => const SizedBox.shrink(),
+                        ),
                       ),
                   ],
                 ),
