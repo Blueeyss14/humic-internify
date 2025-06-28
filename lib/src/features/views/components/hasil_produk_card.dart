@@ -35,24 +35,24 @@ class HasilProdukCard extends StatelessWidget {
                 children: [
                   HumicCircle(
                     onTap: () => project.prevPage(),
-                    size: 30,
+                    size: 35,
                     color: redHumic,
                     child: const Icon(
                       Icons.arrow_back_ios_new_outlined,
-                      size: 12,
+                      size: 14,
                       color: whiteHumic,
                     ),
                   ),
                   const SizedBox(width: 10),
                   HumicCircle(
                     onTap: () => project.nextPage(),
-                    size: 30,
+                    size: 35,
                     color: redHumic,
                     child: Transform.rotate(
                       angle: 3.14,
                       child: const Icon(
                         Icons.arrow_back_ios_new_outlined,
-                        size: 12,
+                        size: 14,
                         color: whiteHumic,
                       ),
                     ),
