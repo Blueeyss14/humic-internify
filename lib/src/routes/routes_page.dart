@@ -39,8 +39,7 @@ class RoutesPage {
     GetPage(
       name: RoutesName.detailProduk,
       page: () => const DetailProduk(),
-      transition: Transition.leftToRight,
-      transitionDuration: const Duration(milliseconds: 100),
+      transitionDuration: const Duration(milliseconds: 500),
     ),
 
     GetPage(

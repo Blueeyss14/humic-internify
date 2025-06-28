@@ -100,13 +100,16 @@ class HasilProdukCard extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                           color: Colors.grey,
                         ),
-                        child: CachedNetworkImage(
-                          imageUrl:
-                              '${dotenv.env['API_BASE_URL']}${project.paginatedData[index].image}',
-                          errorWidget:
-                              (context, error, stackTrace) =>
-                                  const SizedBox.shrink(),
-                          fit: BoxFit.cover,
+                        child: Hero(
+                          tag: project.paginatedData[index].image,
+                          child: CachedNetworkImage(
+                            imageUrl:
+                                '${dotenv.env['API_BASE_URL']}${project.paginatedData[index].image}',
+                            errorWidget:
+                                (context, error, stackTrace) =>
+                                    const SizedBox.shrink(),
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                       Flexible(

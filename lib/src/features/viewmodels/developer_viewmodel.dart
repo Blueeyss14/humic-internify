@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:humic_internify/src/features/models/developer_mode.dart';
+import 'package:humic_internify/src/features/models/developer_model.dart';
 
 class DeveloperViewmodel extends GetxController {
   var devModel = <DeveloperModel>[].obs;
@@ -47,43 +47,43 @@ class DeveloperViewmodel extends GetxController {
         "name": "Taufik",
         "image": "assets/images/taufik.png",
         "position": "Project Manager",
-        "Link": "/",
+        "link": "",
       },
       {
         "name": "Reinhard",
         "image": "assets/images/reinhard.jpg",
         "position": "Web Designer",
-        "Link": "/",
+        "link": "",
       },
       {
         "name": "Shafa",
         "image": "assets/images/shafa.jpg",
         "position": "Mobile Designer",
-        "Link": "/",
+        "link": "",
       },
       {
         "name": "Faried",
         "image": "assets/images/faried.jpg",
         "position": "Frontend Developer",
-        "Link": "/",
+        "link": "",
       },
       {
         "name": "Delkano",
         "image": "assets/images/dell.png",
         "position": "Mobile Developer",
-        "Link": "/",
+        "link": "https://github.com/Blueeyss14",
       },
       {
         "name": "Yohanes",
         "image": "assets/images/yohanes.jpg",
         "position": "Backend Developer",
-        "Link": "/",
+        "link": "",
       },
       {
         "name": "Reihan",
         "image": "assets/images/reihan.jpg",
         "position": "Backend Developer",
-        "Link": "/",
+        "link": "",
       },
     ];
 
