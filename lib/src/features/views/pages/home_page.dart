@@ -122,79 +122,98 @@ class HomePage extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
 
-                for (var group in posisitionController.groupedUniqueJobs)
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: List.generate(posisitionController.maxPerRow, (
-                      index,
-                    ) {
-                      if (index < group.length) {
-                        final itemIndex = group[index];
-                        final item = posisitionController.data[itemIndex];
+                if (posisitionController.data.isNotEmpty)
+                  Column(
+                    children: [
+                      for (var group in posisitionController.groupedUniqueJobs)
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: List.generate(
+                            posisitionController.maxPerRow,
+                            (index) {
+                              if (index < group.length) {
+                                final itemIndex = group[index];
+                                final item =
+                                    posisitionController.data[itemIndex];
 
-                        return Expanded(
-                          child: GestureDetector(
-                            onTap: () {
-                              posisitionController.clickToFilterPosition(
-                                item.jobTitle,
-                              );
-                              bottombarController.currentIndex.value = 1;
-                              bottombarController.fetchIcon(1);
-                            },
-                            child: Container(
-                              clipBehavior: Clip.antiAlias,
-                              margin: const EdgeInsets.symmetric(
-                                horizontal: 15,
-                                vertical: 15,
-                              ),
-                              height: 150,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              child: Stack(
-                                fit: StackFit.expand,
-                                children: [
-                                  CachedNetworkImage(
-                                    imageUrl:
-                                        '${dotenv.env['API_BASE_URL']}${item.image}',
-                                    fit: BoxFit.cover,
-                                    memCacheHeight: 300,
-                                    memCacheWidth: 300,
-                                    placeholder:
-                                        (context, url) =>
-                                            Container(color: greyBlueHumic),
-                                    errorWidget:
-                                        (context, url, error) => Container(
-                                          alignment: Alignment.center,
-                                          color: greyBlueHumic,
-                                          child: const HumicLoading(),
-                                        ),
-                                  ),
-                                  Container(
-                                    margin: const EdgeInsets.only(right: 30),
-                                    padding: const EdgeInsets.all(10),
-                                    alignment: Alignment.bottomLeft,
-                                    child: AutoSizeText(
-                                      item.jobTitle,
-                                      style: const TextStyle(
-                                        fontSize: 12,
-                                        color: Colors.white,
+                                return Expanded(
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      posisitionController
+                                          .clickToFilterPosition(item.jobTitle);
+                                      bottombarController.currentIndex.value =
+                                          1;
+                                      bottombarController.fetchIcon(1);
+                                    },
+                                    child: Container(
+                                      clipBehavior: Clip.antiAlias,
+                                      margin: const EdgeInsets.symmetric(
+                                        horizontal: 15,
+                                        vertical: 15,
                                       ),
-                                      maxFontSize: 12,
-                                      minFontSize: 3,
-                                      maxLines: 2,
+                                      height: 150,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(15),
+                                      ),
+                                      child: Stack(
+                                        fit: StackFit.expand,
+                                        children: [
+                                          CachedNetworkImage(
+                                            imageUrl:
+                                                '${dotenv.env['API_BASE_URL']}${item.image}',
+                                            fit: BoxFit.cover,
+                                            memCacheHeight: 300,
+                                            memCacheWidth: 300,
+                                            placeholder:
+                                                (context, url) => Container(
+                                                  color: greyBlueHumic,
+                                                ),
+                                            errorWidget:
+                                                (
+                                                  context,
+                                                  url,
+                                                  error,
+                                                ) => Container(
+                                                  alignment: Alignment.center,
+                                                  color: greyBlueHumic,
+                                                  child: const HumicLoading(),
+                                                ),
+                                          ),
+                                          Container(
+                                            margin: const EdgeInsets.only(
+                                              right: 30,
+                                            ),
+                                            padding: const EdgeInsets.all(10),
+                                            alignment: Alignment.bottomLeft,
+                                            child: AutoSizeText(
+                                              item.jobTitle,
+                                              style: const TextStyle(
+                                                fontSize: 12,
+                                                color: Colors.white,
+                                              ),
+                                              maxFontSize: 12,
+                                              minFontSize: 3,
+                                              maxLines: 2,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
-                                ],
-                              ),
-                            ),
+                                );
+                              } else {
+                                return const Expanded(
+                                  child: SizedBox(height: 130),
+                                );
+                              }
+                            },
                           ),
-                        );
-                      } else {
-                        return const Expanded(child: SizedBox(height: 130));
-                      }
-                    }),
-                  ),
+                        ),
+                    ],
+                  )
+                else
+                  const SizedBox.shrink(),
+
                 const SizedBox(height: 20),
                 const FeedbackPage(),
                 const SizedBox(height: 80),

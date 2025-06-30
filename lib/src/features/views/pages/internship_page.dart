@@ -14,6 +14,7 @@ class InternshipPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final positionController = Get.find<PosisitionViewmodel>();
+    // final internetConnection = Get.find<InternetConnectionController>();
 
     List icons = const [Iconsax.location, Iconsax.briefcase, Iconsax.moneys];
     return Obx(() {
@@ -40,6 +41,8 @@ class InternshipPage extends StatelessWidget {
             //clicked
             GestureDetector(
               onTap: () {
+                // if (!internetConnection.isConnected.value) {}
+
                 if (positionController.filteredData[i].status.toLowerCase() ==
                     'dibuka') {
                   final originalIndex = positionController.data.indexWhere(

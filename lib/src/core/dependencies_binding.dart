@@ -9,6 +9,7 @@ import 'package:humic_internify/src/features/viewmodels/languange_viewmodel.dart
 import 'package:humic_internify/src/features/viewmodels/partnership_viewmodel.dart';
 import 'package:humic_internify/src/features/viewmodels/posisition_viewmodel.dart';
 import 'package:humic_internify/src/features/viewmodels/project_viewmodel.dart';
+import 'package:humic_internify/src/features/viewmodels/services/internet_connection_contoller.dart';
 import 'package:humic_internify/src/features/viewmodels/splash_screen_controller.dart';
 
 void initDependencies() {
@@ -23,4 +24,6 @@ void initDependencies() {
   Get.put(FormPickerViewmodel());
   Get.put(DeveloperViewmodel());
   Get.put(PartnershipViewmodel());
+
+  Get.put(InternetConnectionController());
 }
