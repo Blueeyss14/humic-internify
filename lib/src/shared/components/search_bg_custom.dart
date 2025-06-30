@@ -199,11 +199,15 @@ class SearchBgCustom extends StatelessWidget {
                                                         (
                                                           index,
                                                         ) => GestureDetector(
-                                                          onTap:
-                                                              () => positionData
-                                                                  .clickToFilterItem(
-                                                                    categoryBar[index],
-                                                                  ),
+                                                          onTap: () {
+                                                            positionData
+                                                                .clickToFilterItem(
+                                                                  categoryBar[index],
+                                                                );
+
+                                                            positionData
+                                                                .resetPositionFilter();
+                                                          },
                                                           child: Container(
                                                             alignment:
                                                                 Alignment

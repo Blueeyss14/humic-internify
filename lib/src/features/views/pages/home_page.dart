@@ -3,8 +3,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
+import 'package:humic_internify/src/features/viewmodels/bottombar_controller.dart';
 import 'package:humic_internify/src/features/viewmodels/posisition_viewmodel.dart';
 import 'package:humic_internify/src/features/views/pages/feedback_page.dart';
+import 'package:humic_internify/src/shared/components/humic_loading.dart';
 import 'package:humic_internify/src/shared/styles/custom_color.dart';
 import 'package:humic_internify/src/shared/widgets/humic_refresher.dart';
 
@@ -14,6 +16,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final posisitionController = Get.find<PosisitionViewmodel>();
+    final bottombarController = Get.find<BottombarController>();
     return HumicRefresher(
       child: SingleChildScrollView(
         child: Padding(
@@ -119,51 +122,71 @@ class HomePage extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
 
-                for (var group in posisitionController.groupedItems)
+                for (var group in posisitionController.groupedUniqueJobs)
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: List.generate(posisitionController.maxPerRow, (
                       index,
                     ) {
                       if (index < group.length) {
-                        // int containerIndex = group[index];
+                        final itemIndex = group[index];
+                        final item = posisitionController.data[itemIndex];
+
                         return Expanded(
-                          child: Container(
-                            clipBehavior: Clip.antiAlias,
-                            margin: const EdgeInsets.symmetric(
-                              horizontal: 15,
-                              vertical: 15,
-                            ),
-                            height: 150,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            child: Stack(
-                              fit: StackFit.expand,
-                              children: [
-                                CachedNetworkImage(
-                                  imageUrl:
-                                      '${dotenv.env['API_BASE_URL']}${posisitionController.data[group[index]].image}',
-                                  fit: BoxFit.cover,
-                                ),
-                                Container(
-                                  margin: const EdgeInsets.only(right: 30),
-                                  padding: const EdgeInsets.all(10),
-                                  alignment: Alignment.bottomLeft,
-                                  child: AutoSizeText(
-                                    posisitionController
-                                        .data[group[index]]
-                                        .jobTitle,
-                                    style: const TextStyle(
-                                      fontSize: 12,
-                                      color: Colors.white,
-                                    ),
-                                    maxFontSize: 12,
-                                    minFontSize: 3,
-                                    maxLines: 2,
+                          child: GestureDetector(
+                            onTap: () {
+                              posisitionController.clickToFilterPosition(
+                                item.jobTitle,
+                              );
+                              bottombarController.currentIndex.value = 1;
+                              bottombarController.fetchIcon(1);
+                            },
+                            child: Container(
+                              clipBehavior: Clip.antiAlias,
+                              margin: const EdgeInsets.symmetric(
+                                horizontal: 15,
+                                vertical: 15,
+                              ),
+                              height: 150,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              child: Stack(
+                                fit: StackFit.expand,
+                                children: [
+                                  CachedNetworkImage(
+                                    imageUrl:
+                                        '${dotenv.env['API_BASE_URL']}${item.image}',
+                                    fit: BoxFit.cover,
+                                    memCacheHeight: 300,
+                                    memCacheWidth: 300,
+                                    placeholder:
+                                        (context, url) =>
+                                            Container(color: greyBlueHumic),
+                                    errorWidget:
+                                        (context, url, error) => Container(
+                                          alignment: Alignment.center,
+                                          color: greyBlueHumic,
+                                          child: const HumicLoading(),
+                                        ),
                                   ),
-                                ),
-                              ],
+                                  Container(
+                                    margin: const EdgeInsets.only(right: 30),
+                                    padding: const EdgeInsets.all(10),
+                                    alignment: Alignment.bottomLeft,
+                                    child: AutoSizeText(
+                                      item.jobTitle,
+                                      style: const TextStyle(
+                                        fontSize: 12,
+                                        color: Colors.white,
+                                      ),
+                                      maxFontSize: 12,
+                                      minFontSize: 3,
+                                      maxLines: 2,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         );
