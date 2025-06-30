@@ -107,7 +107,7 @@ class OurDeveloperCard extends StatelessWidget {
                           Image.asset("assets/icons/link.png", width: 10),
                           const SizedBox(width: 5),
                           const Text(
-                            "Website",
+                            "LinkedIn",
                             style: TextStyle(
                               color: redHumic,
                               fontWeight: FontWeight.bold,
