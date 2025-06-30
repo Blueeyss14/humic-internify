@@ -7,6 +7,7 @@ import 'package:http/http.dart' as http;
 
 class PartnershipViewmodel extends GetxController {
   var data = <PartnershipModel>[].obs;
+  var isHide = false.obs;
 
   @override
   void onInit() {
@@ -28,5 +29,9 @@ class PartnershipViewmodel extends GetxController {
     } catch (e) {
       print('failed: $e');
     } finally {}
+  }
+
+  void hideThis() {
+    isHide.value = !isHide.value;
   }
 }

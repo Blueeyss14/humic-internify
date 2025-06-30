@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:humic_internify/src/features/viewmodels/bottombar_controller.dart';
+import 'package:humic_internify/src/features/viewmodels/posisition_viewmodel.dart';
 import 'package:humic_internify/src/shared/styles/custom_color.dart';
 
 class BottomNavbar extends StatelessWidget {
@@ -10,6 +11,7 @@ class BottomNavbar extends StatelessWidget {
   Widget build(BuildContext context) {
     final bottombarController = Get.find<BottombarController>();
     final bottomBar = Get.find<BottombarController>().icon;
+    final positionCon = Get.find<PosisitionViewmodel>();
 
     double padding = 30;
 
@@ -44,6 +46,10 @@ class BottomNavbar extends StatelessWidget {
                       (index) => GestureDetector(
                         onTap: () {
                           bottombarController.changeIndex(index);
+
+                          if (bottombarController.currentIndex.value == 0) {
+                            positionCon.resetPositionFilter();
+                          }
                         },
                         child: Container(
                           padding: const EdgeInsets.symmetric(vertical: 18),

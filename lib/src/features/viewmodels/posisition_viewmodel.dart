@@ -3,8 +3,11 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:humic_internify/src/features/models/position_model.dart';
 import 'package:http/http.dart' as http;
+import 'package:humic_internify/src/features/viewmodels/bottombar_controller.dart';
 
 class PosisitionViewmodel extends GetxController {
+  final bottomBarController = Get.find<BottombarController>();
+
   var data = <PositionModel>[].obs;
   var filteredData = <PositionModel>[].obs;
   var categoryList = <String>[].obs;

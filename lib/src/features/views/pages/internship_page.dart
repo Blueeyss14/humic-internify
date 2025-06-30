@@ -133,7 +133,7 @@ class InternshipPage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: List.generate(icons.length, (index) {
                             List<String> currPos = [
-                              "${positionController.filteredData[i].location}, ${positionController.filteredData[i].type}",
+                              (positionController.filteredData[i].location),
 
                               positionController.filteredData[i].category,
                               positionController.filteredData[i].paidStatus,

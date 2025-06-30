@@ -4,7 +4,6 @@ class PositionModel {
   String image;
   String status;
   String location;
-  String type;
   String paidStatus;
   String category;
   String description;
@@ -17,7 +16,6 @@ class PositionModel {
     this.image,
     this.location,
     this.status,
-    this.type,
     this.paidStatus,
     this.category,
     this.description,
@@ -32,7 +30,6 @@ class PositionModel {
       json['image_path'] ?? '',
       json['lokasi'] ?? '',
       json['status_lowongan'] ?? '',
-      json['lokasi'] ?? '',
       json['paid'] ?? '',
       json['kelompok_peminatan'] ?? '',
       json['jobdesk'] ?? '',

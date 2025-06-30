@@ -80,7 +80,7 @@ class DetailMagang extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: List.generate(icons.length, (index) {
                               List<String> currPos = [
-                                "${currPosition.location}, ${currPosition.type}",
+                                (currPosition.location),
                                 currPosition.category,
                                 currPosition.paidStatus,
                               ];

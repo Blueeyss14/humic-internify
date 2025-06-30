@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:humic_internify/src/features/viewmodels/partnership_viewmodel.dart';
@@ -15,75 +17,114 @@ class AboutUs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final partnership = Get.find<PartnershipViewmodel>();
-    return Column(
-      children: [
-        const SizedBox(height: 50),
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 30),
-          color: softRed,
-          width: double.infinity,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+
+    return Obx(
+      () => Column(
+        children: [
+          const SizedBox(height: 50),
+          Column(
             children: [
-              const Text(
-                "Partnership",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
-              ),
-              const SizedBox(height: 5),
-              const Text(
-                "Kami bersama-sama menciptakan solusi yang memberdayakan bisnis dan meningkatkan efisiensi operasional.",
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 12,
-                  height: 2,
-                ),
-              ),
-              const SizedBox(height: 15),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    for (int i = 0; i < partnership.data.length; i++)
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
-                        height: 80,
-                        child: CachedNetworkImage(
-                          imageUrl:
-                              '${dotenv.env['API_BASE_URL']}${partnership.data[i].image}',
-                          width: 100,
-                          errorWidget:
-                              (context, url, error) => const SizedBox.shrink(),
+              GestureDetector(
+                onTap: () => partnership.hideThis(),
+                child: Container(
+                  alignment: Alignment.centerLeft,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 30,
+                    vertical: 20,
+                  ),
+                  color: softRed,
+                  width: double.infinity,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        "Partnership",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 17,
                         ),
                       ),
-                  ],
+
+                      AnimatedRotation(
+                        turns: partnership.isHide.value ? 0.5 : 0,
+                        duration: const Duration(milliseconds: 250),
+                        child: const Icon(CupertinoIcons.chevron_down),
+                      ),
+                    ],
+                  ),
                 ),
               ),
+
+              if (partnership.isHide.value)
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 30),
+                  color: softRed,
+                  width: double.infinity,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(height: 5),
+                      const Text(
+                        "Kami bersama-sama menciptakan solusi yang memberdayakan bisnis dan meningkatkan efisiensi operasional.",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 12,
+                          height: 2,
+                        ),
+                      ),
+                      const SizedBox(height: 15),
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            for (int i = 0; i < partnership.data.length; i++)
+                              Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 10,
+                                ),
+                                height: 80,
+                                child: CachedNetworkImage(
+                                  imageUrl:
+                                      '${dotenv.env['API_BASE_URL']}${partnership.data[i].image}',
+                                  width: 100,
+                                  errorWidget:
+                                      (context, url, error) =>
+                                          const SizedBox.shrink(),
+                                ),
+                              ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
             ],
           ),
-        ),
-        const SizedBox(height: 40),
 
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 30),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ///HASIL  PRODUK
-              HasilProdukCard(),
+          const SizedBox(height: 40),
 
-              ///Developer
-              SizedBox(height: 20),
-              OurDeveloperCard(),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ///HASIL  PRODUK
+                HasilProdukCard(),
 
-              //Contact Us
-              SizedBox(height: 20),
-              ContactUs(),
-            ],
+                ///Developer
+                SizedBox(height: 20),
+                OurDeveloperCard(),
+
+                //Contact Us
+                SizedBox(height: 20),
+                ContactUs(),
+              ],
+            ),
           ),
-        ),
 
-        const SizedBox(height: 100),
-      ],
+          const SizedBox(height: 100),
+        ],
+      ),
     );
   }
 }
