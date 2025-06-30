@@ -30,99 +30,37 @@ class PosisitionViewmodel extends GetxController {
   }
 
   Future<void> fetchPositionData() async {
-    List<Map<String, dynamic>> datas = [
-      {
-        "id": "1",
-        "posisi": "UI Designer",
-        "image_path": "",
-        "lokasi": "Bandung",
-        "status_lowongan": "Dibuka",
-        "paid": "Paid",
-        "kelompok_peminatan": "Design",
-        "jobdesk": "Mendesain UI aplikasi",
-        "kualifikasi": "Menguasai Figma",
-        "benefit": "Sertifikat, Pengalaman",
-      },
-      {
-        "id": "2",
-        "posisi": "UI Designer",
-        "image_path": "",
-        "lokasi": "Bandung",
-        "status_lowongan": "Dibuka",
-        "paid": "Paid",
-        "kelompok_peminatan": "Design",
-        "jobdesk": "Mendesain UI aplikasi",
-        "kualifikasi": "Menguasai Figma",
-        "benefit": "Sertifikat, Pengalaman",
-      },
-      {
-        "id": "3",
-        "posisi": "Backend",
-        "image_path": "",
-        "lokasi": "Bandung",
-        "status_lowongan": "Dibuka",
-        "paid": "Paid",
-        "kelompok_peminatan": "Software",
-        "jobdesk": "Mendesain UI aplikasi",
-        "kualifikasi": "Menguasai Figma",
-        "benefit": "Sertifikat, Pengalaman",
-      },
-      {
-        "id": "4",
-        "posisi": "UI Designer",
-        "image_path": "",
-        "lokasi": "Bandung",
-        "status_lowongan": "Dibuka",
-        "paid": "Paid",
-        "kelompok_peminatan": "Design",
-        "jobdesk": "Mendesain UI aplikasi",
-        "kualifikasi": "Menguasai Figma",
-        "benefit": "Sertifikat, Pengalaman",
-      },
-    ];
+    try {
+      isLoading.value = true;
+      error.value = "";
 
-    data.value = datas.map((e) => PositionModel.fromJson(e)).toList();
-    filteredData.value = data;
-    itemCount.value = data.length;
-    itemGroup.value = data.length;
+      final response = await http.get(
+        Uri.parse('${dotenv.env['API_BASE_URL']}/lowongan-magang-api/get'),
+        headers: {'Content-Type': 'application/json'},
+      );
 
-    final seen = <String>{};
-    categoryList.value =
-        data.map((e) => e.category).where((cat) => seen.add(cat)).toList();
+      if (response.statusCode == 200) {
+        final result = jsonDecode(response.body);
+        final datas = result['data'];
+
+        data.value =
+            datas.map<PositionModel>((d) => PositionModel.fromJson(d)).toList();
+        filteredData.value = data;
+        itemCount.value = data.length;
+        itemGroup.value = data.length;
+
+        final seen = <String>{};
+        categoryList.value =
+            data.map((e) => e.category).where((cat) => seen.add(cat)).toList();
+      } else {
+        error.value = "Failed to load data. Status: ${response.statusCode}";
+      }
+    } catch (e) {
+      error.value = "error: $e";
+    } finally {
+      isLoading.value = false;
+    }
   }
-
-  // Future<void> fetchPositionData() async {
-  //   try {
-  //     isLoading.value = true;
-  //     error.value = "";
-
-  //     final response = await http.get(
-  //       Uri.parse('${dotenv.env['API_BASE_URL']}/lowongan-magang-api/get'),
-  //       headers: {'Content-Type': 'application/json'},
-  //     );
-
-  //     if (response.statusCode == 200) {
-  //       final result = jsonDecode(response.body);
-  //       final datas = result['data'];
-
-  //       data.value =
-  //           datas.map<PositionModel>((d) => PositionModel.fromJson(d)).toList();
-  //       filteredData.value = data;
-  //       itemCount.value = data.length;
-  //       itemGroup.value = data.length;
-
-  //       final seen = <String>{};
-  //       categoryList.value =
-  //           data.map((e) => e.category).where((cat) => seen.add(cat)).toList();
-  //     } else {
-  //       error.value = "Failed to load data. Status: ${response.statusCode}";
-  //     }
-  //   } catch (e) {
-  //     error.value = "error: $e";
-  //   } finally {
-  //     isLoading.value = false;
-  //   }
-  // }
 
   List<List<int>> get groupedItems {
     List<List<int>> groups = [];
