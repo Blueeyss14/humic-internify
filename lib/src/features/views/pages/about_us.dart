@@ -48,7 +48,10 @@ class AboutUs extends StatelessWidget {
                       AnimatedRotation(
                         turns: partnership.isHide.value ? 0.5 : 0,
                         duration: const Duration(milliseconds: 250),
-                        child: const Icon(CupertinoIcons.chevron_down),
+                        child: const Icon(
+                          CupertinoIcons.chevron_down,
+                          size: 16,
+                        ),
                       ),
                     ],
                   ),

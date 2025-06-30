@@ -9,6 +9,7 @@ import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:humic_internify/src/features/viewmodels/project_viewmodel.dart';
 import 'package:humic_internify/src/routes/routes_name.dart';
 import 'package:humic_internify/src/shared/components/humic_circle.dart';
+import 'package:humic_internify/src/shared/components/humic_loading.dart';
 import 'package:humic_internify/src/shared/styles/custom_color.dart';
 
 class HasilProdukCard extends StatelessWidget {
@@ -143,9 +144,15 @@ class HasilProdukCard extends StatelessWidget {
                 color: greyBlueHumic,
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: const Text(
-                "Belum Ada Hasil Produk Reaserch",
-                style: TextStyle(fontSize: 12, letterSpacing: 1.5),
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text(
+                    "Memuat Hasil Produk Reaserch",
+                    style: TextStyle(fontSize: 12, letterSpacing: 1.5),
+                  ),
+                  SizedBox(height: 20, width: 20, child: HumicLoading()),
+                ],
               ),
             ),
         ],
