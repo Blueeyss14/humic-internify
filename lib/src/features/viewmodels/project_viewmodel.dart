@@ -1,5 +1,6 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
+import 'package:html/parser.dart' as html_parser;
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -17,11 +18,15 @@ class ProjectModel {
   });
 
   factory ProjectModel.fromJson(Map<String, dynamic> json) {
+    final rawHtml = json["deskripsi"] ?? "";
+    final document = html_parser.parse(rawHtml);
+    final String cleanText = document.body?.text ?? "";
+
     return ProjectModel(
       id: json["id"],
       image: json["image_path"] ?? "",
       title: json["nama_project"] ?? "",
-      deskripsi: json["deskripsi"] ?? "",
+      deskripsi: cleanText.trim(),
     );
   }
 }

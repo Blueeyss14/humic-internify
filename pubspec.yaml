@@ -57,8 +57,7 @@ dependencies:
   carousel_slider: ^5.1.1
   url_launcher: ^6.3.1
   connectivity_plus: ^6.1.4
-  flutter_recaptcha_v2_compat: ^1.0.3+3
-  recaptcha_v3: ^0.2.0
+  html: ^0.15.6
 
 dev_dependencies:
   flutter_test:

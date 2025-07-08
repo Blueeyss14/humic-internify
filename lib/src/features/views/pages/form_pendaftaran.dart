@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_recaptcha_v2_compat/flutter_recaptcha_v2_compat.dart';
+// import 'package:flutter_dotenv/flutter_dotenv.dart';
+// import 'package:flutter_recaptcha_v2_compat/flutter_recaptcha_v2_compat.dart';
 import 'package:get/get.dart';
 import 'package:humic_internify/src/features/viewmodels/form_controller.dart';
 import 'package:humic_internify/src/features/viewmodels/form_picker_viewmodel.dart';
@@ -19,8 +19,8 @@ class FormPendaftaran extends StatelessWidget {
     final formPicker = Get.find<FormPickerViewmodel>();
     final String? idLowonganMagang = Get.arguments as String?;
 
-    final RecaptchaV2Controller recaptchaV2Controller = RecaptchaV2Controller();
-    String recaptchaToken = '';
+    // final RecaptchaV2Controller recaptchaV2Controller = RecaptchaV2Controller();
+    // String recaptchaToken = '';
 
     return PopScope(
       canPop: true,
@@ -301,21 +301,21 @@ class FormPendaftaran extends StatelessWidget {
                                 ),
                               ),
                               const SizedBox(height: 40),
-                              SizedBox(
-                                height: 100,
-                                child: RecaptchaV2(
-                                  apiKey: '${dotenv.env['SITE_KEY']}',
-                                  apiSecret: '',
-                                  controller: recaptchaV2Controller,
-                                  onVerifiedSuccessfully: (token) {
-                                    print('$token');
-                                  },
-                                  onVerifiedError: (err) {
-                                    print('RECAPTCHA ERROR: $err');
-                                  },
-                                ),
-                              ),
 
+                              // SizedBox(
+                              //   height: 100,
+                              //   child: RecaptchaV2(
+                              //     apiKey: '${dotenv.env['SITE_KEY']}',
+                              //     apiSecret: '',
+                              //     controller: recaptchaV2Controller,
+                              //     onVerifiedSuccessfully: (token) {
+                              //       print('$token');
+                              //     },
+                              //     onVerifiedError: (err) {
+                              //       print('RECAPTCHA ERROR: $err');
+                              //     },
+                              //   ),
+                              // ),
                               HumicButton(
                                 margin: const EdgeInsets.only(right: 10),
                                 padding: const EdgeInsets.all(10),
@@ -323,7 +323,7 @@ class FormPendaftaran extends StatelessWidget {
                                   if (idLowonganMagang != null) {
                                     form.submitForm(
                                       idLowonganMagang: idLowonganMagang,
-                                      recaptchaToken: recaptchaToken,
+                                      // recaptchaToken: recaptchaToken,
                                     );
                                   }
                                 },

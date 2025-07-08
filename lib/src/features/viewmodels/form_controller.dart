@@ -50,10 +50,7 @@ class FormController extends GetxController {
     isAgree.value = !isAgree.value;
   }
 
-  void submitForm({
-    required String idLowonganMagang,
-    required String recaptchaToken,
-  }) async {
+  void submitForm({required String idLowonganMagang}) async {
     if (isAgree.value) {
       isFirstNameError.value = firstName.value.text.isEmpty;
       isEmailError.value = email.value.text.isEmpty;
@@ -87,7 +84,7 @@ class FormController extends GetxController {
         print("CV File: ${formPicker.cvFile.value}");
         print("Portfolio File: ${formPicker.portfolioFile.value}");
 
-        await sendFormToApi(idLowonganMagang, recaptchaToken);
+        await sendFormToApi(idLowonganMagang);
 
         resetForm();
       }
@@ -120,12 +117,9 @@ class FormController extends GetxController {
     isLoading.value = false;
   }
 
-  Future<void> sendFormToApi(
-    String idLowonganMagang,
-    String recaptchaToken,
-  ) async {
+  Future<void> sendFormToApi(String idLowonganMagang) async {
     var uri = Uri.parse(
-      '${dotenv.env['API_BASE_URL']}/lamaran-magang-api/add/$idLowonganMagang',
+      '${dotenv.env['API_BASE_URL']}/lamaran-magang-api/add-mobile/$idLowonganMagang',
     );
 
     var request = http.MultipartRequest('POST', uri);
@@ -138,7 +132,7 @@ class FormController extends GetxController {
     request.fields['jurusan'] = major.value.text;
     request.fields['motivasi'] = motivation.value.text;
     request.fields['relevant_skills'] = skills.value.text;
-    request.fields['recaptcha_token'] = recaptchaToken;
+    // request.fields['recaptcha_token'] = recaptchaToken;
 
     if (formPicker.cvFile.value.isNotEmpty) {
       request.files.add(
