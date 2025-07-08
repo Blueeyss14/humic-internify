@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_recaptcha_v2_compat/flutter_recaptcha_v2_compat.dart';
 import 'package:get/get.dart';
 import 'package:humic_internify/src/features/viewmodels/form_controller.dart';
@@ -303,8 +304,7 @@ class FormPendaftaran extends StatelessWidget {
                               SizedBox(
                                 height: 100,
                                 child: RecaptchaV2(
-                                  apiKey:
-                                      '6LedcEgrAAAAADJGKo1GgFjQsa_D2p9JFuWIt2hw',
+                                  apiKey: '${dotenv.env['SITE_KEY']}',
                                   apiSecret: '',
                                   controller: recaptchaV2Controller,
                                   onVerifiedSuccessfully: (token) {
