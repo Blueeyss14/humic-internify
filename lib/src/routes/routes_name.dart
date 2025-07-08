@@ -5,4 +5,5 @@ abstract class RoutesName {
   static const formPendaftaran = "/pendaftaran";
   static const detailProduk = "/detail-produk";
   static const lamaranTerkirim = "/lamaran-terkirim";
+  static const lamaranGagal = "/lamaran-gagal";
 }

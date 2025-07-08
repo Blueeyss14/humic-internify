@@ -3,6 +3,7 @@ import 'package:humic_internify/src/features/splash/splash_screen.dart';
 import 'package:humic_internify/src/features/views/home/home_app.dart';
 import 'package:humic_internify/src/features/views/pages/detail_magang.dart';
 import 'package:humic_internify/src/features/views/pages/detail_produk.dart';
+import 'package:humic_internify/src/features/views/pages/failed_page.dart';
 import 'package:humic_internify/src/features/views/pages/form_pendaftaran.dart';
 import 'package:humic_internify/src/features/views/pages/lamaran_terkirim.dart';
 import 'package:humic_internify/src/routes/routes_name.dart';
@@ -45,6 +46,12 @@ class RoutesPage {
     GetPage(
       name: RoutesName.lamaranTerkirim,
       page: () => const LamaranTerkirim(),
+      transition: Transition.fade,
+      transitionDuration: const Duration(milliseconds: 200),
+    ),
+    GetPage(
+      name: RoutesName.lamaranGagal,
+      page: () => const FailedPage(),
       transition: Transition.fade,
       transitionDuration: const Duration(milliseconds: 200),
     ),

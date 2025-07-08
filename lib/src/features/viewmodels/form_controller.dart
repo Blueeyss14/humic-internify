@@ -50,7 +50,10 @@ class FormController extends GetxController {
     isAgree.value = !isAgree.value;
   }
 
-  void submitForm({required String idLowonganMagang}) async {
+  void submitForm({
+    required String idLowonganMagang,
+    required String recaptchaToken,
+  }) async {
     if (isAgree.value) {
       isFirstNameError.value = firstName.value.text.isEmpty;
       isEmailError.value = email.value.text.isEmpty;
@@ -84,10 +87,9 @@ class FormController extends GetxController {
         print("CV File: ${formPicker.cvFile.value}");
         print("Portfolio File: ${formPicker.portfolioFile.value}");
 
-        await sendFormToApi(idLowonganMagang);
+        await sendFormToApi(idLowonganMagang, recaptchaToken);
 
         resetForm();
-        Get.offAllNamed(RoutesName.lamaranTerkirim);
       }
     }
   }
@@ -118,7 +120,10 @@ class FormController extends GetxController {
     isLoading.value = false;
   }
 
-  Future<void> sendFormToApi(String idLowonganMagang) async {
+  Future<void> sendFormToApi(
+    String idLowonganMagang,
+    String recaptchaToken,
+  ) async {
     var uri = Uri.parse(
       '${dotenv.env['API_BASE_URL']}/lamaran-magang-api/add/$idLowonganMagang',
     );
@@ -129,10 +134,11 @@ class FormController extends GetxController {
     request.fields['nama_belakang'] = lastName.value.text;
     request.fields['email'] = email.value.text;
     request.fields['kontak'] = contact.value.text;
+    request.fields['fakultas'] = faculty.value.text;
     request.fields['jurusan'] = major.value.text;
-    request.fields['angkatan'] = '2021';
     request.fields['motivasi'] = motivation.value.text;
     request.fields['relevant_skills'] = skills.value.text;
+    request.fields['recaptcha_token'] = recaptchaToken;
 
     if (formPicker.cvFile.value.isNotEmpty) {
       request.files.add(
@@ -158,8 +164,10 @@ class FormController extends GetxController {
       var response = await request.send();
       if (response.statusCode == 200) {
         print("Berhasil Slurd");
+        Get.offAllNamed(RoutesName.lamaranTerkirim);
       } else {
         print("Gagal coy. Status code: ${response.statusCode}");
+        Get.offAllNamed(RoutesName.lamaranGagal);
       }
     } catch (e) {
       print("Error: $e");
