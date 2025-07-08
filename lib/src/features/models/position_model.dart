@@ -1,3 +1,5 @@
+import 'package:html/parser.dart' as html_parser;
+
 class PositionModel {
   String id;
   String jobTitle;
@@ -24,6 +26,11 @@ class PositionModel {
   );
 
   factory PositionModel.fromJson(Map<String, dynamic> json) {
+    final rawHtml = json["jobdesk"] ?? "";
+    final document = html_parser.parse(rawHtml);
+    final String cleanText = document.body?.text ?? "";
+    final cleaned = cleanText.replaceAll('Powered by Froala Editor', '').trim();
+
     return PositionModel(
       json['id']?.toString() ?? '',
       json['posisi'] ?? '',
@@ -32,7 +39,7 @@ class PositionModel {
       json['status_lowongan'] ?? '',
       json['paid'] ?? '',
       json['kelompok_peminatan'] ?? '',
-      json['jobdesk'] ?? '',
+      cleaned,
       // List<String>.from(json['kualifikasi'] ?? []),
       // List<String>.from(json['benefit'] ?? []),
       [json['kualifikasi']?.toString() ?? ''],

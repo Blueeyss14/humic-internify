@@ -1,10 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_instance/get_instance.dart';
 import 'package:humic_internify/src/features/viewmodels/partnership_viewmodel.dart';
 import 'package:humic_internify/src/features/views/components/contact_us.dart';
 import 'package:humic_internify/src/features/views/components/hasil_produk_card.dart';
@@ -85,6 +82,7 @@ class AboutUs extends StatelessWidget {
                                 padding: const EdgeInsets.symmetric(
                                   horizontal: 10,
                                 ),
+                                margin: const EdgeInsets.only(bottom: 10),
                                 height: 80,
                                 child: CachedNetworkImage(
                                   imageUrl:

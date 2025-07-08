@@ -21,12 +21,13 @@ class ProjectModel {
     final rawHtml = json["deskripsi"] ?? "";
     final document = html_parser.parse(rawHtml);
     final String cleanText = document.body?.text ?? "";
+    final cleaned = cleanText.replaceAll('Powered by Froala Editor', '').trim();
 
     return ProjectModel(
       id: json["id"],
       image: json["image_path"] ?? "",
       title: json["nama_project"] ?? "",
-      deskripsi: cleanText.trim(),
+      deskripsi: cleaned,
     );
   }
 }
