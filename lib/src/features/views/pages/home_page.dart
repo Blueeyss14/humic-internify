@@ -162,8 +162,6 @@ class HomePage extends StatelessWidget {
                                             imageUrl:
                                                 '${dotenv.env['API_BASE_URL']}${item.image}',
                                             fit: BoxFit.cover,
-                                            memCacheHeight: 300,
-                                            memCacheWidth: 300,
                                             placeholder:
                                                 (context, url) => Container(
                                                   color: greyBlueHumic,
@@ -180,11 +178,23 @@ class HomePage extends StatelessWidget {
                                                 ),
                                           ),
                                           Container(
-                                            margin: const EdgeInsets.only(
-                                              right: 30,
+                                            padding: const EdgeInsets.only(
+                                              top: 10,
+                                              bottom: 10,
+                                              left: 10,
+                                              right: 20,
                                             ),
-                                            padding: const EdgeInsets.all(10),
                                             alignment: Alignment.bottomLeft,
+                                            decoration: BoxDecoration(
+                                              gradient: LinearGradient(
+                                                colors: [
+                                                  Colors.black.withAlpha(200),
+                                                  Colors.transparent,
+                                                ],
+                                                begin: Alignment.bottomCenter,
+                                                end: Alignment.topCenter,
+                                              ),
+                                            ),
                                             child: AutoSizeText(
                                               item.jobTitle,
                                               style: const TextStyle(
