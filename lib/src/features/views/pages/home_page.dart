@@ -116,11 +116,14 @@ class HomePage extends StatelessWidget {
                 const SizedBox(height: 40),
 
                 ///JELAJAHI POSISI
-                const Text(
-                  "Jelajahi posisi yang kamu inginkan",
-                  style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 20),
+                if (posisitionController.data.isNotEmpty)
+                  const Text(
+                    "Jelajahi posisi yang kamu inginkan",
+                    style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.center,
+                  ),
+                if (posisitionController.data.isNotEmpty)
+                  const SizedBox(height: 20),
 
                 if (posisitionController.data.isNotEmpty)
                   Column(
