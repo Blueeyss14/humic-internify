@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:humic_internify/src/features/viewmodels/posisition_viewmodel.dart';
 import 'package:humic_internify/src/routes/routes_name.dart';
 import 'package:humic_internify/src/shared/components/humic_button.dart';
-import 'package:humic_internify/src/shared/components/humic_circle.dart';
+// import 'package:humic_internify/src/shared/components/humic_circle.dart';
 import 'package:humic_internify/src/shared/styles/custom_color.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 
@@ -113,7 +113,9 @@ class DetailMagang extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 40),
-                        const Text(
+
+                        /*
+                         const Text(
                           "Deskripsi Pekerjaan:",
                           style: TextStyle(
                             fontSize: 16,
@@ -121,15 +123,26 @@ class DetailMagang extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 10),
+                        */
 
                         // Text(
                         //   currPosition.description,
                         //   style: const TextStyle(height: 2, fontSize: 12),
                         //   textAlign: TextAlign.justify,
                         // ),
-                        // Html(data: currPosition.description),
-                        const SizedBox(height: 30),
+                        Html(
+                          data: currPosition.description,
+                          style: {
+                            "*": Style(
+                              margin: Margins.zero,
+                              padding: HtmlPaddings.zero,
+                              textAlign: TextAlign.justify,
+                            ),
+                          },
+                        ),
 
+                        /**
+                            const SizedBox(height: 30),
                         const Text(
                           "Kualifikasi:",
                           style: TextStyle(
@@ -215,7 +228,7 @@ class DetailMagang extends StatelessWidget {
                             ),
                           ),
                         ),
-
+                         */
                         const SizedBox(height: 40),
                         HumicButton(
                           onTap: () {
@@ -234,6 +247,8 @@ class DetailMagang extends StatelessWidget {
                             ),
                           ),
                         ),
+
+                        const SizedBox(height: 300),
                       ],
                     ),
                   ),

@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
 import 'package:humic_internify/src/features/viewmodels/project_viewmodel.dart';
 import 'package:humic_internify/src/shared/styles/custom_color.dart';
@@ -90,11 +91,22 @@ class DetailProduk extends StatelessWidget {
                       const SizedBox(height: 20),
 
                       ///fetch
-                      Text(
-                        project.data[project.selectedItem.value].deskripsi,
-                        style: const TextStyle(fontSize: 14),
-                        textAlign: TextAlign.justify,
+                      Html(
+                        data:
+                            project.data[project.selectedItem.value].deskripsi,
+                        style: {
+                          "*": Style(
+                            margin: Margins.zero,
+                            padding: HtmlPaddings.zero,
+                            textAlign: TextAlign.justify,
+                          ),
+                        },
                       ),
+                      // Text(
+                      //   project.data[project.selectedItem.value].deskripsi,
+                      //   style: const TextStyle(fontSize: 14),
+                      //   textAlign: TextAlign.justify,
+                      // ),
                       const SizedBox(height: 30),
                     ],
                   ),

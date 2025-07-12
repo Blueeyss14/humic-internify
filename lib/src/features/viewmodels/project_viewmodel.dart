@@ -1,6 +1,6 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
-import 'package:html/parser.dart' as html_parser;
+// import 'package:html/parser.dart' as html_parser;
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -18,10 +18,31 @@ class ProjectModel {
   });
 
   factory ProjectModel.fromJson(Map<String, dynamic> json) {
+    // final rawHtml = json["deskripsi"] ?? "";
+    // final document = html_parser.parse(rawHtml);
+    // final String cleanText = document.body?.text ?? "";
+    // final cleaned = cleanText.replaceAll('Powered by Froala Editor', '').trim();
+
     final rawHtml = json["deskripsi"] ?? "";
-    final document = html_parser.parse(rawHtml);
-    final String cleanText = document.body?.text ?? "";
-    final cleaned = cleanText.replaceAll('Powered by Froala Editor', '').trim();
+    final cleaned =
+        rawHtml
+            .replaceAll(
+              RegExp(
+                r'<[^>]+>([^<]*froala[^<]*)<\/[^>]+>',
+                caseSensitive: false,
+              ),
+              '',
+            )
+            .replaceAll(
+              RegExp(
+                r'<[^>]+>([^<]*Powered[^<]*)<\/[^>]+>',
+                caseSensitive: false,
+              ),
+              '',
+            )
+            .replaceAll(RegExp(r'froala', caseSensitive: false), '')
+            .replaceAll(RegExp(r'\s{2,}'), ' ')
+            .trim();
 
     return ProjectModel(
       id: json["id"],
