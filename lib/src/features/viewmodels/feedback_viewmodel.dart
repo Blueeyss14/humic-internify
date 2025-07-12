@@ -31,21 +31,20 @@ class FeedbackViewmodel extends GetxController {
 
       {
         "feedback": "Apakah saya bisa melamar lebih dari satu lowongan?",
-        "reply":
-            "Untuk magang di sini, kamu bisa klik tombol Lowongan. Setelah itu, pilih lowongan magang yang kamu inginkan. Agar lebih spesifik, kamu juga bisa memfilter lowongan sesuai minat kamu dengan menekan tombol Filter, lalu pilih kategori magang yang sesuai.",
+        "reply": "Tidak Bisa, Hanya Bisa Melamar 1 Lowongan.",
       },
 
       {
         "feedback":
             "Bagaimana saya tahu jika lamaran saya diterima atau ditolak?",
         "reply":
-            "Untuk magang di sini, kamu bisa klik tombol Lowongan. Setelah itu, pilih lowongan magang yang kamu inginkan. Agar lebih spesifik, kamu juga bisa memfilter lowongan sesuai minat kamu dengan menekan tombol Filter, lalu pilih kategori magang yang sesuai.",
+            "Sistem Akan Mengirimkan Pesan Diterima/Ditolak Ke Email Anda.",
       },
 
       {
         "feedback": "Apakah data pribadi saya aman?",
         "reply":
-            "Untuk magang di sini, kamu bisa klik tombol Lowongan. Setelah itu, pilih lowongan magang yang kamu inginkan. Agar lebih spesifik, kamu juga bisa memfilter lowongan sesuai minat kamu dengan menekan tombol Filter, lalu pilih kategori magang yang sesuai.",
+            "Data Pribadi Dipastikan Aman, Sistem Ini Memiliki Admin Dashboard.",
       },
     ];
 

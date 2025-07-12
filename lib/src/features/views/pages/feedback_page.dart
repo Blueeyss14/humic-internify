@@ -73,6 +73,7 @@ class FeedbackPage extends StatelessWidget {
                     color: pinkHumic,
                   ),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -90,10 +91,22 @@ class FeedbackPage extends StatelessWidget {
                               ),
                             ),
                           ),
-                          if (feedbackController.selectedIndex.value == i)
-                            const Icon(Icons.close, color: redHumic, size: 14)
-                          else
-                            const Icon(Icons.add, color: redHumic, size: 16),
+                          // if (feedbackController.selectedIndex.value == i)
+                          //   const Icon(Icons.close, color: redHumic, size: 14)
+                          // else
+                          AnimatedRotation(
+                            turns:
+                                feedbackController.selectedIndex.value == i
+                                    ? 0.125
+                                    : 0,
+                            duration: const Duration(milliseconds: 100),
+
+                            child: const Icon(
+                              Icons.add,
+                              color: redHumic,
+                              size: 16,
+                            ),
+                          ),
                         ],
                       ),
                       AnimatedSwitcher(
@@ -106,7 +119,7 @@ class FeedbackPage extends StatelessWidget {
                                     feedbackController.feedback[i].reply,
                                     style: const TextStyle(
                                       color: redHumic,
-                                      fontSize: 10,
+                                      fontSize: 12,
                                     ),
                                     textAlign: TextAlign.justify,
                                   ),

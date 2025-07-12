@@ -1,6 +1,7 @@
 // import 'dart:io';
 // import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:humic_internify/src/core/dependencies_binding.dart';
@@ -24,6 +25,10 @@ void main() async {
   initDependencies();
   // await GetStorage.init();
   // runApp(DevicePreview(enabled: true, builder: (context) => const MyApp()));
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
   runApp(const MyApp());
 }
 

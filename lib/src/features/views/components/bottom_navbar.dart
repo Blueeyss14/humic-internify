@@ -47,7 +47,7 @@ class BottomNavbar extends StatelessWidget {
                         onTap: () {
                           bottombarController.changeIndex(index);
 
-                          if (bottombarController.currentIndex.value == 0) {
+                          if (bottombarController.currentIndex.value != 1) {
                             positionCon.resetPositionFilter();
                           }
                         },
