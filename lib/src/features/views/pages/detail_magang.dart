@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
 import 'package:humic_internify/src/features/viewmodels/posisition_viewmodel.dart';
 import 'package:humic_internify/src/routes/routes_name.dart';
@@ -121,11 +122,12 @@ class DetailMagang extends StatelessWidget {
                         ),
                         const SizedBox(height: 10),
 
-                        Text(
-                          currPosition.description,
-                          style: const TextStyle(height: 2, fontSize: 12),
-                          textAlign: TextAlign.justify,
-                        ),
+                        // Text(
+                        //   currPosition.description,
+                        //   style: const TextStyle(height: 2, fontSize: 12),
+                        //   textAlign: TextAlign.justify,
+                        // ),
+                        // Html(data: currPosition.description),
                         const SizedBox(height: 30),
 
                         const Text(

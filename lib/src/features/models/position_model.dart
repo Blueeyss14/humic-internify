@@ -40,6 +40,7 @@ class PositionModel {
       json['paid'] ?? '',
       json['kelompok_peminatan'] ?? '',
       cleaned,
+      // json["jobdesk"] ?? "",
       // List<String>.from(json['kualifikasi'] ?? []),
       // List<String>.from(json['benefit'] ?? []),
       [json['kualifikasi']?.toString() ?? ''],
