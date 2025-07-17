@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:humic_internify/src/features/viewmodels/bottombar_controller.dart';
@@ -9,6 +10,7 @@ import 'package:humic_internify/src/features/views/pages/feedback_page.dart';
 import 'package:humic_internify/src/shared/components/humic_loading.dart';
 import 'package:humic_internify/src/shared/styles/custom_color.dart';
 import 'package:humic_internify/src/shared/widgets/humic_refresher.dart';
+import 'package:shimmer_animation/shimmer_animation.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -25,9 +27,19 @@ class HomePage extends StatelessWidget {
             () => Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
+                const SizedBox(height: 10),
+
                 Stack(
                   children: [
-                    Image.asset("assets/images/life-at-humic.png"),
+                    Shimmer(
+                      duration: const Duration(seconds: 4),
+                      interval: Duration.zero,
+                      color: Colors.white,
+                      colorOpacity: 0.5,
+                      enabled: true,
+                      direction: const ShimmerDirection.fromLTRB(),
+                      child: Image.asset("assets/images/life-at-humic.png"),
+                    ),
                     Positioned.fill(
                       child: Container(
                         margin: const EdgeInsets.only(right: 50),
@@ -62,11 +74,30 @@ class HomePage extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 30),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Image.asset("assets/images/mereka-humic.png", width: 120),
+                    Image.asset(
+                          "assets/images/internify-dev.png",
+                          width: MediaQuery.of(context).size.width / 2 - 50,
+                        )
+                        .animate(
+                          onPlay:
+                              (controller) => controller.repeat(reverse: true),
+                        )
+                        .moveY(
+                          begin: -1,
+                          end: 2,
+                          duration: 4000.ms,
+                          curve: Curves.easeInOut,
+                        )
+                        .rotate(
+                          begin: -0.002,
+                          end: 0.005,
+                          duration: 4000.ms,
+                          curve: Curves.easeInOut,
+                        ),
                     const SizedBox(width: 15),
                     const Expanded(
                       child: Column(
@@ -131,37 +162,44 @@ class HomePage extends StatelessWidget {
                       for (var group in posisitionController.groupedUniqueJobs)
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: List.generate(
-                            posisitionController.maxPerRow,
-                            (index) {
-                              if (index < group.length) {
-                                final itemIndex = group[index];
-                                final item =
-                                    posisitionController.data[itemIndex];
+                          children: List.generate(posisitionController.maxPerRow, (
+                            index,
+                          ) {
+                            if (index < group.length) {
+                              final itemIndex = group[index];
+                              final item = posisitionController.data[itemIndex];
 
-                                return Expanded(
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      posisitionController
-                                          .clickToFilterPosition(item.jobTitle);
-                                      bottombarController.currentIndex.value =
-                                          1;
-                                      bottombarController.fetchIcon(1);
-                                    },
-                                    child: Container(
-                                      clipBehavior: Clip.antiAlias,
-                                      margin: const EdgeInsets.symmetric(
-                                        horizontal: 15,
-                                        vertical: 15,
-                                      ),
-                                      height: 150,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(15),
-                                      ),
-                                      child: Stack(
-                                        fit: StackFit.expand,
-                                        children: [
-                                          CachedNetworkImage(
+                              return Expanded(
+                                child: GestureDetector(
+                                  onTap: () {
+                                    posisitionController.clickToFilterPosition(
+                                      item.jobTitle,
+                                    );
+                                    bottombarController.currentIndex.value = 1;
+                                    bottombarController.fetchIcon(1);
+                                  },
+                                  child: Container(
+                                    clipBehavior: Clip.antiAlias,
+                                    margin: const EdgeInsets.symmetric(
+                                      horizontal: 15,
+                                      vertical: 15,
+                                    ),
+                                    height: 150,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(15),
+                                    ),
+                                    child: Stack(
+                                      fit: StackFit.expand,
+                                      children: [
+                                        Shimmer(
+                                          duration: const Duration(seconds: 4),
+                                          interval: Duration.zero,
+                                          color: Colors.white,
+                                          colorOpacity: 0.6,
+                                          enabled: true,
+                                          direction:
+                                              const ShimmerDirection.fromLTRB(),
+                                          child: CachedNetworkImage(
                                             imageUrl:
                                                 '${dotenv.env['API_BASE_URL']}${item.image}',
                                             fit: BoxFit.cover,
@@ -180,47 +218,47 @@ class HomePage extends StatelessWidget {
                                                   child: const HumicLoading(),
                                                 ),
                                           ),
-                                          Container(
-                                            padding: const EdgeInsets.only(
-                                              top: 10,
-                                              bottom: 10,
-                                              left: 10,
-                                              right: 20,
-                                            ),
-                                            alignment: Alignment.bottomLeft,
-                                            decoration: BoxDecoration(
-                                              gradient: LinearGradient(
-                                                colors: [
-                                                  Colors.black.withAlpha(200),
-                                                  Colors.transparent,
-                                                ],
-                                                begin: Alignment.bottomCenter,
-                                                end: Alignment.topCenter,
-                                              ),
-                                            ),
-                                            child: AutoSizeText(
-                                              item.jobTitle,
-                                              style: const TextStyle(
-                                                fontSize: 12,
-                                                color: Colors.white,
-                                              ),
-                                              maxFontSize: 12,
-                                              minFontSize: 3,
-                                              maxLines: 2,
+                                        ),
+                                        Container(
+                                          padding: const EdgeInsets.only(
+                                            top: 10,
+                                            bottom: 10,
+                                            left: 10,
+                                            right: 20,
+                                          ),
+                                          alignment: Alignment.bottomLeft,
+                                          decoration: BoxDecoration(
+                                            gradient: LinearGradient(
+                                              colors: [
+                                                Colors.black.withAlpha(200),
+                                                Colors.transparent,
+                                              ],
+                                              begin: Alignment.bottomCenter,
+                                              end: Alignment.topCenter,
                                             ),
                                           ),
-                                        ],
-                                      ),
+                                          child: AutoSizeText(
+                                            item.jobTitle,
+                                            style: const TextStyle(
+                                              fontSize: 12,
+                                              color: Colors.white,
+                                            ),
+                                            maxFontSize: 12,
+                                            minFontSize: 3,
+                                            maxLines: 2,
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
-                                );
-                              } else {
-                                return const Expanded(
-                                  child: SizedBox(height: 130),
-                                );
-                              }
-                            },
-                          ),
+                                ),
+                              );
+                            } else {
+                              return const Expanded(
+                                child: SizedBox(height: 130),
+                              );
+                            }
+                          }),
                         ),
                     ],
                   )

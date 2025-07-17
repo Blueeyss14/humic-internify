@@ -19,8 +19,9 @@ import 'package:humic_internify/src/routes/routes_page.dart';
 // }
 
 void main() async {
-  await dotenv.load(fileName: "assets/.env");
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: "assets/.env");
+
   // HttpOverrides.global = MyHttpOverrides();
   initDependencies();
   // await GetStorage.init();
@@ -29,6 +30,7 @@ void main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
+
   runApp(const MyApp());
 }
 

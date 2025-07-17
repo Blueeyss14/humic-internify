@@ -67,6 +67,7 @@ class BottomNavbar extends StatelessWidget {
                                 bottomBar[index].icon,
                                 height: 20,
                                 width: 20,
+                                gaplessPlayback: true,
                               ),
                               const SizedBox(height: 3),
                               Text(

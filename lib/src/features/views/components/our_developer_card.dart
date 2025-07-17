@@ -66,6 +66,7 @@ class OurDeveloperCard extends StatelessWidget {
                       child: Image.asset(
                         dev.devModel[index].image,
                         fit: BoxFit.cover,
+                        gaplessPlayback: true,
                       ),
                     ),
                     AutoSizeText(
