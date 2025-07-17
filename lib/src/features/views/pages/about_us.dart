@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:humic_internify/src/features/viewmodels/partnership_viewmodel.dart';
+import 'package:humic_internify/src/features/viewmodels/project_viewmodel.dart';
 import 'package:humic_internify/src/features/views/components/contact_us.dart';
 import 'package:humic_internify/src/features/views/components/hasil_produk_card.dart';
 import 'package:humic_internify/src/features/views/components/our_developer_card.dart';
@@ -14,6 +15,7 @@ class AboutUs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final partnership = Get.find<PartnershipViewmodel>();
+    final project = Get.find<ProjectViewmodel>();
 
     return Obx(
       () => Column(
@@ -104,21 +106,21 @@ class AboutUs extends StatelessWidget {
 
           const SizedBox(height: 40),
 
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 30),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ///HASIL  PRODUK
-                HasilProdukCard(),
+                if (project.data.isNotEmpty) const HasilProdukCard(),
 
                 ///Developer
-                SizedBox(height: 20),
-                OurDeveloperCard(),
+                const SizedBox(height: 20),
+                const OurDeveloperCard(),
 
                 //Contact Us
-                SizedBox(height: 20),
-                ContactUs(),
+                const SizedBox(height: 20),
+                const ContactUs(),
               ],
             ),
           ),

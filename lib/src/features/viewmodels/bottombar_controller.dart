@@ -9,14 +9,14 @@ class BottombarController extends GetxController {
   final box = GetStorage();
 
   final List<String> icons = [
-    'assets/icons/home.png',
-    'assets/icons/cv.png',
-    'assets/icons/about_us.png',
+    'assets/icons/home1.png',
+    'assets/icons/cv1.png',
+    'assets/icons/about_us1.png',
   ];
   final List<String> filledIcons = [
-    'assets/icons/home_filled.png',
-    'assets/icons/cv_filled.png',
-    'assets/icons/about_us_filled.png',
+    'assets/icons/home_filled1.png',
+    'assets/icons/cv_filled1.png',
+    'assets/icons/about_us_filled1.png',
   ];
   final List<String> labels = ['Beranda', 'Lowongan', 'Tentang Kami'];
 

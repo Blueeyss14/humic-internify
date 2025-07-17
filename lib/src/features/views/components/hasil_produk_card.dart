@@ -134,7 +134,7 @@ class HasilProdukCard extends StatelessWidget {
                 ),
               ),
             )
-          else
+          else if (project.isLoading.value)
             // const Text("No Data"),
             Container(
               padding: const EdgeInsets.all(10),
