@@ -1,7 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:humic_internify/src/features/viewmodels/bottombar_controller.dart';
@@ -79,25 +78,25 @@ class HomePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Image.asset(
-                          "assets/images/internify-dev.png",
-                          width: MediaQuery.of(context).size.width / 2 - 50,
-                        )
-                        .animate(
-                          onPlay:
-                              (controller) => controller.repeat(reverse: true),
-                        )
-                        .moveY(
-                          begin: -1,
-                          end: 2,
-                          duration: 4000.ms,
-                          curve: Curves.easeInOut,
-                        )
-                        .rotate(
-                          begin: -0.002,
-                          end: 0.005,
-                          duration: 4000.ms,
-                          curve: Curves.easeInOut,
-                        ),
+                      "assets/images/internify-dev.png",
+                      width: MediaQuery.of(context).size.width / 2 - 50,
+                    ),
+                    // .animate(
+                    //   onPlay:
+                    //       (controller) => controller.repeat(reverse: true),
+                    // )
+                    // .moveY(
+                    //   begin: -1,
+                    //   end: 2,
+                    //   duration: 4000.ms,
+                    //   curve: Curves.easeInOut,
+                    // )
+                    // .rotate(
+                    //   begin: -0.002,
+                    //   end: 0.005,
+                    //   duration: 4000.ms,
+                    //   curve: Curves.easeInOut,
+                    // ),
                     const SizedBox(width: 15),
                     const Expanded(
                       child: Column(
